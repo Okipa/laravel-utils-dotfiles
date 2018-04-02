@@ -24,6 +24,6 @@ if [ ! $ALREADY_CHECKED_SUDO_USER ] ; then
         # we set the sudo user check as already done
         ALREADY_CHECKED_SUDO_USER=true
 
-        echo -e "${green}✔${reset} The current command is executed with the ${purple}root${reset} user.\n"
+        echo -e "${green}✔${reset} The current command is executed with a sudo user.\n"
     fi
 fi

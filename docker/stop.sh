@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
 
-# colors
-purple=`tput setaf 12`
-gray=`tput setaf 8`
-green=`tput setaf 2`
-red=`tput setaf 1`
-reset=`tput sgr0`
+# we get the current script directory
+currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# we load the scripting colors
+source $(realpath ${currentScriptDirectory}/../helpers/loadScriptingColors.sh)
 
 # we set the script variables
-currentScriptPath="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source $(realpath ${currentScriptPath}/../helpers/exportEnvFileVariables.sh)
-source $(realpath ${currentScriptPath}/../helpers/checkVariableIsDefined.sh) PROJECT_PATH
+source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh)
+source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) PROJECT_PATH
 source ${PROJECT_PATH}.utils/helpers/checkVariableIsDefined.sh LARADOCK_DIRECTORY_PATH
 source ${PROJECT_PATH}.utils/helpers/checkVariableIsDefined.sh APP_NAME
 

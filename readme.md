@@ -5,11 +5,11 @@
 
 ### .utils/docker/
 - up.sh : start the project laradock docker containers
-    > --build : customize the .env, the dockerfiles and the docker-compose files
-    > --proxy : configure the nginx-proxy reverse proxy
+    > --build : customize the .env, the dockerfiles and the docker-compose files  
+    > --proxy : configure the nginx-proxy reverse proxy  
 - stop.sh : stop the project laradock docker containers.
 - workspace.sh : shortcut to get a ssh access to the laradock workspace with the `laradock` user.
-    > --root : access to the docker laradock workspace with the `root` user.
+    > --root : access to the docker laradock workspace with the `root` user.  
 - buildProjectConfig.sh : .env, dockerfiles and docker-compose files customization script.
 - buildDinghyNginxProxyConfig.sh : nginx-proxy reverse proxy project configuration.
 
@@ -45,9 +45,9 @@ Example :
 ```
 
 The following dotfiles that are eligible for instructions adding :
-- docker/buildProjectConfig.sh : default config => php7.1 / nginx / mysql - the custom instructions will be executed at the end of each method.
-    > setEnvVariables() : replace the default .env laradock variables for your project
-    > customizeDockerFiles() : customize the laradock dockerfiles
-    > customizeDockerComposeFile() : customize the laradock docker-compose.yml file
-    > setNginxConfig() : set the laradock nginx project config
+- docker/buildProjectConfig.sh : default config => php7.1 / nginx / mysql - the custom instructions will be executed at the end of each method.  
+    > setEnvVariables() : replace the default .env laradock variables for your project  
+    > customizeDockerFiles() : customize the laradock dockerfiles  
+    > customizeDockerComposeFile() : customize the laradock docker-compose.yml file  
+    > setNginxConfig() : set the laradock nginx project config  
 - project/install.sh : the custom instructions will be executed at the end of the script.

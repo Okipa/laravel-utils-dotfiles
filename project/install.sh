@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # we get the current script directory
 currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -64,11 +64,11 @@ echo "${green}✔${reset} Migrations executed"
 
 echo -e "\n${gray}=================================================${reset}\n"
 
-customIntructionsFiles=${currentScriptDirectory}/../../.utils.custom/project/install.sh
-if [ -f "${customIntructionsFiles}" ]; then
-    source ${customIntructionsFiles}
+installScript=${currentScriptDirectory}/../../.utils.custom/project/install.sh
+if [ -f "${installScript}" ]; then
+    source ${installScript}
 else
-    echo -e "${green}✔${reset} No custom script instructions detected\n"
+    echo -e "${green}✔${reset} No .utils.custom/project/install.sh script detected\n"
 fi
 
 echo -e "${gray}=================================================${reset}\n"
