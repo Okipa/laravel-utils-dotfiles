@@ -22,18 +22,20 @@ function setEnvVariables () {
     # custom instructions execution
     setEnvVariableScript=${currentScriptDirectory}/../../.utils.custom/docker/setEnvVariable.sh
     if [ -f "${setEnvVariableScript}" ]; then
+        echo -e "${green}✔${reset} The .utils.custom/docker/setEnvVariable.sh custom instructions script has been detected.\n"
         source ${setEnvVariableScript}
     else
-        echo -e "${red}✗${reset} No .utils.custom/docker/setEnvVariable.sh script detected\n"
+        echo -e "${red}✗${reset} No .utils.custom/docker/setEnvVariable.sh script detected;\n"
     fi
 }
 function customizeContainers () {
     # custom instructions execution
     customizeContainersScript=${currentScriptDirectory}/../../.utils.custom/docker/customizeContainers.sh
     if [ -f "${customizeContainersScript}" ]; then
+        echo -e "${green}✔${reset} The .utils.custom/docker/customizeContainers.sh custom instructions script has been detected.\n"
         source ${customizeContainersScript}
     else
-        echo -e "${red}✗${reset} No .utils.custom/docker/customizeContainers.sh script detected\n"
+        echo -e "${red}✗${reset} No .utils.custom/docker/customizeContainers.sh script detected.\n"
     fi
 }
 function customizeDockerComposeFile () {
@@ -46,9 +48,10 @@ function customizeDockerComposeFile () {
     # custom instructions execution
     customizeDockerComposeFileScript=${currentScriptDirectory}/../../.utils.custom/docker/customizeDockerComposeFile.sh
     if [ -f "${customizeDockerComposeFileScript}" ]; then
+        echo -e "${green}✔${reset} The .utils.custom/docker/customizeDockerComposeFile.sh custom instructions script has been detected.\n"
         source ${customizeDockerComposeFileScript}
     else
-        echo -e "${red}✗${reset} No .utils.custom/docker/customizeDockerComposeFile.sh script detected\n"
+        echo -e "${red}✗${reset} No .utils.custom/docker/customizeDockerComposeFile.sh script detected.\n"
     fi
 }
 function setNginxConfig () {
@@ -56,7 +59,7 @@ function setNginxConfig () {
     if [ -f "${setNginxConfigScript}" ]; then
         source ${setNginxConfigScript}
     else
-        echo -e "${red}✗${reset} No .utils.custom/docker/setNginxConfig.sh script detected\n"
+        echo -e "${red}✗${reset} No .utils.custom/docker/setNginxConfig.sh script detected.\n"
     fi
 }
 function buildProjectDockerConfig() {

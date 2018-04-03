@@ -26,7 +26,7 @@ if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
     if [ -f "${localesInstallScript}" ]; then
         source ${localesInstallScript}
     else
-        echo -e "${red}✗${reset} No .utils.custom/server/localesInstall.sh script detected\n"
+        echo -e "${red}✗${reset} No .utils.custom/server/localesInstall.sh script detected.\n"
     fi
     # we load the added locales
     echo "${purple}→ update-locale ${reset}"
