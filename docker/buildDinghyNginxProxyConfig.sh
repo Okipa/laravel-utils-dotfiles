@@ -19,10 +19,14 @@ function customizeDockerComposeFile () {
     if [[ ! -f ${LARADOCK_DIRECTORY_PATH}docker-compose-original.yml ]]; then
         cp -rf ${LARADOCK_DIRECTORY_PATH}docker-compose.yml ${LARADOCK_DIRECTORY_PATH}docker-compose-original.yml
     fi
-    # nginx server container
-    sed -i ':a;N;$!ba;s/ports:\n\        - "${NGINX_HOST_HTTP_PORT}:80"\n\        - "${NGINX_HOST_HTTPS_PORT}:443"\n\      depends_on:\n\        - php-fpm\n\      networks:\n\        - frontend\n\        - backend/ports:\n\        - "${NGINX_HOST_HTTP_PORT}:80"\n\        - "${NGINX_HOST_HTTPS_PORT}:443"\n\      depends_on:\n\        - php-fpm\n\      networks:\n\        - frontend\n\        - backend\n\        - nginx-proxy\n\      environment:\n\        - VIRTUAL_HOST='${NGINX_DOMAIN}'/g' ${LARADOCK_DIRECTORY_PATH}docker-compose.yml
-    # network setup
-    sed -i ':a;N;$!ba;s/networks:\n\  frontend:\n\    driver: "bridge"\n\  backend:\n\    driver: "bridge"/networks:\n\  frontend:\n\    driver: "bridge"\n\  backend:\n\    driver: "bridge"\n\  nginx-proxy:\n\    external:\n\      name: nginx-proxy/g' ${LARADOCK_DIRECTORY_PATH}docker-compose.yml
+    # custom instructions execution
+    customizeDockerComposeFileScript=${currentScriptDirectory}/../../.utils.custom/docker/buildDinghyNginxProxyConfig/customizeDockerComposeFile.sh
+    if [ -f "${instructions}" ]; then
+        echo "${green}✔${reset} ${gray}The .utils.custom/docker/buildDinghyNginxProxyConfig/customizeDockerComposeFile.sh custom instructions script has been detected.${reset}"
+        source ${instructions}
+    else
+        echo "${red}✗${reset} ${gray}No .utils.custom/docker/buildDinghyNginxProxyConfig/customizeDockerComposeFile.sh script detected.${reset}"
+    fi
 }
 function startDinghyNginxProxyConfig(){
 

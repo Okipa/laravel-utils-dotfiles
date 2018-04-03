@@ -20,22 +20,22 @@ function setEnvVariables () {
     # .env file override from the env-example file
     cp -rf ${LARADOCK_DIRECTORY_PATH}env-example ${LARADOCK_DIRECTORY_PATH}.env
     # custom instructions execution
-    setEnvVariablesScript=${currentScriptDirectory}/../../.utils.custom/docker/setEnvVariables.sh
+    setEnvVariablesScript=${currentScriptDirectory}/../../.utils.custom/docker/buildProjectConfig/setEnvVariables.sh
     if [ -f "${setEnvVariablesScript}" ]; then
-        echo "${green}✔${reset} ${gray}The .utils.custom/docker/setEnvVariable.sh custom instructions script has been detected.${reset}"
+        echo "${green}✔${reset} ${gray}The .utils.custom/docker/buildProjectConfig/setEnvVariable.sh custom instructions script has been detected.${reset}"
         source ${setEnvVariablesScript}
     else
-        echo "${red}✗${reset} No .utils.custom/docker/setEnvVariables.sh script detected."
+        echo "${red}✗${reset} No .utils.custom/docker/buildProjectConfig/setEnvVariables.sh script detected."
     fi
 }
 function customizeContainers () {
     # custom instructions execution
-    customizeContainersScript=${currentScriptDirectory}/../../.utils.custom/docker/customizeContainers.sh
+    customizeContainersScript=${currentScriptDirectory}/../../.utils.custom/docker/buildProjectConfig/customizeContainers.sh
     if [ -f "${customizeContainersScript}" ]; then
-        echo "${green}✔${reset} ${gray}The .utils.custom/docker/customizeContainers.sh custom instructions script has been detected.${reset}"
+        echo "${green}✔${reset} ${gray}The .utils.custom/docker/buildProjectConfig/customizeContainers.sh custom instructions script has been detected.${reset}"
         source ${customizeContainersScript}
     else
-        echo "${red}✗${reset} ${gray}No .utils.custom/docker/customizeContainers.sh script detected.${reset}"
+        echo "${red}✗${reset} ${gray}No .utils.custom/docker/buildProjectConfig/customizeContainers.sh script detected.${reset}"
     fi
 }
 function customizeDockerComposeFile () {
@@ -46,21 +46,21 @@ function customizeDockerComposeFile () {
         cp -rf ${LARADOCK_DIRECTORY_PATH}docker-compose-original.yml ${LARADOCK_DIRECTORY_PATH}docker-compose.yml
     fi
     # custom instructions execution
-    customizeDockerComposeFileScript=${currentScriptDirectory}/../../.utils.custom/docker/customizeDockerComposeFile.sh
+    customizeDockerComposeFileScript=${currentScriptDirectory}/../../.utils.custom/docker/buildProjectConfig/customizeDockerComposeFile.sh
     if [ -f "${customizeDockerComposeFileScript}" ]; then
-        echo "${gray}✔${reset} ${gray}The .utils.custom/docker/customizeDockerComposeFile.sh custom instructions script has been detected.${reset}"
+        echo "${gray}✔${reset} ${gray}The .utils.custom/docker/buildProjectConfig/customizeDockerComposeFile.sh custom instructions script has been detected.${reset}"
         source ${customizeDockerComposeFileScript}
     else
-        echo "${red}✗${reset} ${gray}No .utils.custom/docker/customizeDockerComposeFile.sh script detected.${reset}"
+        echo "${red}✗${reset} ${gray}No .utils.custom/docker/buildProjectConfig/customizeDockerComposeFile.sh script detected.${reset}"
     fi
 }
 function setNginxConfig () {
-    setNginxConfigScript=${currentScriptDirectory}/../../.utils.custom/docker/setNginxConfig.sh
+    setNginxConfigScript=${currentScriptDirectory}/../../.utils.custom/docker/buildProjectConfig/setNginxConfig.sh
     if [ -f "${setNginxConfigScript}" ]; then
-        echo "${green}✔${reset} ${gray}The .utils.custom/docker/setNginxConfig.sh custom instructions script has been detected.${reset}"
+        echo "${green}✔${reset} ${gray}The .utils.custom/docker/buildProjectConfig/setNginxConfig.sh custom instructions script has been detected.${reset}"
         source ${setNginxConfigScript}
     else
-        echo "${red}✗${reset} ${gray}No .utils.custom/docker/setNginxConfig.sh script detected.${reset}"
+        echo "${red}✗${reset} ${gray}No .utils.custom/docker/buildProjectConfig/setNginxConfig.sh script detected.${reset}"
     fi
 }
 function buildProjectDockerConfig() {
