@@ -14,10 +14,10 @@ PackagesToCheck=()
 # custom instructions execution
 configCheckScript=${currentScriptDirectory}/../../.utils.custom/server/configCheck.sh
 if [ -f "${configCheckScript}" ]; then
-    echo -e "${green}✔${reset} The .utils.custom/server/configCheck.sh custom instructions script has been detected.\n"
+    echo "${green}✔${reset} The .utils.custom/server/configCheck.sh custom instructions script has been detected."
     source ${configCheckScript}
 else
-    echo -e "${red}✗${reset} No .utils.custom/server/configCheck.sh script detected.\n"
+    echo "${red}✗${reset} No .utils.custom/server/configCheck.sh script detected."
 fi
 
 # we execute the script treatments
