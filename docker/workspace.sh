@@ -18,6 +18,7 @@ fi
 # we set the script functions
 function accessToWorkspaceSsh () {
     cd ${LARADOCK_DIRECTORY_PATH}
+    echo "${purple}→ docker-compose exec --user=${user} workspace bash${reset}"
     docker-compose exec --user=${user} workspace bash
     cd ${PROJECT_PATH}
 }
