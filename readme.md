@@ -48,7 +48,10 @@ The following dotfiles that are eligible for custom instructions :
 
 | Dotfile | Method | Custom dotfile | Actions to setup |
 |---|---|---|---|
-| .utils/docker/buildProjectConfig.sh | setEnvVariables() | .utils.custom/docker/setEnvVariables.sh | replace the laradock .env default key / values |
-| .utils/docker/buildProjectConfig.sh | customizeContainers() | .utils.custom/docker/customizeContainers.sh | customize laradock containers builds files |
-| .utils/docker/buildProjectConfig.sh | customizeDockerComposeFile() | .utils.custom/docker/customizeDockerComposeFile.sh | customize laradock docker-compose.yml file |
-| .utils/docker/buildProjectConfig.sh | setNginxConfig() | .utils.custom/docker/setNginxConfig.sh | set your project docker nginx configuration |
+| .utils/project/install.sh | X | .utils.custom/project/install.sh | Add custom instructions at the end of the script |
+| .utils/server/configCheck.sh | X | .utils.custom/server/configCheck.sh | Set the packages installations to check |
+| .utils/server/localesInstall.sh | X | .utils.custom/server/localesInstall.sh | Install the needed project locales |
+| .utils/docker/buildProjectConfig.sh | setEnvVariables() | .utils.custom/docker/setEnvVariables.sh | Replace the laradock .env default key / values |
+| .utils/docker/buildProjectConfig.sh | customizeContainers() | .utils.custom/docker/customizeContainers.sh | Customize laradock containers builds files |
+| .utils/docker/buildProjectConfig.sh | customizeDockerComposeFile() | .utils.custom/docker/customizeDockerComposeFile.sh | Customize laradock docker-compose.yml file |
+| .utils/docker/buildProjectConfig.sh | setNginxConfig() | .utils.custom/docker/setNginxConfig.sh | Set your project docker nginx configuration |
