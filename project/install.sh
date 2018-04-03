@@ -66,10 +66,10 @@ echo -e "\n${gray}=================================================${reset}\n"
 
 installScript=${currentScriptDirectory}/../../.utils.custom/project/install.sh
 if [ -f "${installScript}" ]; then
-    echo "${green}✔${reset} The .utils.custom/project/install.sh custom instructions script has been detected."
+    echo "${green}✔${reset} ${gray}The .utils.custom/project/install.sh custom instructions script has been detected.${reset}"
     source ${installScript}
 else
-    echo "${green}✔${reset} No .utils.custom/project/install.sh script detected."
+    echo "${red}✗${reset} ${gray}No .utils.custom/project/install.sh script detected.${reset}"
 fi
 
 echo -e "${gray}=================================================${reset}\n"
