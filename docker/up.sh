@@ -23,6 +23,9 @@ function startContainers () {
     if [[ ${arguments} = *'proxy'* ]]; then
         source ${PROJECT_PATH}.utils/docker/build-dinghy-nginx-proxy-config.sh
     fi
+    
+    echo -e "${gray}=================================================${reset}\n"
+
     echo "${purple}▶${reset} Executing docker-compose command ..."
     cd ${LARADOCK_DIRECTORY_PATH}
     docker-compose up -d ${buildArgument} workspace php-fpm nginx mysql

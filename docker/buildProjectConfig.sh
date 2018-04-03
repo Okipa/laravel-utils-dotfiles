@@ -63,6 +63,8 @@ function setNginxConfig () {
     fi
 }
 function buildProjectDockerConfig() {
+    echo -e "${gray}=================================================${reset}\n"
+
     echo "${purple}▶${reset} Building ${APP_NAME} docker config ..."
     setEnvVariables
     customizeContainers
@@ -71,6 +73,8 @@ function buildProjectDockerConfig() {
     echo -e "${green}✔${reset} ${envFilePath} ${APP_NAME} docker config done.\n"
 }
 function stopAndRemoveRunningContainers() {
+    echo -e "${gray}=================================================${reset}\n"
+
     echo "${purple}▶${reset} Stopping and removing ${APP_NAME} containers ..."
     cd ${LARADOCK_DIRECTORY_PATH}
     docker-compose stop

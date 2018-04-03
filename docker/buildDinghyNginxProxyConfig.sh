@@ -25,6 +25,9 @@ function customizeDockerComposeFile () {
     sed -i ':a;N;$!ba;s/networks:\n\  frontend:\n\    driver: "bridge"\n\  backend:\n\    driver: "bridge"/networks:\n\  frontend:\n\    driver: "bridge"\n\  backend:\n\    driver: "bridge"\n\  nginx-proxy:\n\    external:\n\      name: nginx-proxy/g' ${LARADOCK_DIRECTORY_PATH}docker-compose.yml
 }
 function startDinghyNginxProxyConfig(){
+
+    echo -e "${gray}=================================================${reset}\n"
+
     echo "${purple}▶${reset} Building ${APP_NAME} dinghy nging-proxy config ..."
     customizeDockerComposeFile
     echo -e "${green}✔${reset} Dinghy ${APP_NAME} nging-proxy config done.\n"
