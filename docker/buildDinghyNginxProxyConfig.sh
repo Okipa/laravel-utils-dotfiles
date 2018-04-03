@@ -30,5 +30,5 @@ function startDinghyNginxProxyConfig(){
     echo -e "${green}✔${reset} Dinghy ${APP_NAME} nging-proxy config done.\n"
 }
 
-# treatment
+# we execute the script treatments
 startDinghyNginxProxyConfig;

@@ -21,5 +21,5 @@ function stopContainers () {
     echo -e "${green}✔${reset} ${APP_NAME} stopped.\n"
 }
 
-# treatment
+# we execute the script treatments
 stopContainers

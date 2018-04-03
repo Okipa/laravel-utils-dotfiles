@@ -17,7 +17,9 @@ source ${PROJECT_PATH}.utils/helpers/checkVariableIsDefined.sh APP_NAME
 
 # we set the script functions
 function setEnvVariables () {
+    # .env file override from the env-example file
     cp -rf ${LARADOCK_DIRECTORY_PATH}env-example ${LARADOCK_DIRECTORY_PATH}.env
+    # custom instructions execution
     setEnvVariableScript=${currentScriptDirectory}/../../.utils.custom/docker/setEnvVariable.sh
     if [ -f "${setEnvVariableScript}" ]; then
         source ${setEnvVariableScript}
@@ -25,11 +27,13 @@ function setEnvVariables () {
         echo -e "${red}✗${reset} No .utils.custom/docker/setEnvVariable.sh script detected\n"
     fi
 }
-function customizeDockerFiles () {
-    if [ -f "${customizeDockerFilesScript}" ]; then
-        source ${customizeDockerFilesScript}
+function customizeContainers () {
+    # custom instructions execution
+    customizeContainersScript=${currentScriptDirectory}/../../.utils.custom/docker/customizeContainersScript.sh
+    if [ -f "${customizeContainersScript}" ]; then
+        source ${customizeContainersScript}
     else
-        echo -e "${red}✗${reset} No .utils.custom/docker/customizeDockerFiles.sh script detected\n"
+        echo -e "${red}✗${reset} No .utils.custom/docker/customizeContainers.sh script detected\n"
     fi
 }
 function customizeDockerComposeFile () {
@@ -39,6 +43,7 @@ function customizeDockerComposeFile () {
     else
         cp -rf ${LARADOCK_DIRECTORY_PATH}docker-compose-original.yml ${LARADOCK_DIRECTORY_PATH}docker-compose.yml
     fi
+    # custom instructions execution
     if [ -f "${customizeDockerComposeFileScript}" ]; then
         source ${customizeDockerComposeFileScript}
     else
@@ -69,6 +74,6 @@ function stopAndRemoveRunningContainers() {
     echo -e "${green}✔${reset} ${APP_NAME} containers stopped and removed.\n"
 }
 
-# treatment
+# we execute the script treatments
 stopAndRemoveRunningContainers
 buildProjectDockerConfig

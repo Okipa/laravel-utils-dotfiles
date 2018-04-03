@@ -22,5 +22,5 @@ function accessToWorkspaceSsh () {
     cd ${PROJECT_PATH}
 }
 
-# treatment
+# we execute the script treatments
 accessToWorkspaceSsh

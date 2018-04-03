@@ -21,13 +21,15 @@ if [ "$FORCE" == false ]; then
 fi
 if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
     echo "${purple}▶${reset} Installing project locales ..."
-    # set as much locales as you need here
-    echo "${purple}→ locale-gen fr_FR.UTF-8${reset}"
-    locale-gen fr_FR.UTF-8
-    echo "${purple}→ locale-gen en_GB.UTF-8${reset}"
-    locale-gen en_GB.UTF-8
-    echo "${purple}→ update-locale ${reset}"
+    # custom instructions execution
+    localesInstallScript=${currentScriptDirectory}/../../.utils.custom/server/localesInstallScript.sh
+    if [ -f "${localesInstallScript}" ]; then
+        source ${localesInstallScript}
+    else
+        echo -e "${red}✗${reset} No .utils.custom/server/localesInstallScript.sh script detected\n"
+    fi
     # we load the added locales
+    echo "${purple}→ update-locale ${reset}"
     update-locale
     echo -e "${green}✔${reset} Project locales installed\n"
 else

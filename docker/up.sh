@@ -30,5 +30,5 @@ function startContainers () {
     echo -e "${green}✔${reset} Docker-compose executed.\n"
 }
 
-# treatment
+# we execute the script treatments
 startContainers
