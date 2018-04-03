@@ -2,7 +2,7 @@
 
 # example
 
-# set as much package to check as you need here
+## set as much package to check as you need here
 #PackagesToCheck+=('php7.1-common')
 #PackagesToCheck+=('php7.1-fpm')
 #PackagesToCheck+=('php7.1-cli')

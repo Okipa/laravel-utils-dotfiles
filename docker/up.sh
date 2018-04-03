@@ -17,11 +17,11 @@ buildArgument=''
 # we set the script functions
 function startContainers () {
     if [[ ${arguments} = *'build'* ]]; then
-        source ${PROJECT_PATH}/.utils/docker/build-project-config.sh
+        source ${PROJECT_PATH}.utils/docker/build-project-config.sh
        buildArgument='--build'
     fi
     if [[ ${arguments} = *'proxy'* ]]; then
-        source ${PROJECT_PATH}/.utils/docker/build-dinghy-nginx-proxy-config.sh
+        source ${PROJECT_PATH}.utils/docker/build-dinghy-nginx-proxy-config.sh
     fi
     echo "${purple}▶${reset} Executing docker-compose command ..."
     cd ${LARADOCK_DIRECTORY_PATH}
