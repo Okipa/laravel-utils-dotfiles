@@ -65,7 +65,7 @@ function setNginxConfig () {
 function buildProjectDockerConfig() {
     echo "${purple}▶${reset} Building ${APP_NAME} docker config ..."
     setEnvVariables
-    customizeDockerFiles
+    customizeContainers
     customizeDockerComposeFile
     setNginxConfig
     echo -e "${green}✔${reset} ${envFilePath} ${APP_NAME} docker config done.\n"

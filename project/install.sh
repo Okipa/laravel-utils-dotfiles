@@ -8,7 +8,7 @@ source $(realpath ${currentScriptDirectory}/../helpers/loadScriptingColors.sh)
 
 # we check if the current user has the sudo rights
 source $(realpath ${currentScriptDirectory}/../helpers/requiresSudoRights.sh)
-
+buildProjectConfig
 # .env file detection
 source $(realpath ${currentScriptDirectory}/../helpers/checkFileExists.sh) $(realpath "${currentScriptDirectory}/../../.env")
 
