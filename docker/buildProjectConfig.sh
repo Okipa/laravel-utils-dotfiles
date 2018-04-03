@@ -25,7 +25,7 @@ function setEnvVariables () {
         echo "${green}✔${reset} ${gray}The .utils.custom/docker/setEnvVariable.sh custom instructions script has been detected.${reset}"
         source ${setEnvVariablesScript}
     else
-        echo "${red}✗${reset} No .utils.custom/docker/setEnvVariables.sh script detected;"
+        echo "${red}✗${reset} No .utils.custom/docker/setEnvVariables.sh script detected."
     fi
 }
 function customizeContainers () {

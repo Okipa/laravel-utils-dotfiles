@@ -30,7 +30,15 @@ function startContainers () {
 
     echo "${purple}▶${reset} Executing docker-compose command ..."
     cd ${LARADOCK_DIRECTORY_PATH}
-    docker-compose up -d ${buildArgument} workspace php-fpm nginx mysql
+    # custom instructions execution
+    dockerUpScript=${currentScriptDirectory}/../../.utils.custom/docker/up.sh
+    if [ -f "${dockerUpScript}" ]; then
+        echo "${green}✔${reset} ${gray}The .utils.custom/docker/setEnvVariable.sh custom instructions script has been detected.${reset}"
+        source ${dockerUpScript}
+    else
+        echo "${red}✗${reset} No .utils.custom/docker/setEnvVariables.sh script detected."
+        docker-compose up -d ${arguments}
+    fi
     cd ${PROJECT_PATH}
     echo -e "${green}✔${reset} Docker-compose executed.\n"
 }
