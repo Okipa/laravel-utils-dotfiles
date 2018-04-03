@@ -37,6 +37,7 @@ function startContainers () {
         source ${dockerUpScript}
     else
         echo "${red}✗${reset} No .utils.custom/docker/setEnvVariables.sh script detected."
+        echo "${purple}→ docker-compose up -d ${arguments}${reset}"
         docker-compose up -d ${arguments}
     fi
     cd ${PROJECT_PATH}

@@ -16,6 +16,7 @@ source ${PROJECT_PATH}.utils/helpers/checkVariableIsDefined.sh APP_NAME
 function stopContainers () {
     echo "${purple}▶${reset} Stopping ${APP_NAME} containers ..."
     cd ${LARADOCK_DIRECTORY_PATH}
+    echo "${purple}→ docker-compose stop${reset}"
     docker-compose stop
     cd ${PROJECT_PATH}
     echo -e "${green}✔${reset} ${APP_NAME} stopped.\n"

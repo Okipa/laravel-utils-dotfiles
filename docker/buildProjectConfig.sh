@@ -78,7 +78,9 @@ function stopAndRemoveRunningContainers() {
 
     echo "${purple}▶${reset} Stopping and removing ${APP_NAME} containers ..."
     cd ${LARADOCK_DIRECTORY_PATH}
+    echo "${purple}→ docker-compose stop${reset}"
     docker-compose stop
+    echo "${purple}→ docker-compose rm -f${reset}"
     docker-compose rm -f
     cd ${PROJECT_PATH}
     echo -e "${green}✔${reset} ${APP_NAME} containers stopped and removed.\n"
