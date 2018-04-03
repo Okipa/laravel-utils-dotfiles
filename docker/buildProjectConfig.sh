@@ -29,7 +29,7 @@ function setEnvVariables () {
 }
 function customizeContainers () {
     # custom instructions execution
-    customizeContainersScript=${currentScriptDirectory}/../../.utils.custom/docker/customizeContainersScript.sh
+    customizeContainersScript=${currentScriptDirectory}/../../.utils.custom/docker/customizeContainers.sh
     if [ -f "${customizeContainersScript}" ]; then
         source ${customizeContainersScript}
     else
@@ -44,17 +44,19 @@ function customizeDockerComposeFile () {
         cp -rf ${LARADOCK_DIRECTORY_PATH}docker-compose-original.yml ${LARADOCK_DIRECTORY_PATH}docker-compose.yml
     fi
     # custom instructions execution
+    customizeDockerComposeFileScript=${currentScriptDirectory}/../../.utils.custom/docker/customizeDockerComposeFile.sh
     if [ -f "${customizeDockerComposeFileScript}" ]; then
         source ${customizeDockerComposeFileScript}
     else
-        echo -e "${red}✗${reset} No .utils.custom/docker/customizeDockerComposeFileScript.sh script detected\n"
+        echo -e "${red}✗${reset} No .utils.custom/docker/customizeDockerComposeFile.sh script detected\n"
     fi
 }
 function setNginxConfig () {
+    setNginxConfigScript=${currentScriptDirectory}/../../.utils.custom/docker/setNginxConfig.sh
     if [ -f "${setNginxConfigScript}" ]; then
         source ${setNginxConfigScript}
     else
-        echo -e "${red}✗${reset} No .utils.custom/docker/setNginxConfigScript.sh script detected\n"
+        echo -e "${red}✗${reset} No .utils.custom/docker/setNginxConfig.sh script detected\n"
     fi
 }
 function buildProjectDockerConfig() {
