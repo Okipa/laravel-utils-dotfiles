@@ -17,13 +17,13 @@ buildArgument=''
 # we set the script functions
 function startContainers () {
     if [[ ${arguments} = *'build'* ]]; then
-        source ${PROJECT_PATH}.utils/docker/build-project-config.sh
-       buildArgument='--build'
+        source ${PROJECT_PATH}.utils/docker/buildProjectConfig.sh
+        buildArgument='--build'
     fi
     if [[ ${arguments} = *'proxy'* ]]; then
-        source ${PROJECT_PATH}.utils/docker/build-dinghy-nginx-proxy-config.sh
+        source ${PROJECT_PATH}.utils/docker/buildDinghyNginxProxyConfig.sh
     fi
-    
+
     echo -e "${gray}=================================================${reset}\n"
 
     echo "${purple}▶${reset} Executing docker-compose command ..."
