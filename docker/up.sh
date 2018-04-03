@@ -11,8 +11,10 @@ source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh
 source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) PROJECT_PATH
 source ${PROJECT_PATH}.utils/helpers/checkVariableIsDefined.sh NGINX_DOMAIN
 source ${PROJECT_PATH}.utils/helpers/checkVariableIsDefined.sh LARADOCK_DIRECTORY_PATH
-arguments=$@
 buildArgument=''
+
+# we get the script arguments
+arguments=$@
 
 # we set the script functions
 function startContainers () {
