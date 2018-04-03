@@ -9,5 +9,5 @@ source $(realpath ${currentScriptDirectory}/../helpers/loadScriptingColors.sh)
 # we execute the script treatments
 echo "${purple}▶${reset} Updating project git submodules ..."
 git submodule sync --recursive
-git submodule update --recursive --remote
+git submodule update --recursive --remote --force
 echo -e "${green}✔${reset} The git submodules have been updated.\n"
