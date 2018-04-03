@@ -47,7 +47,7 @@ This way, your custom instructions will be synchronized with your project git re
 The following dotfiles that are eligible for custom instructions :
 
 | Dotfile | Method | Custom instructions dotfile |
-|---|---|---|---|
+|---|---|---|
 | .utils/project/install.sh | - | .utils.custom/project/install.sh : add custom instructions at the end of the script |
 | .utils/server/configCheck.sh | - | .utils.custom/server/configCheck.sh : set the packages installations to check |
 | .utils/server/localesInstall.sh | - | .utils.custom/server/localesInstall.sh : install the needed project locales |
