@@ -9,6 +9,8 @@ source $(realpath ${currentScriptDirectory}/../../helpers/loadScriptingColors.sh
 # we get the script arguments
 arguments=$@
 
+echo -e "${gray}=================================================${reset}\n"
+
 # we execute the script treatments
 echo "${purple}▶${reset} Updating project git submodules ..."
 git submodule sync --recursive
