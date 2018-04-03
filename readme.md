@@ -18,8 +18,9 @@
 - buildProjectConfig.sh : .env, dockerfiles and docker-compose files customization script.
 - buildDinghyNginxProxyConfig.sh : nginx-proxy reverse proxy project configuration.
 
-### .utils/git/
-- submodulesInstallOrUpdate.sh : install or update all the project git submodules.
+### .utils/git/submodules
+- install.sh : install all the project git submodules.
+- update.sh : install or update all the project git submodules.
 
 ### .utils/helpers/
 - checkVariableIsDefined.sh : check that the environment variable given in parameter is defined.
