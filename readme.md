@@ -5,13 +5,15 @@
 - copy the following command from the root path of your project  : `cp -R .utils/.utils.custom .utils.custom`
 
 ### .utils/docker/
-- up.sh : start the project laradock docker containers
-    > Options :
-    > --build : customize the .env, the dockerfiles and the docker-compose files  
-    > --proxy : configure the nginx-proxy reverse proxy  
+- up.sh : start the project laradock docker containers  
+
+| Option | Description |
+| `--build` | Customize the .env, the dockerfiles and the docker-compose files |
+| `--proxy` | Configure the nginx-proxy reverse proxy |
+
 - stop.sh : stop the project laradock docker containers.
 - workspace.sh : shortcut to get a ssh access to the laradock workspace with the `laradock` user.
-    > Options :
+    > Options :  
     > --root : access to the docker laradock workspace with the `root` user.  
 - buildProjectConfig.sh : .env, dockerfiles and docker-compose files customization script.
 - buildDinghyNginxProxyConfig.sh : nginx-proxy reverse proxy project configuration.
