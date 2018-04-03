@@ -8,13 +8,13 @@
 - up.sh : start the project laradock docker containers
     > | Option | Description |
     > |---|---|
-    > | `--build` | Customize the .env, the dockerfiles and the docker-compose files |
-    > | `--proxy` | Configure the nginx-proxy reverse proxy |
+    > | --build | Customize the .env, the dockerfiles and the docker-compose files |
+    > | --proxy | Configure the nginx-proxy reverse proxy |
 - stop.sh : stop the project laradock docker containers.
 - workspace.sh : shortcut to get a ssh access to the laradock workspace with the `laradock` user.
     > | Option | Description |
     > |---|---|
-    > | `--root` | Access to the docker laradock workspace with the `root` user |
+    > | --root | Access to the docker laradock workspace with the `root` user |
 - buildProjectConfig.sh : .env, dockerfiles and docker-compose files customization script.
 - buildDinghyNginxProxyConfig.sh : nginx-proxy reverse proxy project configuration.
 
