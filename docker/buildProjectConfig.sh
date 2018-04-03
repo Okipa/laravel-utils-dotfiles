@@ -20,12 +20,12 @@ function setEnvVariables () {
     # .env file override from the env-example file
     cp -rf ${LARADOCK_DIRECTORY_PATH}env-example ${LARADOCK_DIRECTORY_PATH}.env
     # custom instructions execution
-    setEnvVariableScript=${currentScriptDirectory}/../../.utils.custom/docker/setEnvVariable.sh
-    if [ -f "${setEnvVariableScript}" ]; then
+    setEnvVariablesScript=${currentScriptDirectory}/../../.utils.custom/docker/setEnvVariables.sh
+    if [ -f "${setEnvVariablesScript}" ]; then
         echo -e "${green}✔${reset} The .utils.custom/docker/setEnvVariable.sh custom instructions script has been detected.\n"
-        source ${setEnvVariableScript}
+        source ${setEnvVariablesScript}
     else
-        echo -e "${red}✗${reset} No .utils.custom/docker/setEnvVariable.sh script detected;\n"
+        echo -e "${red}✗${reset} No .utils.custom/docker/setEnvVariables.sh script detected;\n"
     fi
 }
 function customizeContainers () {
