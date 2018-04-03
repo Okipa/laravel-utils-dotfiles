@@ -4,7 +4,7 @@
 currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we load the scripting colors
-source $(realpath ${currentScriptDirectory}/../helpers/loadScriptingColors.sh)
+source $(realpath ${currentScriptDirectory}/../../helpers/loadScriptingColors.sh)
 
 # we get the script arguments
 arguments=$@
