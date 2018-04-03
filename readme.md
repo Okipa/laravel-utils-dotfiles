@@ -44,7 +44,8 @@ Several dotfiles have to execute custom instructions related to your project nee
 These instructions will have to be specified in the `.utils.custom` directory dotfiles.    
 This way, your custom instructions will be synchronized with your project git repository where the content of `.utils/` can be fully destroy as it is a git submodule.
 
-The following dotfiles that are eligible for custom instructions :  
+The following dotfiles that are eligible for custom instructions :
+
 | dotfile => method | custom dotfile | actions to setup |
 |---|---|---|
 | `.utils/docker/buildProjectConfig.sh => setEnvVariables()` | `.utils.custom/docker/setEnvVariables.sh` | replace the laradock .env default key / values |
