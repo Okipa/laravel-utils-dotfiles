@@ -13,6 +13,8 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we execute the script treatments
 echo "${purple}▶${reset} Installing project git submodules ..."
+echo "${purple}→ git submodule sync --recursive${reset}"
 git submodule sync --recursive
+echo "${purple}→ git submodule update --init --recursive ${arguments}${reset}"
 git submodule update --init --recursive ${arguments}
 echo -e "${green}✔${reset} The git submodules have been installed.\n"

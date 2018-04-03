@@ -13,6 +13,8 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we execute the script treatments
 echo "${purple}▶${reset} Updating project git submodules ..."
+echo "${purple}→ git submodule sync --recursive${reset}"
 git submodule sync --recursive
+echo "${purple}→ git submodule update --recursive --remote ${arguments}${reset}"
 git submodule update --recursive --remote ${arguments}
 echo -e "${green}✔${reset} The git submodules have been updated.\n"
