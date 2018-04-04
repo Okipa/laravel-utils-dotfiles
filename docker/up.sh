@@ -33,7 +33,7 @@ function startContainers () {
     # custom instructions execution
     dockerUpScript=${currentScriptDirectory}/../../.utils.custom/docker/up.sh
     if [ -f "${dockerUpScript}" ]; then
-        echo "${green}✔${reset} ${gray}The .utils.custom/docker/setEnvVariable.sh custom instructions script has been detected.${reset}"
+        echo "${green}✔${reset} ${gray}The .utils.custom/docker/setEnvVariable.sh custom instructions script has been detected and executed.${reset}"
         source ${dockerUpScript}
     else
         echo "${red}✗${reset} No .utils.custom/docker/setEnvVariables.sh script detected."

@@ -24,7 +24,7 @@ if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
     # custom instructions execution
     localesInstallScript=${currentScriptDirectory}/../../.utils.custom/server/localesInstall.sh
     if [ -f "${localesInstallScript}" ]; then
-        echo "${green}✔${reset} The .utils.custom/server/localesInstall.sh custom instructions script has been detected."
+        echo "${green}✔${reset} The .utils.custom/server/localesInstall.sh custom instructions script has been detected and executed."
         source ${localesInstallScript}
     else
         echo "${red}✗${reset} No .utils.custom/server/localesInstall.sh script detected."

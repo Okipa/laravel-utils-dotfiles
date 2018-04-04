@@ -22,7 +22,7 @@ function customizeDockerComposeFile () {
     # custom instructions execution
     customizeDockerComposeFileScript=${currentScriptDirectory}/../../.utils.custom/docker/buildDinghyNginxProxyConfig/customizeDockerComposeFile.sh
     if [ -f "${customizeDockerComposeFileScript}" ]; then
-        echo "${green}✔${reset} ${gray}The .utils.custom/docker/buildDinghyNginxProxyConfig/customizeDockerComposeFile.sh custom instructions script has been detected.${reset}"
+        echo "${green}✔${reset} ${gray}The .utils.custom/docker/buildDinghyNginxProxyConfig/customizeDockerComposeFile.sh custom instructions script has been detected and executed.${reset}"
         source ${customizeDockerComposeFileScript}
     else
         echo "${red}✗${reset} ${gray}No .utils.custom/docker/buildDinghyNginxProxyConfig/customizeDockerComposeFile.sh script detected.${reset}"
