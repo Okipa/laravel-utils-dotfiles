@@ -2,6 +2,18 @@
 
 ## Installation
 - install the dotfiles in your project with the following command : `git submodule add https://github.com/Okipa/laravel-utils-dotfiles.git .utils`.
+- Make sure you add the following lines in the `scripts` part of your `composer.json` file in order to make sure you always have an updated version of this git submodule :
+```
+"post-install-cmd": [
+    ...
+    "git submodule sync --recursive && git submodule update --init --recursive",
+    ...
+],
+"post-update-cmd": [
+    ...
+    "git submodule sync --recursive && git submodule update --recursive --remote",
+    ...
+]
 - copy the following command from the root path of your project  : `cp -R .utils/.utils.custom .utils.custom`
 
 ### .utils/docker/
@@ -41,8 +53,8 @@
 - restart.sh : restart the project supervisor runners.
 
 ## Adding instructions to dotfiles
-Several dotfiles have to execute custom instructions related to your project needs.  
-These instructions will have to be specified in the `.utils.custom` directory dotfiles.    
+Several dotfiles have to execute custom instructions related to your project needs.
+These instructions will have to be specified in the `.utils.custom` directory dotfiles.
 This way, your custom instructions will be synchronized with your project git repository where the content of `.utils/` can be fully destroy as it is a git submodule.
 
 The following dotfiles that are eligible for custom instructions :
