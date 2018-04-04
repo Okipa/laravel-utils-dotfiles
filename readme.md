@@ -1,7 +1,7 @@
 # Laravel utils dotfiles
 
 ## Installation
-- install the dotfiles in your project with the following command : `git submodule add git@github.com:Okipa/laravel-utils-dotfiles.git .utils`.
+- install the dotfiles in your project with the following command : `git submodule add https://github.com/Okipa/laravel-utils-dotfiles.git .utils`.
 - copy the following command from the root path of your project  : `cp -R .utils/.utils.custom .utils.custom`
 
 ### .utils/docker/
