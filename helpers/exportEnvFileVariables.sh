@@ -6,12 +6,13 @@ currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # we load the scripting colors
 source ${currentScriptDirectory}/loadScriptingColors.sh
 
-# we set the script variables and then unset the script argument
+# we set the script variables
 if [ -z $1 ]; then
+    envFilePath=$(realpath "${currentScriptDirectory}/../../.env")
+elif [[ $1 = '--' ]]; then
     envFilePath=$(realpath "${currentScriptDirectory}/../../.env")
 else
     envFilePath=$1
-    shift
     ALREADY_EXPORTED_ENV_VARIABLES=
 fi
 

@@ -7,7 +7,7 @@ currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source ${currentScriptDirectory}/loadScriptingColors.sh
 
 # we export the .env file variables
-source ${currentScriptDirectory}/exportEnvFileVariables.sh
+source ${currentScriptDirectory}/exportEnvFileVariables.sh --
 
 echo -e "${gray}=================================================${reset}\n"
 
@@ -21,9 +21,8 @@ then
     exit 1
 fi
 
-# we set the script variables and then unset the script argument
+# we set the script variables
 environmentName=$1
-shift
 
 echo "${purple}▶${reset} Detecting if the current environment is ${purple}${environmentName}${reset} ..."
 

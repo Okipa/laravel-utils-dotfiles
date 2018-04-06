@@ -7,7 +7,7 @@ currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $(realpath ${currentScriptDirectory}/../helpers/loadScriptingColors.sh)
 
 # we export the .env file variables
-source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh)
+source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh) --
 
 echo -e "${gray}=================================================${reset}\n"
 

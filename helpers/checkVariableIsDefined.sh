@@ -7,13 +7,12 @@ currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source ${currentScriptDirectory}/loadScriptingColors.sh
 
 # we export the .env file variables
-source ${currentScriptDirectory}/exportEnvFileVariables.sh
+source ${currentScriptDirectory}/exportEnvFileVariables.sh --
 
 echo -e "${gray}=================================================${reset}\n"
 
 # we get the script arguments
-if [ -z $1 ];
-then
+if [ -z $1 ]; then
     echo "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}"
     echo "${purple}▶${reset} The mandatory ${purple}variable${reset} argument is missing."
     echo "${purple}▶${reset} Usage : ${purple}source checkVariableIsDefined.sh [variable]${reset}."
@@ -21,9 +20,8 @@ then
     exit 1
 fi
 
-# we set the script variables and then unset the script argument
+# we set the script variables
 variable=$1
-shift
 
 echo "${purple}▶${reset} Checking if the ${purple}${variable}${reset} variable is defined ..."
 
