@@ -45,6 +45,7 @@
     > |---|---|---|
     > | [variable] | Yes | Specify the variable that will be checked |
 - exportEnvFileVariables.sh : export the laravel environment variables for a bash use.
+    > **Notice :** Only one argument is taken care of, use only one of the possible arguments shown bellow.
     > | Argument | Required | Description |
     > |---|---|---|
     > | [envFilePath] | No | Specify a env file path - by default, the current laravel project env file is used |
