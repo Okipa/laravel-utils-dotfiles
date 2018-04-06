@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+supervisorInstallScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we load the scripting colors
-source $(realpath ${currentScriptDirectory}/../helpers/loadScriptingColors.sh)
+source $(realpath ${supervisorInstallScriptDirectory}/../helpers/loadScriptingColors.sh)
 
 # we export the .env file variables
-source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh) --
+source $(realpath ${supervisorInstallScriptDirectory}/../helpers/exportEnvFileVariables.sh) --
 
 # we check if the current user has the sudo rights
-source $(realpath ${currentScriptDirectory}/../helpers/requiresSudoRights.sh)
+source $(realpath ${supervisorInstallScriptDirectory}/../helpers/requiresSudoRights.sh)
 
 # we set the script variables
 [[ $1 = "--force" ]] && FORCE=true || FORCE=false
@@ -24,7 +24,7 @@ fi
 if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
     # we set the artisan project path
     echo "${purple}▶${reset} Setting artisan path ..."
-    ARTISAN_PATH=$(realpath ${currentScriptDirectory}/../../artisan)
+    ARTISAN_PATH=$(realpath ${supervisorInstallScriptDirectory}/../../artisan)
     echo -e "${green}✔${reset} Artisan path determined : ${purple}${ARTISAN_PATH}${reset}\n"
     # we create or override the supervisor config with the dynamic values
     echo "${purple}▶ creating or overriding /etc/supervisor/conf.d/laravel-${APP_ENV}-${DB_DATABASE}-worker.conf${reset}"

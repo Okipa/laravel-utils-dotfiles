@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+serverDumpProdToPreprodScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we load the scripting colors
-source $(realpath ${currentScriptDirectory}/../helpers/loadScriptingColors.sh)
+source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../helpers/loadScriptingColors.sh)
 
 # we check if the current user has the sudo rights
-source $(realpath ${currentScriptDirectory}/../helpers/requiresSudoRights.sh)
+source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../helpers/requiresSudoRights.sh)
 
 # we check if the current user has the sudo rights
-source $(realpath ${currentScriptDirectory}/../helpers/requiresEnvironment.sh) preprod
+source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../helpers/requiresEnvironment.sh) preprod
 
 # script begin
 echo -e "${purple}▽ DUMPING PROD ON PREPROD : STARTING ▽${reset}\n"
@@ -18,17 +18,17 @@ echo -e "${purple}▽ DUMPING PROD ON PREPROD : STARTING ▽${reset}\n"
 echo -e "${gray}=================================================${reset}\n"
 
 # custom instructions execution
-setVariablesScript=${currentScriptDirectory}/../../.utils.custom/server/dumpProdToPreprod/setVariables.sh
+setVariablesScript=${serverDumpProdToPreprodScriptDirectory}/../../.utils.custom/server/dumpProdToPreprod/setVariables.sh
 if [ -f "${setVariablesScript}" ]; then
     echo -e "${green}✔${reset} ${gray}The .utils.custom/server/dumpProdToPreprod/setVariables.sh custom instructions script has been detected and executed.${reset}\n"
     source ${setVariablesScript}
 else
     echo -e "${red}✗${reset} ${gray}No .utils.custom/server/dumpProdToPreprod/setVariables.sh script detected.${reset}\n"
 fi
-source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) preprodUser
-source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) prodUser
-source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) currentPreprodProjectPath
-source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) currentProductionProjectPath
+source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) preprodUser
+source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) prodUser
+source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) currentPreprodProjectPath
+source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) currentProductionProjectPath
 
 echo -e "${gray}=================================================${reset}\n"
 
@@ -47,16 +47,16 @@ echo "${purple}→ /usr/bin/php ${currentPreprodProjectPath}/current/artisan dat
 echo -e "${green}✔${reset} Preprod database reset OK.\n"
 
 # we export the production .env file variables
-source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${currentProductionProjectPath}/shared/.env
+source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${currentProductionProjectPath}/shared/.env
 
 # we generate a production pgsql dump
-source $(realpath ${currentScriptDirectory}/../sql/generatePgsqlDump.sh) /tmp/prod_nsn_dump.sql
+source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../sql/generatePgsqlDump.sh) /tmp/prod_nsn_dump.sql
 
 echo -e "${gray}=================================================${reset}\n"
 
 # we export preprod .env variables
-echo "${purple}→ source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh) /var/www/preprod/web/www/nsn/shared/.env${reset}"
-source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh) /var/www/preprod/web/www/nsn/shared/.env
+echo "${purple}→ source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) /var/www/preprod/web/www/nsn/shared/.env${reset}"
+source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) /var/www/preprod/web/www/nsn/shared/.env
 
 echo -e "${gray}=================================================${reset}\n"
 

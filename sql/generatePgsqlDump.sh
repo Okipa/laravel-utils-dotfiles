@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+sqlGeneratePgsqlDumpScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we load the scripting colors
-source $(realpath ${currentScriptDirectory}/../helpers/loadScriptingColors.sh)
+source $(realpath ${sqlGeneratePgsqlDumpScriptDirectory}/../helpers/loadScriptingColors.sh)
 
 # we check that the variables required by the script are defined
-source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_PASSWORD
-source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_USERNAME
-source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_HOST
-source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_DATABASE
+source $(realpath ${sqlGeneratePgsqlDumpScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_PASSWORD
+source $(realpath ${sqlGeneratePgsqlDumpScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_USERNAME
+source $(realpath ${sqlGeneratePgsqlDumpScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_HOST
+source $(realpath ${sqlGeneratePgsqlDumpScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_DATABASE
 
 echo -e "${gray}=================================================${reset}\n"
 

@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+supervisorRestartScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we load the scripting colors
-source $(realpath ${currentScriptDirectory}/../helpers/loadScriptingColors.sh)
+source $(realpath ${supervisorRestartScriptDirectory}/../helpers/loadScriptingColors.sh)
 
 # we export the .env file variables
-source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh) --
+source $(realpath ${supervisorRestartScriptDirectory}/../helpers/exportEnvFileVariables.sh) --
 
 echo -e "${gray}=================================================${reset}\n"
 

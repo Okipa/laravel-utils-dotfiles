@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+serverLocalesInstallScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we load the scripting colors
-source $(realpath ${currentScriptDirectory}/../helpers/loadScriptingColors.sh)
+source $(realpath ${serverLocalesInstallScriptDirectory}/../helpers/loadScriptingColors.sh)
 
 # we check if the current user has the sudo rights
-source $(realpath ${currentScriptDirectory}/../helpers/requiresSudoRights.sh)
+source $(realpath ${serverLocalesInstallScriptDirectory}/../helpers/requiresSudoRights.sh)
 
 echo -e "${gray}=================================================${reset}\n"
 
@@ -22,7 +22,7 @@ fi
 if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
     echo "${purple}▶${reset} Installing project locales ..."
     # custom instructions execution
-    localesInstallScript=${currentScriptDirectory}/../../.utils.custom/server/localesInstall.sh
+    localesInstallScript=${serverLocalesInstallScriptDirectory}/../../.utils.custom/server/localesInstall.sh
     if [ -f "${localesInstallScript}" ]; then
         echo "${green}✔${reset} The .utils.custom/server/localesInstall.sh custom instructions script has been detected and executed."
         source ${localesInstallScript}

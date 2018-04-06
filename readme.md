@@ -19,7 +19,7 @@
 
 ### .utils/docker/
 - buildProjectConfig.sh : .env, dockerfiles and docker-compose files customization script.
-- buildDinghyNginxProxyConfig.sh : nginx-proxy reverse proxy project configuration.
+- buildProxyConfig.sh : nginx-proxy reverse proxy project configuration.
 - stop.sh : stop the project laradock docker containers.
 - up.sh : start the project laradock docker containers
 
@@ -48,6 +48,7 @@
     > | Argument | Required | Description |
     > |---|---|---|
     > | [envFilePath] | No | Specify a env file path - by default, the current laravel project env file is used |
+    > | -- | No | Force the script to use the default laravel .env file based at the root of the project |
 - loadScriptingColors.sh : load the bash scripting colors.
 - requiresEnvironment.sh : check the current environment is the one specified during the script execution.
     > | Argument | Required | Description |

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+helpersExportEnvFileVariablesScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we load the scripting colors
-source ${currentScriptDirectory}/loadScriptingColors.sh
+source ${helpersExportEnvFileVariablesScriptDirectory}/loadScriptingColors.sh
 
 # we set the script variables
 if [ -z $1 ]; then
-    envFilePath=$(realpath "${currentScriptDirectory}/../../.env")
+    envFilePath=$(realpath "${helpersExportEnvFileVariablesScriptDirectory}/../../.env")
 elif [[ $1 = '--' ]]; then
-    envFilePath=$(realpath "${currentScriptDirectory}/../../.env")
+    envFilePath=$(realpath "${helpersExportEnvFileVariablesScriptDirectory}/../../.env")
 else
     envFilePath=$1
     ALREADY_EXPORTED_ENV_VARIABLES=
@@ -20,7 +20,7 @@ fi
 if [ -z $ALREADY_EXPORTED_ENV_VARIABLES ] ; then
 
     # we check that the env file does exist
-    source ${currentScriptDirectory}/checkFileExists.sh ${envFilePath}
+    source ${helpersExportEnvFileVariablesScriptDirectory}/checkFileExists.sh ${envFilePath}
 
     echo -e "${gray}=================================================${reset}\n"
 

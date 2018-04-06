@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+helpersCheckVariableIsDefinedScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we load the scripting colors
-source ${currentScriptDirectory}/loadScriptingColors.sh
+source ${helpersCheckVariableIsDefinedScriptDirectory}/loadScriptingColors.sh
 
 # we export the .env file variables
-source ${currentScriptDirectory}/exportEnvFileVariables.sh --
+source ${helpersCheckVariableIsDefinedScriptDirectory}/exportEnvFileVariables.sh --
 
 echo -e "${gray}=================================================${reset}\n"
 

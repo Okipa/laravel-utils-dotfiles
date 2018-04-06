@@ -1,26 +1,26 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+projectInstallScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we load the scripting colors
-source $(realpath ${currentScriptDirectory}/../helpers/loadScriptingColors.sh)
+source $(realpath ${projectInstallScriptDirectory}/../helpers/loadScriptingColors.sh)
 
 # we check if the current user has the sudo rights
-source $(realpath ${currentScriptDirectory}/../helpers/requiresSudoRights.sh)
+source $(realpath ${projectInstallScriptDirectory}/../helpers/requiresSudoRights.sh)
 
 # .env file detection
-source $(realpath ${currentScriptDirectory}/../helpers/checkFileExists.sh) $(realpath "${currentScriptDirectory}/../../.env")
+source $(realpath ${projectInstallScriptDirectory}/../helpers/checkFileExists.sh) $(realpath "${projectInstallScriptDirectory}/../../.env")
 
 echo -e "${gray}=================================================${reset}\n"
 
 echo -e "${purple}▽ LOCAL PROJET INSTALL : STARTING ▽${reset}\n"
 
 # server locales installation
-source $(realpath ${currentScriptDirectory}/../server/localesInstall.sh) --force
+source $(realpath ${projectInstallScriptDirectory}/../server/localesInstall.sh) --force
 
 # server supervisor configuration
-source $(realpath ${currentScriptDirectory}/../supervisor/install.sh) --force
+source $(realpath ${projectInstallScriptDirectory}/../supervisor/install.sh) --force
 
 echo -e "${gray}=================================================${reset}\n"
 
@@ -64,7 +64,7 @@ echo "${green}✔${reset} Migrations executed"
 
 echo -e "\n${gray}=================================================${reset}\n"
 
-installScript=${currentScriptDirectory}/../../.utils.custom/project/install.sh
+installScript=${projectInstallScriptDirectory}/../../.utils.custom/project/install.sh
 if [ -f "${installScript}" ]; then
     echo "${green}✔${reset} ${gray}The .utils.custom/project/install.sh custom instructions script has been detected and executed.${reset}"
     source ${installScript}

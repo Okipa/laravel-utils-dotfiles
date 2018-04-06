@@ -1,33 +1,30 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DockerUpScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we load the scripting colors
-source $(realpath ${currentScriptDirectory}/../helpers/loadScriptingColors.sh)
+source $(realpath ${DockerUpScriptDirectory}/../helpers/loadScriptingColors.sh)
 
 # we export the .env file variables
-source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh) --
+source $(realpath ${DockerUpScriptDirectory}/../helpers/exportEnvFileVariables.sh) --
 
 # we check that the variables required by the script are defined
-source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) PROJECT_PATH
-source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) NGINX_DOMAIN
-source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) LARADOCK_DIRECTORY_PATH
+source $(realpath ${DockerUpScriptDirectory}/../helpers/checkVariableIsDefined.sh) PROJECT_PATH
+source $(realpath ${DockerUpScriptDirectory}/../helpers/checkVariableIsDefined.sh) NGINX_DOMAIN
+source $(realpath ${DockerUpScriptDirectory}/../helpers/checkVariableIsDefined.sh) LARADOCK_DIRECTORY_PATH
 
 # we set the script variables
-buildArgument=''
-
-# we get the script arguments
-arguments=$@
+buildArgument=
 
 # we set the script functions
 function startContainers () {
-    if [[ ${arguments} = *'build'* ]]; then
-        source ${currentScriptDirectory}/buildProjectConfig.sh
+    if [[ $@ = *'build'* ]]; then
+        source ${DockerUpScriptDirectory}/buildProjectConfig.sh
         buildArgument='--build'
     fi
-    if [[ ${arguments} = *'proxy'* ]]; then
-        source ${currentScriptDirectory}/buildDinghyNginxProxyConfig.sh
+    if [[ $@ = *'proxy'* ]]; then
+        source ${DockerUpScriptDirectory}/buildProxyConfig.sh
     fi
 
     echo -e "${gray}=================================================${reset}\n"
@@ -35,7 +32,7 @@ function startContainers () {
     echo "${purple}▶${reset} Executing docker-compose command ..."
     cd ${LARADOCK_DIRECTORY_PATH}
     # custom instructions execution
-    dockerUpScript=${currentScriptDirectory}/../../.utils.custom/docker/up.sh
+    dockerUpScript=${DockerUpScriptDirectory}/../../.utils.custom/docker/up.sh
     if [ -f "${dockerUpScript}" ]; then
         echo "${green}✔${reset} ${gray}The .utils.custom/docker/up.sh custom instructions script has been detected and executed.${reset}"
         source ${dockerUpScript}

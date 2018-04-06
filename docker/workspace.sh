@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DockerWorkspaceScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we export the .env file variables
-source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh) --
+source $(realpath ${DockerWorkspaceScriptDirectory}/../helpers/exportEnvFileVariables.sh) --
 
 # we check that the variables required by the script are defined
-source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) PROJECT_PATH
-source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) LARADOCK_DIRECTORY_PATH
+source $(realpath ${DockerWorkspaceScriptDirectory}/../helpers/checkVariableIsDefined.sh) PROJECT_PATH
+source $(realpath ${DockerWorkspaceScriptDirectory}/../helpers/checkVariableIsDefined.sh) LARADOCK_DIRECTORY_PATH
 
 # we set the script variables
 arguments=$@

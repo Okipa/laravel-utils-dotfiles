@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+serverConfigCheckScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we load the scripting colors
-source $(realpath ${currentScriptDirectory}/../helpers/loadScriptingColors.sh)
+source $(realpath ${serverConfigCheckScriptDirectory}/../helpers/loadScriptingColors.sh)
 
 echo -e "${gray}=================================================${reset}\n"
 
@@ -12,7 +12,7 @@ echo -e "${gray}=================================================${reset}\n"
 echo "${purple}▶${reset} Detecting packages installation on server ..."
 PackagesToCheck=()
 # custom instructions execution
-configCheckScript=${currentScriptDirectory}/../../.utils.custom/server/configCheck.sh
+configCheckScript=${serverConfigCheckScriptDirectory}/../../.utils.custom/server/configCheck.sh
 if [ -f "${configCheckScript}" ]; then
     echo "${green}✔${reset} ${gray}The .utils.custom/server/configCheck.sh custom instructions script has been detected and executed.${reset}"
     source ${configCheckScript}
