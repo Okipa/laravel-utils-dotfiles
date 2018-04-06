@@ -80,16 +80,14 @@ echo -e "${green}✔${reset} Production dump removed.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-#todo : put this command in a custom script
-# we generate a public/files archive and store it the /tmp/prod/delegations_dump directory
-echo "${purple}▶${reset} Copying the production public/files directory to the preprod project ..."
-echo "${purple}→ rm -rf ${currentPreprodProjectPath}/shared/public/files${reset}"
-rm -rf ${currentPreprodProjectPath}/shared/public/files
-echo "${purple}→ cp -R /var/www/prod/web/www/nsn/shared/public/files ${currentPreprodProjectPath}/shared/public/files${reset}"
-cp -R /var/www/prod/web/www/nsn/shared/public/files ${currentPreprodProjectPath}/shared/public/files
-echo "${purple}→ chown -R preprod:users ${currentPreprodProjectPath}/shared/public/files${reset}"
-chown -R preprod:users ${currentPreprodProjectPath}/shared/public/files
-echo -e "${green}✔${reset} files directory copied with success.\n"
+# custom instructions execution
+additionalInstructionsScript=${serverDumpProdToPreprodScriptDirectory}/../../.utils.custom/server/dumpProdToPreprod/additionalInstructions.sh
+if [ -f "${additionalInstructionsScript}" ]; then
+    echo -e "${green}✔${reset} ${gray}The .utils.custom/server/dumpProdToPreprod/additionalInstructions.sh custom instructions script has been detected and executed.${reset}\n"
+    source ${additionalInstructionsScript}
+else
+    echo -e "${red}✗${reset} ${gray}No .utils.custom/server/dumpProdToPreprod/additionalInstructions.sh script detected.${reset}\n"
+fi
 
 echo -e "${gray}=================================================${reset}\n"
 
