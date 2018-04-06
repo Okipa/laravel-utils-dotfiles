@@ -14,6 +14,7 @@
     "git submodule sync --recursive && git submodule update --recursive --remote",
     ...
 ]
+```
 - copy the following command from the root path of your project  : `cp -R .utils/.utils.custom .utils.custom`
 
 ### .utils/docker/
