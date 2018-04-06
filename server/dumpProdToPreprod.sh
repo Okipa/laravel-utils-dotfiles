@@ -50,55 +50,53 @@ echo -e "${green}✔${reset} Preprod database reset OK.\n"
 source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${currentProductionProjectPath}/shared/.env
 
 # we generate a production pgsql dump
-source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../sql/generatePgsqlDump.sh) /tmp/prod_nsn_dump.sql
+source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../database/generatePgsqlDump.sh) ${productionSqlDumpStoragePath}
 
-echo -e "${gray}=================================================${reset}\n"
-
-# we export preprod .env variables
-echo "${purple}→ source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) /var/www/preprod/web/www/nsn/shared/.env${reset}"
-source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) /var/www/preprod/web/www/nsn/shared/.env
+# we export the production .env file variables
+source $(realpath ${serverDumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${currentPreprodProjectPath}/shared/.env
 
 echo -e "${gray}=================================================${reset}\n"
 
 # we apply the production dump to preprod
-echo "${purple}▶${reset} Applying the database dump to preprod ..."
-echo "${purple}→ sudo -i -u preprod psql "${DB_DATABASE}" < /tmp/prod_nsn_dump.sql${reset}"
-sudo -i -u preprod psql "${DB_DATABASE}" < /tmp/prod_nsn_dump.sql
-echo -e "${green}✔${reset} Preprod database dump successfully applied.\n"
+echo "${purple}▶${reset} Importing the production database dump in the ${purple}${DB_DATABASE}${reset} database ..."
+echo "${purple}→ sudo -i -u ${preprodUser} psql "${DB_DATABASE}" < ${productionSqlDumpStoragePath}${reset}"
+sudo -i -u ${preprodUser} psql "${DB_DATABASE}" < ${productionSqlDumpStoragePath}
+echo -e "${green}✔${reset} Production database dump successfully imported in the ${purple}${DB_DATABASE}${reset} database.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-echo "${purple}▶${reset} Applying Laravel migration to preprod ..."
-echo "${purple}→ sudo -i -u preprod /usr/bin/php /var/www/preprod/web/www/nsn/current/artisan migrate${reset}"
-sudo -i -u preprod /usr/bin/php /var/www/preprod/web/www/nsn/current/artisan migrate
-echo -e "${green}✔${reset} Laravel migrations applied.\n"
+echo "${purple}▶${reset} Applying Laravel migration to preprod database ..."
+echo "${purple}→ sudo -i -u ${preprodUser} /usr/bin/php ${currentPreprodProjectPath}/current/artisan migrate${reset}"
+sudo -i -u ${preprodUser} /usr/bin/php ${currentPreprodProjectPath}/current/artisan migrate
+echo -e "${green}✔${reset} Laravel migrations applied on the preprod database.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
 # we remove the prod dump
 echo "${purple}▶${reset} Removing the the production dump ..."
-echo "${purple}→ rm -f /tmp/prod_nsn_dump.sql${reset}"
-rm -f /tmp/prod_nsn_dump.sql
+echo "${purple}→ rm -f ${productionSqlDumpStoragePath}${reset}"
+rm -f ${productionSqlDumpStoragePath}
 echo -e "${green}✔${reset} Production dump removed.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
+#todo : put this command in a custom script
 # we generate a public/files archive and store it the /tmp/prod/delegations_dump directory
 echo "${purple}▶${reset} Copying the production public/files directory to the preprod project ..."
-echo "${purple}→ rm -rf /var/www/preprod/web/www/nsn/shared/public/files${reset}"
-rm -rf /var/www/preprod/web/www/nsn/shared/public/files
-echo "${purple}→ cp -R /var/www/prod/web/www/nsn/shared/public/files /var/www/preprod/web/www/nsn/shared/public/files${reset}"
-cp -R /var/www/prod/web/www/nsn/shared/public/files /var/www/preprod/web/www/nsn/shared/public/files
-echo "${purple}→ chown -R preprod:users /var/www/preprod/web/www/nsn/shared/public/files${reset}"
-chown -R preprod:users /var/www/preprod/web/www/nsn/shared/public/files
+echo "${purple}→ rm -rf ${currentPreprodProjectPath}/shared/public/files${reset}"
+rm -rf ${currentPreprodProjectPath}/shared/public/files
+echo "${purple}→ cp -R /var/www/prod/web/www/nsn/shared/public/files ${currentPreprodProjectPath}/shared/public/files${reset}"
+cp -R /var/www/prod/web/www/nsn/shared/public/files ${currentPreprodProjectPath}/shared/public/files
+echo "${purple}→ chown -R preprod:users ${currentPreprodProjectPath}/shared/public/files${reset}"
+chown -R preprod:users ${currentPreprodProjectPath}/shared/public/files
 echo -e "${green}✔${reset} files directory copied with success.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-# we set the maintenance mode
+# we remove the maintenance mode
 echo "${purple}▶${reset} Disabling maintenance mode ..."
-echo "${purple}→ /usr/bin/php /var/www/preprod/web/www/nsn/current/artisan up${reset}"
-/usr/bin/php /var/www/preprod/web/www/nsn/current/artisan up
+echo "${purple}→ /usr/bin/php ${currentPreprodProjectPath}/current/artisan up${reset}"
+/usr/bin/php ${currentPreprodProjectPath}/current/artisan up
 echo -e "${green}✔${reset} Maintenance mode disabled.\n"
 
 # script end
