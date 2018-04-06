@@ -34,9 +34,9 @@ function startDinghyNginxProxyConfig(){
 
     echo -e "${gray}=================================================${reset}\n"
 
-    echo "${purple}▶${reset} Building ${APP_NAME} dinghy nging-proxy config ..."
+    echo "${purple}▶${reset} Building ${purple}${APP_NAME}${reset} dinghy nging-proxy config ..."
     customizeDockerComposeFile
-    echo -e "${green}✔${reset} Dinghy ${APP_NAME} nging-proxy config done.\n"
+    echo -e "${green}✔${reset} Dinghy ${purple}${APP_NAME}${reset} nging-proxy config done.\n"
 }
 
 # we execute the script treatments
