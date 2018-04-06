@@ -17,13 +17,16 @@ source $(realpath ${DockerUpScriptDirectory}/../helpers/checkVariableIsDefined.s
 # we set the script variables
 buildArgument=
 
+# we get the script arguments
+arguments=$@
+
 # we set the script functions
 function startContainers () {
-    if [[ $@ = *'build'* ]]; then
+    if [[ ${arguments} = *'build'* ]]; then
         source ${DockerUpScriptDirectory}/buildProjectConfig.sh
         buildArgument='--build'
     fi
-    if [[ $@ = *'proxy'* ]]; then
+    if [[ ${arguments} = *'proxy'* ]]; then
         source ${DockerUpScriptDirectory}/buildProxyConfig.sh
     fi
 
