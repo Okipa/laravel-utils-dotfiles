@@ -18,8 +18,9 @@ then
     exit 1
 fi
 
-# we set the script variables
+# we set the script variables and then unset the script argument
 filePath=$1
+shift
 
 echo "${purple}▶${reset} Checking if the ${purple}${filePath}${reset} file does exists ...${reset}"
 

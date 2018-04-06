@@ -21,8 +21,9 @@ then
     exit 1
 fi
 
-# we set the script variables
+# we set the script variables and then unset the script argument
 environmentName=$1
+shift
 
 echo "${purple}▶${reset} Detecting if the current environment is ${purple}${environmentName}${reset} ..."
 

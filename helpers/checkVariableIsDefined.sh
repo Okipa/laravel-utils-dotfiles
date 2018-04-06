@@ -21,8 +21,9 @@ then
     exit 1
 fi
 
-# we set the script variables
-variable="$1"
+# we set the script variables and then unset the script argument
+variable=$1
+shift
 
 echo "${purple}▶${reset} Checking if the ${purple}${variable}${reset} variable is defined ..."
 

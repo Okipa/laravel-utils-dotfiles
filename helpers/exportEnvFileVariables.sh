@@ -6,16 +6,17 @@ currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # we load the scripting colors
 source ${currentScriptDirectory}/loadScriptingColors.sh
 
-# we set the script variables
+# we set the script variables and then unset the script argument
 if [ -z $1 ]; then
     envFilePath=$(realpath "${currentScriptDirectory}/../../.env")
 else
     envFilePath=$1
-    ALREADY_EXPORTED_ENV_VARIABLES=false
+    shift
+    ALREADY_EXPORTED_ENV_VARIABLES=
 fi
 
 # we only want to export the env variables once during a multiple scripts sequence
-if [ ! $ALREADY_EXPORTED_ENV_VARIABLES ] ; then
+if [ -z $ALREADY_EXPORTED_ENV_VARIABLES ] ; then
 
     # we check that the env file does exist
     source ${currentScriptDirectory}/checkFileExists.sh ${envFilePath}

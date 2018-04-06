@@ -12,15 +12,15 @@ source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh
 echo -e "${gray}=================================================${reset}\n"
 
 # project supervisor detection
-SUPERVISOR_CONFIG_FILE=/etc/supervisor/conf.d/laravel-${APP_ENV}-${DB_DATABASE}-worker.conf
-if [ ! -f $SUPERVISOR_CONFIG_FILE ]; then
+supervisorConfigFile=/etc/supervisor/conf.d/laravel-${APP_ENV}-${DB_DATABASE}-worker.conf
+if [ ! -f supervisorConfigFile ]; then
     echo "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}"
-    echo "${purple}▶${reset} The supervisor project config does not exist : ${purple}${SUPERVISOR_CONFIG_FILE}${reset}."
+    echo "${purple}▶${reset} The supervisor project config does not exist : ${purple}${supervisorConfigFile}${reset}."
     echo "${purple}▶${reset} The command has been aborted."
     echo -e "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}\n"
     exit 1
 else
-    echo -e "${green}✔${reset} Supervisor config detected : ${purple}${SUPERVISOR_CONFIG_FILE}${reset}.\n"
+    echo -e "${green}✔${reset} Supervisor config detected : ${purple}${supervisorConfigFile}${reset}.\n"
 fi
 
 echo -e "${gray}=================================================${reset}\n"

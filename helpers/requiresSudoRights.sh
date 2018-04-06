@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # we only want to check the sudo user rights verification once during a multiple scripts sequence
-if [ ! $ALREADY_CHECKED_SUDO_USER ] ; then
+if [ -z $ALREADY_CHECKED_SUDO_USER ] ; then
 
     # we get the current script directory
     currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

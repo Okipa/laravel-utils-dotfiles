@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # we only want to load the scripting colors variables once during a multiple scripts sequence
-if [ ! $ALREADY_LOADED_COLORS ] ; then
+if [ -z $ALREADY_LOADED_COLORS ] ; then
 
     # we load the scripting colors variables
     purple=`tput setaf 12`
