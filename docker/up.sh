@@ -11,8 +11,8 @@ source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh
 
 # we check that the variables required by the script are defined
 source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) PROJECT_PATH
-source ${PROJECT_PATH}.utils/helpers/checkVariableIsDefined.sh NGINX_DOMAIN
-source ${PROJECT_PATH}.utils/helpers/checkVariableIsDefined.sh LARADOCK_DIRECTORY_PATH
+source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) NGINX_DOMAIN
+source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) LARADOCK_DIRECTORY_PATH
 
 # we set the script variables
 buildArgument=''
@@ -23,11 +23,11 @@ arguments=$@
 # we set the script functions
 function startContainers () {
     if [[ ${arguments} = *'build'* ]]; then
-        source ${PROJECT_PATH}.utils/docker/buildProjectConfig.sh
+        source ${currentScriptDirectory}/buildProjectConfig.sh
         buildArgument='--build'
     fi
     if [[ ${arguments} = *'proxy'* ]]; then
-        source ${PROJECT_PATH}.utils/docker/buildDinghyNginxProxyConfig.sh
+        source ${currentScriptDirectory}/buildDinghyNginxProxyConfig.sh
     fi
 
     echo -e "${gray}=================================================${reset}\n"
@@ -37,10 +37,10 @@ function startContainers () {
     # custom instructions execution
     dockerUpScript=${currentScriptDirectory}/../../.utils.custom/docker/up.sh
     if [ -f "${dockerUpScript}" ]; then
-        echo "${green}✔${reset} ${gray}The .utils.custom/docker/setEnvVariable.sh custom instructions script has been detected and executed.${reset}"
+        echo "${green}✔${reset} ${gray}The .utils.custom/docker/up.sh custom instructions script has been detected and executed.${reset}"
         source ${dockerUpScript}
     else
-        echo "${red}✗${reset} No .utils.custom/docker/setEnvVariables.sh script detected."
+        echo "${red}✗${reset} No .utils.custom/docker/up.sh script detected."
         echo "${purple}→ docker-compose up -d ${arguments}${reset}"
         docker-compose up -d ${arguments}
     fi

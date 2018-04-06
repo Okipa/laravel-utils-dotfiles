@@ -11,9 +11,9 @@ source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh
 
 # we check that the variables required by the script are defined
 source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) PROJECT_PATH
-source ${PROJECT_PATH}.utils/helpers/checkVariableIsDefined.sh NGINX_DOMAIN
-source ${PROJECT_PATH}.utils/helpers/checkVariableIsDefined.sh LARADOCK_DIRECTORY_PATH
-source ${PROJECT_PATH}.utils/helpers/checkVariableIsDefined.sh APP_NAME
+source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) NGINX_DOMAIN
+source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) LARADOCK_DIRECTORY_PATH
+source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) APP_NAME
 
 # we set the script functions
 function customizeDockerComposeFile () {

@@ -22,6 +22,7 @@
 - buildDinghyNginxProxyConfig.sh : nginx-proxy reverse proxy project configuration.
 - stop.sh : stop the project laradock docker containers.
 - up.sh : start the project laradock docker containers
+
     > | Option | Required | Description |
     > |---|---|---|
     > | --build | No | Customize the .env, the dockerfiles and the docker-compose files |
