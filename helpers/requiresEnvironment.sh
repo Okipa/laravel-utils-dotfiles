@@ -27,12 +27,12 @@ environmentName=$1
 echo "${purple}▶${reset} Detecting if the current environment is ${purple}${environmentName}${reset} ..."
 
 # environment detection
-if [ $ENV != ${environmentName} ]; then
+if [ "${APP_ENV}" != "${environmentName}" ]; then
     echo "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}"
     echo "${purple}▶${reset} This command must be executed on the ${purple}${environmentName}${reset} environment."
-    echo "${purple}▶${reset} Command aborted."
+    echo "${purple}▶${reset} The detected environment is ${purple}${APP_ENV}${reset}. Command aborted."
     echo -e "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}\n"
     exit
 else
-    echo -e "${green}✔${reset} Environment detected : ${purple}$ENV${reset}\n"
+    echo -e "${green}✔${reset} Correct environment detected : ${purple}${APP_ENV}${reset}\n"
 fi
