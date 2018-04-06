@@ -2,7 +2,7 @@
 
 # example
 
-preprodUser="preprod"
-prodUser="prod"
-currentPreprodProjectPath="/var/www/preprod/web/www/nsn/"
-currentProductionProjectPath="/var/www/prod/web/www/nsn/"
+#preprodUser="preprod"
+#prodUser="prod"
+#currentPreprodProjectPath="/var/www/preprod/web/www/nsn/"
+#currentProductionProjectPath="/var/www/prod/web/www/nsn/"
