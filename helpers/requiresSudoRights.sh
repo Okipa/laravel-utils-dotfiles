@@ -16,7 +16,7 @@ if [ -z $ALREADY_CHECKED_SUDO_USER ] ; then
     # we execute the script treatments
     if [ "$(id -u)" != "0" ]; then
         echo -e "\n${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}"
-        echo "${purple}▶${reset} This command must be executed with the ${purple}root${reset} user."
+        echo "${purple}▶${reset} This command must be executed with a sudo-rights-user."
         echo "${purple}▶${reset} The command have been aborted."
         echo -e "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}\n"
         exit 1
