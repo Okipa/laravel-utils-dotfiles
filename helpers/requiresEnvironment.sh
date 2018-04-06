@@ -15,23 +15,24 @@ echo -e "${gray}=================================================${reset}\n"
 if [ -z $1 ];
 then
     echo "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}"
-    echo "${purple}▶${reset} The mandatory ${purple}variable${reset} argument is missing."
-    echo "${purple}▶${reset} Usage : ${purple}source checkVariableIsDefined.sh [variable]${reset}."
+    echo "${purple}▶${reset} The mandatory ${purple}environmentName${reset} argument is missing."
+    echo "${purple}▶${reset} Usage : ${purple}source requiresEnvironment.sh [environmentName]${reset}."
     echo -e "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}\n"
     exit 1
 fi
 
 # we set the script variables
-variable="$1"
+environmentName=$1
 
-echo "${purple}▶${reset} Checking if the ${purple}${variable}${reset} variable is defined ..."
+echo "${purple}▶${reset} Detecting if the current environment is ${purple}${environmentName}${reset} ..."
 
-# we execute the script treatments
-if [ -z ${!variable} ]; then
-    echo -e "\n${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}"
-    echo "The ${purple}${variable}${reset} variable is not defined."
+# environment detection
+if [ $ENV != ${environmentName} ]; then
+    echo "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}"
+    echo "${purple}▶${reset} This command must be executed on the ${purple}${environmentName}${reset} environment."
+    echo "${purple}▶${reset} Command aborted."
     echo -e "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}\n"
-    exit 1
+    exit
 else
-    echo -e "${green}✔${reset} The ${purple}${variable}${reset} variable has been detected and has the following value : ${purple}$(echo ${!variable})${reset}.\n"
+    echo -e "${green}✔${reset} Environment detected : ${purple}$ENV${reset}\n"
 fi

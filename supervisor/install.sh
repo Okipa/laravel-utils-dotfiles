@@ -6,6 +6,9 @@ currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # we load the scripting colors
 source $(realpath ${currentScriptDirectory}/../helpers/loadScriptingColors.sh)
 
+# we export the .env file variables
+source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh)
+
 # we check if the current user has the sudo rights
 source $(realpath ${currentScriptDirectory}/../helpers/requiresSudoRights.sh)
 
@@ -19,10 +22,6 @@ if [ "$FORCE" == false ]; then
     echo
 fi
 if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
-    # we export the .env file variables
-    source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh)
-    # we check if the current user has the sudo rights
-    source $(realpath ${currentScriptDirectory}/../helpers/requiresSudoRights.sh)
     # we set the artisan project path
     echo "${purple}▶${reset} Setting artisan path ..."
     ARTISAN_PATH=$(realpath ${currentScriptDirectory}/../../artisan)

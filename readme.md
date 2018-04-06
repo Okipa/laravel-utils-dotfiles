@@ -17,36 +17,55 @@
 - copy the following command from the root path of your project  : `cp -R .utils/.utils.custom .utils.custom`
 
 ### .utils/docker/
-- up.sh : start the project laradock docker containers
-    > | Option | Description |
-    > |---|---|
-    > | --build | Customize the .env, the dockerfiles and the docker-compose files |
-    > | --proxy | Configure the nginx-proxy reverse proxy |
-- stop.sh : stop the project laradock docker containers.
-- workspace.sh : shortcut to get a ssh access to the laradock workspace with the `laradock` user.
-    > | Option | Description |
-    > |---|---|
-    > | --root | Access to the docker laradock workspace with the `root` user |
 - buildProjectConfig.sh : .env, dockerfiles and docker-compose files customization script.
 - buildDinghyNginxProxyConfig.sh : nginx-proxy reverse proxy project configuration.
+- stop.sh : stop the project laradock docker containers.
+- up.sh : start the project laradock docker containers
+    > | Option | Required | Description |
+    > |---|---|---|
+    > | --build | No | Customize the .env, the dockerfiles and the docker-compose files |
+    > | --proxy | No | Configure the nginx-proxy reverse proxy |
+- workspace.sh : shortcut to get a ssh access to the laradock workspace with the `laradock` user.
+    > | Option | Required | Description |
+    > |---|---|---|
+    > | --root | No | Access to the docker laradock workspace with the `root` user |
 
 ### .utils/git/submodules/
-- install.sh : install all the project git submodules (with the `--init --recursive` options by default).
-- update.sh : install or update all the project git submodules (with the `--recursive --remote` options by default).
+- update.sh : update all the project git submodules (with the `--init --recursive --remote` options by default - you can specify additional options after the script).
 
 ### .utils/helpers/
-- checkVariableIsDefined.sh : check that the environment variable given in parameter is defined.
 - checkFileExists.sh : check that the file path given in parameter exists.
+    > | Argument | Required | Description |
+    > |---|---|---|
+    > | [filePath] | Yes | Specify the file path that will be verified |
+- checkVariableIsDefined.sh : check that the environment variable given in parameter is defined.
+    > | Argument | Required | Description |
+    > |---|---|---|
+    > | [variable] | Yes | Specify the variable that will be checked |
 - exportEnvFileVariables.sh : export the laravel environment variables for a bash use.
+    > | Argument | Required | Description |
+    > |---|---|---|
+    > | [envFilePath] | No | Specify a env file path - by default, the current laravel project env file is used |
 - loadScriptingColors.sh : load the bash scripting colors.
-- requiresSudoRights.sh : check that a user with sudo rights is used.
+- requiresEnvironment.sh : check the current environment is the one specified during the script execution.
+    > | Argument | Required | Description |
+    > |---|---|---|
+    > | [environmentName] | Yes | Specify the environment name we should get |
+- requiresSudoRights.sh : check that a user with sudo rights is used on the script execution.
 
 ### .utils/project/
-- install.sh : execute all the project installation tasks.
+- install.sh : automatically execute all the project installation tasks.
 
 ### .utils/server/
 - configCheck.sh : check that the server has the required dependencies.
+- dumpProdToPreprod : execute a dump from the production toward the preprod (can only be used for the standard preprod/prod projects configurations).
 - localesInstall.sh : install the project needed locales.
+
+### .utils/sql/
+- generatePgsqlDump.sh : generate a pgsql dump.
+    > | Argument | Required | Description |
+    > |---|---|---|
+    > | [destinationPath] | No | Specify a destination path for the pgsql dump |
 
 ### .utils/supervisor/
 - install.sh : configure and launch the project supervisor runners.

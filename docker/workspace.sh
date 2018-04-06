@@ -3,10 +3,14 @@
 # we get the current script directory
 currentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# we set the script variables
+# we export the .env file variables
 source $(realpath ${currentScriptDirectory}/../helpers/exportEnvFileVariables.sh)
+
+# we check that the variables required by the script are defined
 source $(realpath ${currentScriptDirectory}/../helpers/checkVariableIsDefined.sh) PROJECT_PATH
 source ${PROJECT_PATH}.utils/helpers/checkVariableIsDefined.sh LARADOCK_DIRECTORY_PATH
+
+# we set the script variables
 arguments=$@
 user='laradock'
 
