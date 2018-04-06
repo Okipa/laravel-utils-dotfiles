@@ -6,9 +6,6 @@ helpersCheckVariableIsDefinedScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0
 # we load the scripting colors
 source ${helpersCheckVariableIsDefinedScriptDirectory}/loadScriptingColors.sh
 
-# we export the .env file variables
-source ${helpersCheckVariableIsDefinedScriptDirectory}/exportEnvFileVariables.sh --
-
 echo -e "${gray}=================================================${reset}\n"
 
 # we get the script arguments
