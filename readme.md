@@ -18,22 +18,15 @@
 - copy the following command from the root path of your project  : `cp -R .utils/.utils.custom .utils.custom`
 
 ### .utils/docker/
-- buildProjectConfig.sh : .env, dockerfiles and docker-compose files customization script.
-- buildProxyConfig.sh : nginx-proxy reverse proxy project configuration.
 - stop.sh : stop the project laradock docker containers.
-- up.sh : start the project laradock docker containers
-
-    > | Option | Required | Description |
-    > |---|---|---|
-    > | --build | No | Customize the .env, the dockerfiles and the docker-compose files |
-    > | --proxy | No | Configure the nginx-proxy reverse proxy |
+- up.sh : start the project laradock docker containers (you can add docker options after the script call).
 - workspace.sh : shortcut to get a ssh access to the laradock workspace with the `laradock` user.
     > | Option | Required | Description |
     > |---|---|---|
     > | --root | No | Access to the docker laradock workspace with the `root` user |
 
 ### .utils/git/submodules/
-- update.sh : update all the project git submodules (with the `--init --recursive --remote` options by default - you can specify additional options after the script).
+- update.sh : update all the project git submodules (with the `--init --recursive --remote --force` options by default - you can specify additional options after the script call).
 
 ### .utils/helpers/
 - checkFileExists.sh : check that the file path given in parameter exists.
@@ -82,12 +75,11 @@ This way, your custom instructions will be synchronized with your project git re
 
 The following dotfiles that are eligible for custom instructions :
 
-| Dotfile | Method | Custom dotfile | Actions to set |
-|---|---|---|---|
-| .utils/project/install.sh | - | .utils.custom/project/install.sh | Add custom instructions at the end of the script |
-| .utils/server/configCheck.sh | - | .utils.custom/server/configCheck.sh | Set the packages installations to check |
-| .utils/server/localesInstall.sh | - | .utils.custom/server/localesInstall.sh | Install the needed project locales |
-| .utils/docker/buildProjectConfig.sh | setEnvVariables() | .utils.custom/docker/setEnvVariables.sh | Replace the laradock .env default key / values |
-| .utils/docker/buildProjectConfig.sh | customizeContainers() | .utils.custom/docker/customizeContainers.sh | Customize laradock containers builds files |
-| .utils/docker/buildProjectConfig.sh | customizeDockerComposeFile() | .utils.custom/docker/customizeDockerComposeFile.sh | Customize laradock docker-compose.yml file |
-| .utils/docker/buildProjectConfig.sh | setNginxConfig() | .utils.custom/docker/setNginxConfig.sh | Set your project docker nginx configuration |
+| Dotfile | Custom dotfile | Actions to set |
+|---|---|---|
+| .utils/docker/up.sh | .utils.custom/docker/up.sh | Specify which container to start |
+| .utils/project/install.sh | .utils.custom/project/install.sh | Add custom instructions at the end of the script |
+| .utils/server/dumpProdToPreprod.sh | .utils.custom/server/dumpProdToPreprod/additionalInstructions.sh | Set additional instructions to the script |
+| .utils/server/dumpProdToPreprod.sh | .utils.custom/server/dumpProdToPreprod/setVariables.sh | Set required variables need by the script |
+| .utils/server/configCheck.sh | .utils.custom/server/configCheck.sh | Set the packages installations to check |
+| .utils/server/localesInstall.sh | .utils.custom/server/localesInstall.sh | Install the needed project locales |
