@@ -14,22 +14,11 @@ source $(realpath ${DockerUpScriptDirectory}/../helpers/checkVariableIsDefined.s
 source $(realpath ${DockerUpScriptDirectory}/../helpers/checkVariableIsDefined.sh) NGINX_DOMAIN
 source $(realpath ${DockerUpScriptDirectory}/../helpers/checkVariableIsDefined.sh) LARADOCK_DIRECTORY_PATH
 
-# we set the script variables
-buildArgument=
-
 # we get the script arguments
 arguments=$@
 
 # we set the script functions
 function startContainers () {
-    if [[ ${arguments} = *'build'* ]]; then
-        source ${DockerUpScriptDirectory}/buildProjectConfig.sh
-        buildArgument='--build'
-    fi
-    if [[ ${arguments} = *'proxy'* ]]; then
-        source ${DockerUpScriptDirectory}/buildProxyConfig.sh
-    fi
-
     echo -e "${gray}=================================================${reset}\n"
 
     echo "${purple}▶${reset} Executing docker-compose command ..."
