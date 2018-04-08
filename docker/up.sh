@@ -11,7 +11,6 @@ source $(realpath ${DockerUpScriptDirectory}/../helpers/exportEnvFileVariables.s
 
 # we check that the variables required by the script are defined
 source $(realpath ${DockerUpScriptDirectory}/../helpers/checkVariableIsDefined.sh) PROJECT_PATH
-source $(realpath ${DockerUpScriptDirectory}/../helpers/checkVariableIsDefined.sh) NGINX_DOMAIN
 source $(realpath ${DockerUpScriptDirectory}/../helpers/checkVariableIsDefined.sh) LARADOCK_DIRECTORY_PATH
 
 # we get the script arguments
