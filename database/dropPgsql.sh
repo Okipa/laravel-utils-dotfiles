@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-databaseResetScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+databaseDropPgsqlScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we load the scripting colors
-source ${databaseResetScriptDirectory}/loadScriptingColors.sh
+source ${databaseDropPgsqlScriptDirectory}/loadScriptingColors.sh
 
 # we check that the variables required by the script are defined
-source $(realpath ${databaseResetScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_PASSWORD
-source $(realpath ${databaseResetScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_HOST
-source $(realpath ${databaseResetScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_USERNAME
-source $(realpath ${databaseResetScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_DATABASE
+source $(realpath ${databaseDropPgsqlScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_PASSWORD
+source $(realpath ${databaseDropPgsqlScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_HOST
+source $(realpath ${databaseDropPgsqlScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_USERNAME
+source $(realpath ${databaseDropPgsqlScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_DATABASE
 
 echo -e "${gray}=================================================${reset}\n"
 

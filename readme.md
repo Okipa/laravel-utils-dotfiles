@@ -6,24 +6,23 @@
 ```
 "post-install-cmd": [
     ...
-    "git submodule sync --recursive && git submodule update --init --recursive",
+    "git submodule sync --recursive && git submodule update --init --recursive --remote --force",
     ...
 ],
 "post-update-cmd": [
     ...
-    "git submodule sync --recursive && git submodule update --recursive --remote",
+    "git submodule sync --recursive && git submodule update --init --recursive --remote --force",
     ...
 ]
 ```
 - copy the following command from the root path of your project  : `cp -R .utils/.utils.custom .utils.custom`
 
-### .utils/docker/
-- stop.sh : stop the project laradock docker containers.
-- up.sh : start the project laradock docker containers (you can add docker options after the script call).
-- workspace.sh : shortcut to get a ssh access to the laradock workspace with the `laradock` user.
-    > | Option | Required | Description |
+### .utils/database/
+- drop.sh : drop.
+- generatePgsqlDump.sh : generate a pgsql dump.
+    > | Argument | Required | Description |
     > |---|---|---|
-    > | --root | No | Access to the docker laradock workspace with the `root` user |
+    > | [destinationPath] | No | Specify a destination path for the pgsql dump |
 
 ### .utils/git/submodules/
 - update.sh : update all the project git submodules (with the `--init --recursive --remote --force` options by default - you can specify additional options after the script call).
@@ -58,11 +57,13 @@
 - dumpProdToPreprod : execute a dump from the production toward the preprod (can only be used for the standard preprod/prod projects configurations).
 - localesInstall.sh : install the project needed locales.
 
-### .utils/sql/
-- generatePgsqlDump.sh : generate a pgsql dump.
-    > | Argument | Required | Description |
+### .utils/laradock/
+- stop.sh : stop the project laradock docker containers.
+- up.sh : start the project laradock docker containers (you can add docker options after the script call).
+- workspace.sh : shortcut to get a ssh access to the laradock workspace with the `laradock` user.
+    > | Option | Required | Description |
     > |---|---|---|
-    > | [destinationPath] | No | Specify a destination path for the pgsql dump |
+    > | --root | No | Access to the docker laradock workspace with the `root` user |
 
 ### .utils/supervisor/
 - install.sh : configure and launch the project supervisor runners.

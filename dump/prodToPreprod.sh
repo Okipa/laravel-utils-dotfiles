@@ -42,7 +42,13 @@ echo -e "${green}✔${reset} Maintenance mode enabled.\n"
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${currentPreprodProjectPath}/shared/.env
 
 # we drop the preprod database
-source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh)
+dropDatabaseScript=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/dropDatabase.sh
+if [ -f "${dropDatabaseScript}" ]; then
+    echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/prodToPreprod/dropDatabase.sh custom instructions script has been detected and executed.${reset}\n"
+    source ${dropDatabaseScript}
+else
+    echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/prodToPreprod/dropDatabase.sh script detected.${reset}\n"
+fi
 
 # we export the production .env file variables
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${currentProductionProjectPath}/shared/.env
