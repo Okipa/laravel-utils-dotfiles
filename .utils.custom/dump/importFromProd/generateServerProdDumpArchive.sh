@@ -9,19 +9,19 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we set the required variables
 source ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/setRequiredVariables.sh
-source $(realpath ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/../../../helpers/checkVariableIsDefined.sh) prodUser
-source $(realpath ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/../../../helpers/checkVariableIsDefined.sh) serverHost
-source $(realpath ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/../../../helpers/checkVariableIsDefined.sh) productionProjectPath
-source $(realpath ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/../../../helpers/checkVariableIsDefined.sh) productionDumpStoragePath
-source $(realpath ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/../../../helpers/checkVariableIsDefined.sh) productionDumpArchivePath
+source $(realpath ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) prodUser
+source $(realpath ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverHost
+source $(realpath ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) productionProjectPath
+source $(realpath ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) productionDumpStoragePath
+source $(realpath ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) productionDumpArchivePath
 
 echo -e "${gray}=================================================${reset}\n"
 
 # we export the .env file variables
-source $(realpath ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/../../../helpers/exportEnvFileVariables.sh)
+source $(realpath ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/../../../.utils/helpers/exportEnvFileVariables.sh)
 
 # we execute a production pgsql dump
-source $(realpath ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/../../../database/generatePgsqlDump.sh) ${productionDumpStoragePath}/nsn_dump.sql
+source $(realpath ${dumpImportFromProdGenerateServerProdDumpArchiveScriptDirectory}/../../../.utils/database/generatePgsqlDump.sh) ${productionDumpStoragePath}/nsn_dump.sql
 
 echo -e "${gray}=================================================${reset}\n"
 

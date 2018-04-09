@@ -6,4 +6,4 @@
 databaseDropPgsqlScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we execute a production pgsql dump
-source $(realpath ${databaseDropPgsqlScriptDirectory}/../../../database/dropPgsql.sh)
+source $(realpath ${databaseDropPgsqlScriptDirectory}/../../../.utils/database/dropPgsql.sh)
