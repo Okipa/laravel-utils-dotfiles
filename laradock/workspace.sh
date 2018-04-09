@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-DockerWorkspaceScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+laradockWorkspaceScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we export the .env file variables
-source $(realpath ${DockerWorkspaceScriptDirectory}/../helpers/exportEnvFileVariables.sh) --
+source $(realpath ${laradockWorkspaceScriptDirectory}/../helpers/exportEnvFileVariables.sh) --
 
 # we check that the variables required by the script are defined
-source $(realpath ${DockerWorkspaceScriptDirectory}/../helpers/checkVariableIsDefined.sh) PROJECT_PATH
-source $(realpath ${DockerWorkspaceScriptDirectory}/../helpers/checkVariableIsDefined.sh) LARADOCK_DIRECTORY_PATH
+source $(realpath ${laradockWorkspaceScriptDirectory}/../helpers/checkVariableIsDefined.sh) PROJECT_PATH
+source $(realpath ${laradockWorkspaceScriptDirectory}/../helpers/checkVariableIsDefined.sh) LARADOCK_DIRECTORY_PATH
 
 # we set the script variables
 arguments=$@
@@ -21,6 +21,9 @@ fi
 
 # we set the script functions
 function accessToWorkspaceSsh () {
+    echo -e "${gray}=================================================${reset}\n"
+
+    echo "${purple}▶${reset} Accessing to laradock workspace container ..."
     echo "${purple}→ cd ${LARADOCK_DIRECTORY_PATH}${reset}"
     cd ${LARADOCK_DIRECTORY_PATH}
     echo "${purple}→ docker-compose exec --user=${user} workspace bash${reset}"
