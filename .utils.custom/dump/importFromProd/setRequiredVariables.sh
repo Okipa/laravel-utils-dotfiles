@@ -4,9 +4,8 @@
 
 prodUser="prod"
 serverHost="nsnd.host.acid.lan"
-currentProjectPath="web/www/nsn/current"
 productionProjectPath="/var/www/prod/web/www/nsn"
 productionDumpStorageDirectory="/tmp/production_dump"
-productionDumpArchiveName="production_dump.tar.gz"
-productionDumpArchivePath="/tmp/${productionDumpArchiveName}"
+#productionDumpArchiveName="production_dump.tar.gz"
+#productionDumpArchivePath="/tmp/${productionDumpArchiveName}"
 localProductionDumpStorageDirectory="database/seeds/dump"

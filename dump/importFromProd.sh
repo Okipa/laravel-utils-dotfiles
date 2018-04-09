@@ -28,8 +28,7 @@ fi
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) prodUser
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverHost
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) productionProjectPath
-source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) productionDumpArchiveName
-source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) productionDumpArchivePath
+source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) productionDumpStorageDirectory
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) localProductionDumpStoragePath
 
 echo -e "${gray}=================================================${reset}\n"
@@ -52,23 +51,23 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we import the production dump
 echo "${purple}▶${reset} Importing the production dump archive ..."
-echo "${purple}→ scp ${prodUser}@${serverHost}:${productionDumpArchivePath} ${localProductionDumpStoragePath}${reset}"
-scp ${prodUser}@${serverHost}:${productionDumpArchivePath} ${localProductionDumpStoragePath}
+echo "${purple}→ rsync -Prz --info=progress2 ${prodUser}@${serverHost}:${productionDumpArchivePath} ${localProductionDumpStoragePath}${reset}"
+rsync -Prz --info=progress2 ${prodUser}@${serverHost}:${productionDumpStorageDirectory} ${localProductionDumpStoragePath}
 echo -e "${green}✔${reset} Production dump archive imported.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-echo "${purple}▶${reset} Extracting the production dump archive ..."
-echo "${purple}→ tar xzvf ${localProductionDumpStoragePath}/${productionDumpArchiveName}${reset}"
-tar xzvf ${localProductionDumpStoragePath}/${productionDumpArchiveName}
-echo -e "${green}✔${reset} Production dump archive extracted.\n"
-
-echo -e "${gray}=================================================${reset}\n"
-
-echo "${purple}▶${reset} Removing the production dump archive ..."
-echo "${purple}→ rm -f ${localProductionDumpStoragePath}/${productionDumpArchiveName}${reset}"
-rm -f ${localProductionDumpStoragePath}/${productionDumpArchiveName}
-echo -e "${green}✔${reset} Production dump archive removed.\n"
+#echo "${purple}▶${reset} Extracting the production dump archive ..."
+#echo "${purple}→ tar xzvf ${localProductionDumpStoragePath}/${productionDumpArchiveName}${reset}"
+#tar xzvf ${localProductionDumpStoragePath}/${productionDumpArchiveName}
+#echo -e "${green}✔${reset} Production dump archive extracted.\n"
+#
+#echo -e "${gray}=================================================${reset}\n"
+#
+#echo "${purple}▶${reset} Removing the production dump archive ..."
+#echo "${purple}→ rm -f ${localProductionDumpStoragePath}/${productionDumpArchiveName}${reset}"
+#rm -f ${localProductionDumpStoragePath}/${productionDumpArchiveName}
+#echo -e "${green}✔${reset} Production dump archive removed.\n"
 
 # script end
 echo -e "${green}△ DUMP IMPORT : DONE △${reset}\n"
