@@ -15,7 +15,6 @@ source $(realpath ${databaseResetScriptDirectory}/../helpers/checkVariableIsDefi
 echo -e "${gray}=================================================${reset}\n"
 
 echo "${purple}▶${reset} Dropping ${DB_DATABASE} database ..."
-
-PGPASSWORD=${DB_PASSWORD} psql -h "${DB_HOST}" -U "${DB_USERNAME}" -c "DROP DATABASE IF EXISTS ${DB_DATABASE}"
-
+echo "${purple}→ PGPASSWORD=${DB_PASSWORD} psql -h \"${DB_HOST}\" -U \"${DB_USERNAME}\" -c \"DROP SCHEMA IF EXISTS public CASCADE; CREATE SCHEMA IF NOT EXISTS public AUTHORIZATION ${DB_USERNAME}; GRANT ALL ON SCHEMA public TO ${DB_USERNAME}; GRANT ALL ON SCHEMA public TO public;\"${reset}"
+PGPASSWORD=${DB_PASSWORD} psql -h "${DB_HOST}" -U "${DB_USERNAME}" -c "DROP SCHEMA IF EXISTS public CASCADE; CREATE SCHEMA IF NOT EXISTS public AUTHORIZATION ${DB_USERNAME}; GRANT ALL ON SCHEMA public TO ${DB_USERNAME}; GRANT ALL ON SCHEMA public TO public;"
 echo -e "${green}✔${reset} ${DB_DATABASE} database dropped.\n"
