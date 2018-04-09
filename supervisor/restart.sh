@@ -9,19 +9,8 @@ source $(realpath ${supervisorRestartScriptDirectory}/../helpers/loadScriptingCo
 # we export the .env file variables
 source $(realpath ${supervisorRestartScriptDirectory}/../helpers/exportEnvFileVariables.sh) --
 
-echo -e "${gray}=================================================${reset}\n"
-
-# project supervisor detection
-supervisorConfigFile=/etc/supervisor/conf.d/laravel-${APP_ENV}-${DB_DATABASE}-worker.conf
-if [ ! -f supervisorConfigFile ]; then
-    echo "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}"
-    echo "${purple}▶${reset} The supervisor project config does not exist : ${purple}${supervisorConfigFile}${reset}."
-    echo "${purple}▶${reset} The command has been aborted."
-    echo -e "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}\n"
-    exit 1
-else
-    echo -e "${green}✔${reset} Supervisor config detected : ${purple}${supervisorConfigFile}${reset}.\n"
-fi
+# project supervisor configuration file detection
+source $(realpath ${supervisorRestartScriptDirectory}/../helpers/checkFileExists.sh) /etc/supervisor/conf.d/laravel-${APP_ENV}-${DB_DATABASE}-worker.conf
 
 echo -e "${gray}=================================================${reset}\n"
 
