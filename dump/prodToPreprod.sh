@@ -84,7 +84,7 @@ echo -e "${green}✔${reset} Production dump removed.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-# custom instructions execution
+# we execute the additional instructions
 additionalInstructionsScript=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/additionalInstructions.sh
 if [ -f "${additionalInstructionsScript}" ]; then
     echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/prodToPreprod/additionalInstructions.sh custom instructions script has been detected and executed.${reset}\n"
