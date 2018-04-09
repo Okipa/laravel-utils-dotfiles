@@ -35,12 +35,12 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we sync the production public/files directory with the dump files directory
 echo "${purple}▶${reset} Syncing the production public/files directory with the dump files directory ..."
-echo "${purple}→ rsync ${productionProjectPath}/shared/public/files/ ${productionDumpStorageDirectory}/files${reset}"
-rsync ${productionProjectPath}/shared/public/files/ ${productionDumpStorageDirectory}/files
+echo "${purple}→ rsync -r --info=progress2 ${productionProjectPath}/shared/public/files/ ${productionDumpStorageDirectory}/files${reset}"
+rsync -r --info=progress2 ${productionProjectPath}/shared/public/files/ ${productionDumpStorageDirectory}/files
 echo -e "${green}✔${reset} Production public/files directory synced with the dump files directory.\n"
 
-# we generate an archive from the production dump folder
-echo "${purple}▶${reset} Syncing the production public/files directory with the dump files directory ..."
-echo "${purple}→ rsync ${productionProjectPath}/shared/public/files/ ${productionDumpStorageDirectory}/files${reset}"
+# we generate an archive from the production dump directory
+echo "${purple}▶${reset} Generating an archive from the production dump directory..."
+echo "${purple}→ tar czvf ${productionDumpArchivePath} ${productionDumpStorageDirectory} ${reset}"
 tar czvf ${productionDumpArchivePath} ${productionDumpStorageDirectory} 
-echo -e "${green}✔${reset} Production public/files directory synced with the dump files directory.\n"
+echo -e "${green}✔${reset} Production dump archive ready.\n"
