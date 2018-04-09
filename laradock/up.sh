@@ -18,9 +18,26 @@ arguments=$@
 
 # we set the script functions
 function startContainers () {
+
+    if [[ ${arguments} = *'build'* ]]; then
+        echo -e "${gray}=================================================${reset}\n"
+
+        echo "${purple}▶${reset} Stopping and removing ${APP_NAME} laradock containers ..."
+        echo "${purple}→ cd ${LARADOCK_DIRECTORY_PATH}${reset}"
+        cd ${LARADOCK_DIRECTORY_PATH}
+        echo "${purple}→ docker-compose stop${reset}"
+        docker-compose stop
+        echo "${purple}→ docker-compose rm -f${reset}"
+        docker-compose rm -f
+        echo "${purple}→ cd ${PROJECT_PATH}${reset}"
+        cd ${PROJECT_PATH}
+        echo -e "${green}✔${reset} ${APP_NAME} laradock containers stopped and removed.\n"
+    fi
+
     echo -e "${gray}=================================================${reset}\n"
 
     echo "${purple}▶${reset} Executing laradock docker-compose command ..."
+    echo "${purple}→ cd ${LARADOCK_DIRECTORY_PATH}${reset}"
     cd ${LARADOCK_DIRECTORY_PATH}
     # custom instructions execution
     laradockUpScript=${laradockUpScriptDirectory}/../../.utils.custom/laradock/up.sh
@@ -32,6 +49,7 @@ function startContainers () {
         echo "${purple}→ docker-compose up -d ${arguments}${reset}"
         docker-compose up -d ${arguments}
     fi
+    echo "${purple}→ cd ${PROJECT_PATH}${reset}"
     cd ${PROJECT_PATH}
     echo -e "${green}✔${reset} Laradock docker-compose executed.\n"
 }
