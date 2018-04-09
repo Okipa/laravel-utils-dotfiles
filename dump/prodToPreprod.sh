@@ -9,7 +9,7 @@ source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/loadScriptingCo
 # we check if the current user has the sudo rights
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/requiresSudoRights.sh)
 
-# we check if the current user has the sudo rights
+# we check if the current environment is preprod
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/requiresEnvironment.sh) preprod
 
 # script begin
@@ -27,19 +27,19 @@ else
 fi
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) preprodUser
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) prodUser
-source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) currentPreprodProjectPath
-source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) currentProductionProjectPath
+source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) preprodProjectPath
+source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) productionProjectPath
 
 echo -e "${gray}=================================================${reset}\n"
 
 # we set the maintenance mode
 echo "${purple}▶${reset} Enabling maintenance mode ..."
-echo "${purple}→ /usr/bin/php ${currentPreprodProjectPath}/current/artisan down${reset}"
-/usr/bin/php ${currentPreprodProjectPath}/current/artisan down
+echo "${purple}→ /usr/bin/php ${preprodProjectPath}/current/artisan down${reset}"
+/usr/bin/php ${preprodProjectPath}/current/artisan down
 echo -e "${green}✔${reset} Maintenance mode enabled.\n"
 
 # we export the preprod .env file variables
-source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${currentPreprodProjectPath}/shared/.env
+source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${preprodProjectPath}/shared/.env
 
 # we drop the preprod database
 dropDatabaseScript=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/dropDatabase.sh
@@ -51,7 +51,7 @@ else
 fi
 
 # we export the production .env file variables
-source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${currentProductionProjectPath}/shared/.env
+source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${productionProjectPath}/shared/.env
 
 # we generate a production sql dump
 generateSqlDumpScript=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/generateSqlDump.sh
@@ -63,7 +63,7 @@ else
 fi
 
 # we export the preprod .env file variables
-source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${currentPreprodProjectPath}/shared/.env
+source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${preprodProjectPath}/shared/.env
 
 echo -e "${gray}=================================================${reset}\n"
 
@@ -76,8 +76,8 @@ echo -e "${green}✔${reset} Production sql dump successfully imported into the 
 echo -e "${gray}=================================================${reset}\n"
 
 echo "${purple}▶${reset} Applying Laravel migration to preprod database ..."
-echo "${purple}→ sudo -i -u ${preprodUser} /usr/bin/php ${currentPreprodProjectPath}/current/artisan migrate${reset}"
-sudo -i -u ${preprodUser} /usr/bin/php ${currentPreprodProjectPath}/current/artisan migrate
+echo "${purple}→ sudo -i -u ${preprodUser} /usr/bin/php ${preprodProjectPath}/current/artisan migrate${reset}"
+sudo -i -u ${preprodUser} /usr/bin/php ${preprodProjectPath}/current/artisan migrate
 echo -e "${green}✔${reset} Laravel migrations applied on the preprod database.\n"
 
 echo -e "${gray}=================================================${reset}\n"
@@ -103,8 +103,8 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we remove the maintenance mode
 echo "${purple}▶${reset} Disabling maintenance mode ..."
-echo "${purple}→ /usr/bin/php ${currentPreprodProjectPath}/current/artisan up${reset}"
-/usr/bin/php ${currentPreprodProjectPath}/current/artisan up
+echo "${purple}→ /usr/bin/php ${preprodProjectPath}/current/artisan up${reset}"
+/usr/bin/php ${preprodProjectPath}/current/artisan up
 echo -e "${green}✔${reset} Maintenance mode disabled.\n"
 
 # script end

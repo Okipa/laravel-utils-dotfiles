@@ -4,6 +4,6 @@
 
 #preprodUser="preprod"
 #prodUser="prod"
-#currentPreprodProjectPath="/var/www/preprod/web/www/nsn/"
-#currentProductionProjectPath="/var/www/prod/web/www/nsn/"
-#productionSqlDumpStoragePath="/tmp/prod_nsn_dump.sql"
+#preprodProjectPath="/var/www/preprod/web/www/nsn/"
+#productionProjectPath="/var/www/prod/web/www/nsn/"
+#productionSqlDumpStoragePath="/tmp/prod_to_preprod/nsn_dump.sql"
