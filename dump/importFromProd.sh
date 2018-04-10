@@ -58,7 +58,7 @@ echo -e "${green}✔${reset} Production sql dump imported.\n"
 echo -e "${gray}=================================================${reset}\n"
 
 # we execute the additional instructions
-dumpImportFromProdAdditionalInstructionsScript=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/importFromProd/additionalInstructions.sh
+dumpImportFromProdAdditionalInstructionsScript=${dumpImportScriptDirectory}/../../.utils.custom/dump/importFromProd/additionalInstructions.sh
 if [ -f "${dumpImportFromProdAdditionalInstructionsScript}" ]; then
     echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/importFromProd/additionalInstructions.sh custom instructions script has been detected and executed.${reset}\n"
     source ${dumpImportFromProdAdditionalInstructionsScript}
