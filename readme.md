@@ -19,10 +19,12 @@
 
 ### .utils/database/
 - `generatePgsqlDump.sh` : generate a pgsql dump.
+
     > | Argument | Required | Description |
     > |---|---|---|
     > | [destinationPath] | Yes | Specify a destination path for the pgsql dump |
 - `generateMysqlDump.sh` : generate a mysql dump.
+
     > | Argument | Required | Description |
     > |---|---|---|
     > | [destinationPath] | Yes | Specify a destination path for the pgsql dump |
@@ -36,14 +38,17 @@
 
 ### .utils/helpers/
 - `checkFileExists.sh` : check that the file path given in parameter exists.
+
     > | Argument | Required | Description |
     > |---|---|---|
     > | [filePath] | Yes | Specify the file path that will be verified |
 - `checkVariableIsDefined.sh` : check that the environment variable given in parameter is defined.
+
     > | Argument | Required | Description |
     > |---|---|---|
     > | [variable] | Yes | Specify the variable that will be checked |
 - `exportEnvFileVariables.sh` : export the laravel environment variables for a bash use.
+
     > **Notice :** Only one argument is taken care of, use only one of the possible arguments listed bellow.
     > | Argument | Required | Description |
     > |---|---|---|
@@ -51,6 +56,7 @@
     > | -- | No | Force the script to use the default laravel .env file based at the root of the project |
 - `loadScriptingColors.sh` : load the bash scripting colors.
 - `requiresEnvironment.sh` : check the current environment is the one specified during the script execution.
+
     > | Argument | Required | Description |
     > |---|---|---|
     > | [environmentName] | Yes | Specify the environment name the script should run under |
@@ -60,6 +66,7 @@
 - `stop.sh` : stop the project laradock docker containers.
 - `up.sh` : start the project laradock docker containers (you can add any docker option after the script call).
 - `workspace.sh` : shortcut to get a ssh access to the laradock workspace with the `laradock` user.
+
     > | Option | Required | Description |
     > |---|---|---|
     > | --root | No | Access to the docker laradock workspace with the `root` user |
