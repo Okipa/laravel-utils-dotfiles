@@ -3,4 +3,5 @@
 # example
 
 # we drop the database
-/usr/bin/php ${serverPreprodProjectPath} artisan database:drop --force
+echo "${purple}▶${reset} /usr/bin/php ${serverPreprodProjectPath}/current/artisan database:drop --force ..."
+/usr/bin/php ${serverPreprodProjectPath}/current/artisan database:drop --force
