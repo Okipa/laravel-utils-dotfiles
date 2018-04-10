@@ -2,10 +2,8 @@
 
 # example
 
-prodUser="prod"
+serverProdUser="prod"
 serverHost="nsnd.host.acid.lan"
-productionProjectPath="/var/www/prod/web/www/nsn"
-productionDumpStorageDirectory="/tmp/production_dump"
-#productionDumpArchiveName="production_dump.tar.gz"
-#productionDumpArchivePath="/tmp/${productionDumpArchiveName}"
-localProductionDumpStorageDirectory="database/seeds/dump"
+serverProductionProjectPath="/var/www/prod/web/www/nsn"
+serverProductionSqlDumpStoragePath="/tmp/production_dump/nsn_dump.sql"
+localProductionDumpStoragePath="database/seeds/dump"

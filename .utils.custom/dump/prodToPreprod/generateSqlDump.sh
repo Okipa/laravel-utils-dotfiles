@@ -3,7 +3,7 @@
 # example
 
 # we get the current script directory
-databaseGenerateSqlDumpScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+dumpProdToPreprodGenerateSqlDumpScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # we execute a production pgsql dump
-source $(realpath ${databaseGenerateSqlDumpScriptDirectory}/../../../.utils/database/generatePgsqlDump.sh) ${productionSqlDumpStoragePath}
+source $(realpath ${dumpProdToPreprodGenerateSqlDumpScriptDirectory}/../../../.utils/database/generatePgsqlDump.sh) ${serverProductionSqlDumpStoragePath}

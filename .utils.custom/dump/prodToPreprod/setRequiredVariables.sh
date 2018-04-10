@@ -2,8 +2,8 @@
 
 # example
 
-preprodUser="preprod"
-prodUser="prod"
-preprodProjectPath="/var/www/preprod/web/www/nsn/"
-productionProjectPath="/var/www/prod/web/www/nsn/"
-productionSqlDumpStoragePath="/tmp/prod_to_preprod/nsn_dump.sql"
+serverPreprodUser="preprod"
+serverProdUser="prod"
+serverPreprodProjectPath="/var/www/preprod/web/www/nsn/"
+serverProductionProjectPath="/var/www/prod/web/www/nsn/"
+serverProductionSqlDumpStoragePath="/tmp/prod_to_preprod_dump/nsn_dump.sql"

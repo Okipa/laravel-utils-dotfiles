@@ -25,10 +25,10 @@ if [ -f "${setRequiredVariablesScript}" ]; then
 else
     echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/importFromProd/setRequiredVariables.sh script detected.${reset}\n"
 fi
-source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) prodUser
+source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProdUser
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverHost
-source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) productionProjectPath
-source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) productionDumpStorageDirectory
+source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionProjectPath
+source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionSqlDumpStoragePath
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) localProductionDumpStoragePath
 
 echo -e "${gray}=================================================${reset}\n"
@@ -43,31 +43,30 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we execute the dump archive generation on the production server
 echo "${purple}▶${reset} Generating the server production dump ..."
-echo "${purple}→ ssh ${prodUser}@${serverHost} ${productionProjectPath}/current/.utils.custom/dump/importFromProd/generateServerProdDumpArchive.sh${reset}"
-ssh ${prodUser}@${serverHost} ${productionProjectPath}/current/.utils.custom/dump/importFromProd/generateServerProdDumpArchive.sh
+echo "${purple}→ ssh ${serverProdUser}@${serverHost} ${serverProductionProjectPath}/current/.utils.custom/dump/importFromProd/generateServerProdSqlDump.sh${reset}"
+ssh ${serverProdUser}@${serverHost} ${serverProductionProjectPath}/current/.utils.custom/dump/importFromProd/generateServerProdSqlDump.sh
 echo -e "${green}✔${reset} Server production dump generated.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-# we import the production dump
-echo "${purple}▶${reset} Importing the production dump archive ..."
-echo "${purple}→ rsync -Prz --info=progress2 ${prodUser}@${serverHost}:${productionDumpArchivePath} ${localProductionDumpStoragePath}${reset}"
-rsync -Prz --info=progress2 ${prodUser}@${serverHost}:${productionDumpStorageDirectory} ${localProductionDumpStoragePath}
-echo -e "${green}✔${reset} Production dump archive imported.\n"
+# we import the production sql dump
+echo "${purple}▶${reset} Importing the production sql dump ..."
+echo "${purple}→ rsync -Prz --info=progress2 ${serverProdUser}@${serverHost}:${serverProductionSqlDumpStoragePath} ${localProductionDumpStoragePath}${reset}"
+rsync -Prz --info=progress2 ${serverProdUser}@${serverHost}:${serverProductionSqlDumpStoragePath} ${localProductionDumpStoragePath}
+echo -e "${green}✔${reset} Production sql dump imported.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-#echo "${purple}▶${reset} Extracting the production dump archive ..."
-#echo "${purple}→ tar xzvf ${localProductionDumpStoragePath}/${productionDumpArchiveName}${reset}"
-#tar xzvf ${localProductionDumpStoragePath}/${productionDumpArchiveName}
-#echo -e "${green}✔${reset} Production dump archive extracted.\n"
-#
-#echo -e "${gray}=================================================${reset}\n"
-#
-#echo "${purple}▶${reset} Removing the production dump archive ..."
-#echo "${purple}→ rm -f ${localProductionDumpStoragePath}/${productionDumpArchiveName}${reset}"
-#rm -f ${localProductionDumpStoragePath}/${productionDumpArchiveName}
-#echo -e "${green}✔${reset} Production dump archive removed.\n"
+# we execute the additional instructions
+dumpImportFromProdAdditionalInstructionsScript=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/importFromProd/additionalInstructions.sh
+if [ -f "${dumpImportFromProdAdditionalInstructionsScript}" ]; then
+    echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/importFromProd/additionalInstructions.sh custom instructions script has been detected and executed.${reset}\n"
+    source ${dumpImportFromProdAdditionalInstructionsScript}
+else
+    echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/importFromProd/additionalInstructions.sh script detected.${reset}\n"
+fi
+
+echo -e "${gray}=================================================${reset}\n"
 
 # script end
 echo -e "${green}△ DUMP IMPORT : DONE △${reset}\n"
