@@ -50,6 +50,7 @@
 - `exportEnvFileVariables.sh` : export the laravel environment variables for a bash use.
 
     > **Notice :** Only one argument is taken care of, use only one of the possible arguments listed bellow.
+    
     > | Argument | Required | Description |
     > |---|---|---|
     > | [envFilePath] | No | Specify a custom env file path - if not provided, the current laravel project env file is used |
