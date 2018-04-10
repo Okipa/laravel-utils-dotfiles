@@ -29,6 +29,6 @@ destinationPath="$1"
 
 # we generate the production database dump
 echo "${purple}▶${reset} Generating a pgsql dump for the ${DB_DATABASE} database ..."
-echo "${purple}→ PGPASSWORD=${DB_PASSWORD} pg_dump -w -c -U ${DB_USERNAME} -h ${DB_HOST} ${DB_DATABASE} > ${destinationPath}${reset}"
+echo "${purple}→ PGPASSWORD=${DB_PASSWORD} pg_dump -w -c -O -x -U ${DB_USERNAME} -h ${DB_HOST} ${DB_DATABASE} > ${destinationPath}${reset}"
 PGPASSWORD=${DB_PASSWORD} pg_dump -w -c -O -x -U ${DB_USERNAME} -h ${DB_HOST} ${DB_DATABASE} > ${destinationPath}
 echo -e "${green}✔${reset} Pgsql dump generated for the ${DB_DATABASE} database and stored in the ${destinationPath} directory.\n"
