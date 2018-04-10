@@ -33,11 +33,11 @@ source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined
 
 echo -e "${gray}=================================================${reset}\n"
 
-# we create the database/seeds/dump directory
-echo "${purple}▶${reset} Creating the database/seeds/dump directory locally ..."
+# we create the production dump storage directory
+echo "${purple}▶${reset} Creating the ${localProductionDumpStoragePath} directory locally ..."
 echo "${purple}→ mkdir -p ${localProductionDumpStoragePath}${reset}"
-mkdir -p database/seeds/dump
-echo -e "${green}✔${reset} Local database/seeds/dump directory available.\n"
+mkdir -p ${localProductionDumpStoragePath}
+echo -e "${green}✔${reset} Local ${localProductionDumpStoragePath} directory available.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 

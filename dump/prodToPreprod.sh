@@ -29,6 +29,7 @@ source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIs
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProdUser
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverPreprodProjectPath
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionProjectPath
+source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionSqlDumpStorageDirectory
 
 echo -e "${gray}=================================================${reset}\n"
 
@@ -38,8 +39,18 @@ echo "${purple}→ /usr/bin/php ${serverPreprodProjectPath}/current/artisan down
 /usr/bin/php ${serverPreprodProjectPath}/current/artisan down
 echo -e "${green}✔${reset} Maintenance mode enabled.\n"
 
+echo -e "${gray}=================================================${reset}\n"
+
+# we create the production dump storage directory
+echo "${purple}▶${reset} Creating the server ${serverProductionSqlDumpStorageDirectory} directory ..."
+echo "${purple}→ mkdir -p ${serverProductionSqlDumpStorageDirectory}${reset}"
+mkdir -p ${serverProductionSqlDumpStorageDirectory}
+echo -e "${green}✔${reset} Server ${serverProductionSqlDumpStorageDirectory} directory available.\n"
+
 # we export the preprod .env file variables
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${serverPreprodProjectPath}/shared/.env
+
+echo -e "${gray}=================================================${reset}\n"
 
 # we drop the preprod database
 dropDatabaseScript=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/dropDatabase.sh
@@ -52,6 +63,8 @@ fi
 
 # we export the production .env file variables
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${serverProductionProjectPath}/shared/.env
+
+echo -e "${gray}=================================================${reset}\n"
 
 # we generate a production sql dump
 generateSqlDumpScript=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/generateSqlDump.sh
