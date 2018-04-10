@@ -2,7 +2,7 @@
 
 ## Installation
 - install the dotfiles in your project with the following command : `git submodule add https://github.com/Okipa/laravel-utils-dotfiles.git .utils`.
-- Make sure you add the following lines in the `scripts` part of your `composer.json` file in order to make sure you always have an updated version of this git submodule :
+- Make sure you add the following lines in the `scripts` part of your `composer.json` file to make sure that you always have an updated version of this git submodule :
 ```
 "post-install-cmd": [
     ...

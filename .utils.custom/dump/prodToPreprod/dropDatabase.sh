@@ -2,8 +2,5 @@
 
 # example
 
-# we get the current script directory
-databaseDropPgsqlScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-# we execute a production pgsql dump
-source $(realpath ${databaseDropPgsqlScriptDirectory}/../../../.utils/database/dropPgsql.sh)
+# we drop the database
+/usr/bin/php ${serverPreprodProjectPath} artisan database:drop --force

@@ -82,16 +82,16 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we import the sql production dump into preprod
 echo "${purple}▶${reset} Importing the sql production dump into the ${purple}${DB_DATABASE}${reset} database ..."
-echo "${purple}→ sudo -i -u ${serverPreprodUser} psql "${DB_DATABASE}" < ${serverProductionSqlDumpStoragePath}${reset}"
-sudo -i -u ${serverPreprodUser} psql "${DB_DATABASE}" < ${serverProductionSqlDumpStoragePath}
+echo "${purple}→ sudo -i -u ${serverPreprodUser} psql "${DB_DATABASE}" < ${serverProductionSqlDumpStorageDirectory}/nsn_dump.sql${reset}"
+sudo -i -u ${serverPreprodUser} psql "${DB_DATABASE}" < ${serverProductionSqlDumpStorageDirectory}/nsn_dump.sql
 echo -e "${green}✔${reset} Production sql dump successfully imported into the ${purple}${DB_DATABASE}${reset} database.\n"
-
+ preprod
 echo -e "${gray}=================================================${reset}\n"
 
-echo "${purple}▶${reset} Applying Laravel migration to preprod database ..."
+echo "${purple}▶${reset} Applying Laravel migration to ${purple}${DB_DATABASE}${reset} database ..."
 echo "${purple}→ sudo -i -u ${serverPreprodUser} /usr/bin/php ${serverPreprodProjectPath}/current/artisan migrate${reset}"
 sudo -i -u ${serverPreprodUser} /usr/bin/php ${serverPreprodProjectPath}/current/artisan migrate
-echo -e "${green}✔${reset} Laravel migrations applied on the preprod database.\n"
+echo -e "${green}✔${reset} Laravel migrations applied on the ${purple}${DB_DATABASE}${reset} database.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
