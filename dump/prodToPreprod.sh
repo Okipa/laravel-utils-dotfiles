@@ -67,12 +67,12 @@ source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVa
 echo -e "${gray}=================================================${reset}\n"
 
 # we generate a production sql dump
-generateSqlDumpScript=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/generateSqlDump.sh
+generateSqlDumpScript=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/generateProductionSqlDump.sh
 if [ -f "${generateSqlDumpScript}" ]; then
-    echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/prodToPreprod/generateSqlDump.sh custom instructions script has been detected and executed.${reset}\n"
+    echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/prodToPreprod/generateProductionSqlDump.sh custom instructions script has been detected and executed.${reset}\n"
     source ${generateSqlDumpScript}
 else
-    echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/prodToPreprod/generateSqlDump.sh script detected.${reset}\n"
+    echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/prodToPreprod/generateProductionSqlDump.sh script detected.${reset}\n"
 fi
 
 # we export the preprod .env file variables
