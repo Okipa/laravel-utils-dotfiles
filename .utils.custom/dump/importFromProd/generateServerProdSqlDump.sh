@@ -17,14 +17,14 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we create the production dump storage directory
 echo "${purple}▶${reset} Creating server ${serverProductionSqlDumpStoragePath} directory ..."
-echo "${purple}→ mkdir -p ${serverProductionSqlDumpStoragePath}${reset}"
-mkdir -p ${serverProductionSqlDumpStoragePath}
+echo "${purple}→ sudo -u ${serverProdUser} mkdir -p ${serverProductionSqlDumpStoragePath}${reset}"
+sudo -u ${serverProdUser} mkdir -p ${serverProductionSqlDumpStoragePath}
 echo -e "${green}✔${reset} Server ${serverProductionSqlDumpStoragePath} directory available.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
 # we export the .env file variables
-source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/helpers/exportEnvFileVariables.sh)
+sudo -u ${serverProdUser} source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/helpers/exportEnvFileVariables.sh)
 
 # we execute a production pgsql dump
-source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/database/generatePgsqlDump.sh) ${serverProductionSqlDumpStoragePath}
+sudo -u ${serverProdUser} source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/database/generatePgsqlDump.sh) ${serverProductionSqlDumpStoragePath}
