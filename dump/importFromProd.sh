@@ -51,8 +51,8 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we import the production sql dump
 echo "${purple}▶${reset} Importing the production sql dump ..."
-echo "${purple}→ rsync -Prz --info=progress2 ${serverProdUser}@${serverHost}:${serverProductionSqlDumpStoragePath} ${localProductionDumpStoragePath}${reset}"
-rsync -Prz --info=progress2 ${serverProdUser}@${serverHost}:${serverProductionSqlDumpStoragePath} ${localProductionDumpStoragePath}
+echo "${purple}→ rsync -Prz --info=progress2 ${serverProdUser}@${serverHost}:${serverProductionSqlDumpStoragePath}/ ${localProductionDumpStoragePath}${reset}"
+rsync -Prz --info=progress2 ${serverProdUser}@${serverHost}:${serverProductionSqlDumpStoragePath}/ ${localProductionDumpStoragePath}
 echo -e "${green}✔${reset} Production sql dump imported.\n"
 
 echo -e "${gray}=================================================${reset}\n"

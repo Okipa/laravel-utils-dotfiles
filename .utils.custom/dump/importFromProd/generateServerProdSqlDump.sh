@@ -27,4 +27,4 @@ echo -e "${gray}=================================================${reset}\n"
 sudo -u ${serverProdUser} source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/helpers/exportEnvFileVariables.sh)
 
 # we execute a production pgsql dump
-sudo -u ${serverProdUser} source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/database/generatePgsqlDump.sh) ${serverProductionSqlDumpStoragePath}
+sudo -u ${serverProdUser} source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/database/generatePgsqlDump.sh) ${serverProductionSqlDumpStoragePath}/nsn_dump.sql
