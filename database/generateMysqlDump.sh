@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # we get the current script directory
-absolute_path=$(readlink -e -- "${BASH_SOURCE[0]}" && echo x) && absolute_path=${absolute_path%?x}
-dir=$(dirname -- "$absolute_path" && echo x) && dir=${dir%?x}
-sqlGenerateMysqlDumpScriptDirectory=${dir}
+sqlGenerateMysqlDumpScriptDirectory=$(dirname "$(readlink -f ${BASH_SOURCE[0]})")
 
 # we load the scripting colors
 source $(realpath ${sqlGenerateMysqlDumpScriptDirectory}/../helpers/loadScriptingColors.sh)
