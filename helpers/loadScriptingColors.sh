@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # we only want to load the scripting colors variables once during a multiple scripts sequence
 if [ -z $ALREADY_LOADED_COLORS ] ; then

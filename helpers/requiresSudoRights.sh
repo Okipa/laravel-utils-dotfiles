@@ -1,10 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # we only want to check the sudo user rights verification once during a multiple scripts sequence
 if [ -z $ALREADY_CHECKED_SUDO_USER ] ; then
 
     # we get the current script directory
-    helpersRequiresSudoRightsScriptDirectory="$( cd "$(dirname "$0")" ; pwd -P )"
+    absolute_path=$(readlink -e -- "${BASH_SOURCE[0]}" && echo x) && absolute_path=${absolute_path%?x}
+    dir=$(dirname -- "$absolute_path" && echo x) && dir=${dir%?x}
+    helpersRequiresSudoRightsScriptDirectory=${dir}
 
     # we load the scripting colors
     source ${helpersRequiresSudoRightsScriptDirectory}/loadScriptingColors.sh

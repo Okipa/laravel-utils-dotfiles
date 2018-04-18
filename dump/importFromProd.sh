@@ -1,7 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # we get the current script directory
-dumpImportScriptDirectory="$( cd "$(dirname "$0")" ; pwd -P )"
+absolute_path=$(readlink -e -- "${BASH_SOURCE[0]}" && echo x) && absolute_path=${absolute_path%?x}
+dir=$(dirname -- "$absolute_path" && echo x) && dir=${dir%?x}
+dumpImportScriptDirectory=${dir}
 
 # we load the scripting colors
 source $(realpath ${dumpImportScriptDirectory}/../helpers/loadScriptingColors.sh)

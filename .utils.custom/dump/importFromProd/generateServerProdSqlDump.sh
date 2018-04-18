@@ -1,9 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # example
 
 # we get the current script directory
-dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory="$( cd "$(dirname "$0")" ; pwd -P )"
+absolute_path=$(readlink -e -- "${BASH_SOURCE[0]}" && echo x) && absolute_path=${absolute_path%?x}
+dir=$(dirname -- "$absolute_path" && echo x) && dir=${dir%?x}
+dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory=${dir}
 
 echo -e "${gray}=================================================${reset}\n"
 
@@ -24,7 +26,10 @@ echo -e "${green}✔${reset} Server ${serverProductionSqlDumpStoragePath} direct
 echo -e "${gray}=================================================${reset}\n"
 
 # we export the .env file variables
-sudo -u ${serverProdUser} source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/helpers/exportEnvFileVariables.sh)
+source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/helpers/exportEnvFileVariables.sh)
 
 # we execute a production pgsql dump
-sudo -u ${serverProdUser} source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/database/generatePgsqlDump.sh) ${serverProductionSqlDumpStoragePath}/nsn_dump.sql
+source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/database/generatePgsqlDump.sh) ${serverProductionSqlDumpStoragePath}/nsn_dump.sql
+
+# we export the production server .env file variables and execute a production pgsql dump with the server production user
+su ${serverProdUser} -c "source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/helpers/exportEnvFileVariables.sh) --; source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/database/generatePgsqlDump.sh) ${serverProductionSqlDumpStoragePath}/nsn_dump.sql"

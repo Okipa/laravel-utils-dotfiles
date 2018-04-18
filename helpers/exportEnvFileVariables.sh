@@ -1,7 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # we get the current script directory
-helpersExportEnvFileVariablesScriptDirectory="$( cd "$(dirname "$0")" ; pwd -P )"
+absolute_path=$(readlink -e -- "${BASH_SOURCE[0]}" && echo x) && absolute_path=${absolute_path%?x}
+dir=$(dirname -- "$absolute_path" && echo x) && dir=${dir%?x}
+helpersExportEnvFileVariablesScriptDirectory=${dir}
 
 # we load the scripting colors
 source ${helpersExportEnvFileVariablesScriptDirectory}/loadScriptingColors.sh
