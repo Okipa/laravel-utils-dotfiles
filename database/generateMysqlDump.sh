@@ -31,4 +31,4 @@ destinationPath="$1"
 echo "${purple}▶${reset} Generating a mysql dump for the ${DB_DATABASE} database ..."
 echo "${purple}→ MYSQL_PWD=${DB_PASSWORD} mysqldump -u ${DB_USERNAME} -h ${DB_HOST} ${DB_DATABASE} > ${destinationPath}${reset}"
 MYSQL_PWD=${DB_PASSWORD} mysqldump -u ${DB_USERNAME} -h ${DB_HOST} ${DB_DATABASE} > ${destinationPath}
-echo -e "${green}✔${reset} Mysql dump generated for the ${DB_DATABASE} database and stored in the ${destinationPath} directory.\n"
+echo -e "${green}✔${reset} Mysql dump generated for the ${purple}${DB_DATABASE}${reset} database and stored in the ${purple}${destinationPath}${reset} directory.\n"

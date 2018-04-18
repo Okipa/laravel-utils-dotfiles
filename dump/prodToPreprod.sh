@@ -85,7 +85,7 @@ echo "${purple}▶${reset} Importing the sql production dump into the ${purple}$
 echo "${purple}→ sudo -i -u ${serverPreprodUser} psql "${DB_DATABASE}" < ${serverProductionSqlDumpStorageDirectory}/nsn_dump.sql${reset}"
 sudo -i -u ${serverPreprodUser} psql "${DB_DATABASE}" < ${serverProductionSqlDumpStorageDirectory}/nsn_dump.sql
 echo -e "${green}✔${reset} Production sql dump successfully imported into the ${purple}${DB_DATABASE}${reset} database.\n"
- preprod
+
 echo -e "${gray}=================================================${reset}\n"
 
 echo "${purple}▶${reset} Applying Laravel migration to ${purple}${DB_DATABASE}${reset} database ..."

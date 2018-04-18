@@ -37,7 +37,7 @@ echo -e "${gray}=================================================${reset}\n"
 echo "${purple}▶${reset} Creating the ${localProductionDumpStoragePath} directory locally ..."
 echo "${purple}→ mkdir -p ${localProductionDumpStoragePath}${reset}"
 mkdir -p ${localProductionDumpStoragePath}
-echo -e "${green}✔${reset} Local ${localProductionDumpStoragePath} directory available.\n"
+echo -e "${green}✔${reset} Local ${purple}${localProductionDumpStoragePath}${reset} directory available.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
