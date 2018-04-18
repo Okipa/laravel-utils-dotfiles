@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-helpersCheckFileExistsScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+helpersCheckFileExistsScriptDirectory="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # we load the scripting colors
 source ${helpersCheckFileExistsScriptDirectory}/loadScriptingColors.sh

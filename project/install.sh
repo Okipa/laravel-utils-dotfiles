@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-projectInstallScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+projectInstallScriptDirectory="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # we load the scripting colors
 source $(realpath ${projectInstallScriptDirectory}/../helpers/loadScriptingColors.sh)

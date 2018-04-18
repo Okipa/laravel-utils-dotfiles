@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-laradockWorkspaceScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+laradockWorkspaceScriptDirectory="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # we export the .env file variables
 source $(realpath ${laradockWorkspaceScriptDirectory}/../helpers/exportEnvFileVariables.sh) --

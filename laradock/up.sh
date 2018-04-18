@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-laradockUpScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+laradockUpScriptDirectory="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # we load the scripting colors
 source $(realpath ${laradockUpScriptDirectory}/../helpers/loadScriptingColors.sh)

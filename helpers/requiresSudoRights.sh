@@ -4,7 +4,7 @@
 if [ -z $ALREADY_CHECKED_SUDO_USER ] ; then
 
     # we get the current script directory
-    helpersRequiresSudoRightsScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    helpersRequiresSudoRightsScriptDirectory="$( cd "$(dirname "$0")" ; pwd -P )"
 
     # we load the scripting colors
     source ${helpersRequiresSudoRightsScriptDirectory}/loadScriptingColors.sh

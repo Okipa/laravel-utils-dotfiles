@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-helpersRequiresEnvironmentScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+helpersRequiresEnvironmentScriptDirectory="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # we load the scripting colors
 source ${helpersRequiresEnvironmentScriptDirectory}/loadScriptingColors.sh

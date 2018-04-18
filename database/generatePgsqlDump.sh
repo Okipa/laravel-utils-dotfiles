@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # we get the current script directory
-sqlGeneratePgsqlDumpScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+sqlGeneratePgsqlDumpScriptDirectory="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # we load the scripting colors
 source $(realpath ${sqlGeneratePgsqlDumpScriptDirectory}/../helpers/loadScriptingColors.sh)

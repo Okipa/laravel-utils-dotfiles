@@ -3,7 +3,7 @@
 # example
 
 # we get the current script directory
-dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory="$( cd "$(dirname "$0")" ; pwd -P )"
 
 echo -e "${gray}=================================================${reset}\n"
 
