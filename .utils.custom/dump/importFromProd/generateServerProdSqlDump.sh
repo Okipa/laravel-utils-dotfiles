@@ -16,11 +16,9 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we create the production dump storage directory
 echo "${purple}▶${reset} Creating server ${serverProductionSqlDumpStoragePath} directory ..."
-echo "${purple}→ su ${serverProdUser} mkdir -p ${serverProductionSqlDumpStoragePath}${reset}"
-su ${serverProdUser} mkdir -p ${serverProductionSqlDumpStoragePath}
+echo "${purple}→ su ${serverProdUser} -c \"mkdir -p ${serverProductionSqlDumpStoragePath}\"${reset}"
+su ${serverProdUser} -c "mkdir -p ${serverProductionSqlDumpStoragePath}"
 echo -e "${green}✔${reset} Server ${purple}${serverProductionSqlDumpStoragePath}${reset} directory available.\n"
-
-echo -e "${gray}=================================================${reset}\n"
 
 # we export the .env file variables
 source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/helpers/exportEnvFileVariables.sh)
