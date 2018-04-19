@@ -6,9 +6,6 @@ projectInstallScriptDirectory=$(dirname "$(readlink -f ${BASH_SOURCE[0]})")
 # we load the scripting colors
 source $(realpath ${projectInstallScriptDirectory}/../helpers/loadScriptingColors.sh)
 
-# we check if the current user has the sudo rights
-source $(realpath ${projectInstallScriptDirectory}/../helpers/requiresSudoRights.sh)
-
 # .env file detection
 source $(realpath ${projectInstallScriptDirectory}/../helpers/checkFileExists.sh) $(realpath "${projectInstallScriptDirectory}/../../.env")
 
