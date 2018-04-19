@@ -71,9 +71,6 @@
     > | Option | Required | Description |
     > |---|---|---|
     > | --root | No | Access to the docker laradock workspace with the `root` user |
-    
-### .utils/project/
-- `install.sh` : automatically execute all the project installation tasks.
 
 ### .utils/server/
 - `configCheck.sh` : check that the server has the required dependencies.
@@ -103,9 +100,6 @@ The following dotfiles that are eligible for custom instructions :
 
 ### .utils/laradock/ => .utils.custom/laradock/
 - `up.sh` : specify which laradock container to start.
-
-### .utils/project/ => .utils.custom/project/
-- `install.sh` : add additional instructions at the end of the project local installation process.
 
 ### .utils/server/ => .utils.custom/server/
 - `configCheck.sh` : set which server packages installations we should verify.
