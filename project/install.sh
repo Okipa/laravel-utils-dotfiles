@@ -15,13 +15,6 @@ echo -e "${purple}▽ LOCAL PROJET INSTALL : STARTING ▽${reset}\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-echo "${purple}▶${reset} Updating composer ...${reset}"
-echo "${purple}→ composer self-update${reset}"
-composer self-update
-echo -e "${green}✔${reset} Composer updated${reset}\n"
-
-echo -e "${gray}=================================================${reset}\n"
-
 # composer install / update
 echo "${purple}▶${reset} Installing / updating composer dependencies ...${reset}"
 
