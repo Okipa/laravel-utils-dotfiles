@@ -16,12 +16,6 @@ echo -e "${gray}=================================================${reset}\n"
 
 echo -e "${purple}▽ LOCAL PROJET INSTALL : STARTING ▽${reset}\n"
 
-# server locales installation
-source $(realpath ${projectInstallScriptDirectory}/../server/localesInstall.sh) --force
-
-# server supervisor configuration
-source $(realpath ${projectInstallScriptDirectory}/../supervisor/install.sh) --force
-
 echo -e "${gray}=================================================${reset}\n"
 
 echo "${purple}▶${reset} Updating composer ...${reset}"
@@ -35,12 +29,12 @@ echo -e "${gray}=================================================${reset}\n"
 echo "${purple}▶${reset} Installing / updating composer dependencies ...${reset}"
 
 if [ -d vendor ]; then
-    echo "${gray}vendor directory detected${reset}"
+    echo "${gray}→ vendor directory detected${reset}"
     echo "${purple}→ composer update --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction${reset}"
     composer update --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction
     echo -e "${green}✔${reset} Composer dependencies updated${reset}\n"
 else
-    echo "${gray}vendor directory not detected${reset}"
+    echo "${gray}→ vendor directory not detected${reset}"
     echo "${purple}→ composer install --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction${reset}"
     composer install --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction
     echo -e "${green}✔${reset} Composer dependencies installed${reset}\n"

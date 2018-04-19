@@ -7,12 +7,12 @@ echo -e "${gray}=================================================${reset}\n"
 # bower install / update
 echo "${purple}▶${reset} Installing / updating bower dependencies ..."
 if [ -d bower_components ]; then
-    echo "${gray}Bower vendor directory detected${reset}"
+    echo "${gray}→ Bower vendor directory detected${reset}"
     echo "${purple}→ ./node_modules/bower/bin/bower update${reset}"
     ./node_modules/bower/bin/bower update
     echo -e "${green}✔${reset} Bower dependencies updated\n"
 else
-    echo "${gray}Bower vendor directory NOT detected${reset}"
+    echo "${gray}→ Bower vendor directory NOT detected${reset}"
     echo "${purple}→ ./node_modules/bower/bin/bower install${reset}"
     ./node_modules/bower/bin/bower install
     echo -e "${green}✔${reset} Bower dependencies installed\n"
