@@ -1,5 +1,12 @@
 # Laravel utils dotfiles
 
+[![Source Code](https://img.shields.io/badge/source-okipa/laravel--utils--dotfiles-blue.svg)](https://github.com/Okipa/laravel-utils-dotfiles)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+Utils dotfiles for laravel projects.
+
+------------------------------------------------------------------------------------------------------------------------
+
 ## Installation
 - install the dotfiles in your project with the following command : `git submodule add https://github.com/Okipa/laravel-utils-dotfiles.git .utils`.
 - Make sure you add the following lines in the `scripts` part of your `composer.json` file to make sure that you always have an updated version of this git submodule :
@@ -17,6 +24,10 @@
 ```
 - copy the following command from the root path of your project  : `cp -R .utils/.utils.custom .utils.custom`
 
+------------------------------------------------------------------------------------------------------------------------
+
+## API
+
 ### .utils/database/
 - `generatePgsqlDump.sh` : generate a pgsql dump.
 
@@ -28,7 +39,7 @@
     > | Argument | Required | Description |
     > |---|---|---|
     > | [destinationPath] | Yes | Specify a destination path for the pgsql dump |
-    
+
 ### .utils/dump/
 - `importFromProd.sh` : import a production dump locally.
 - `prodToPreprod.sh` : execute a dump from the production and import it in the preprod.
@@ -50,7 +61,7 @@
 - `exportEnvFileVariables.sh` : export the laravel environment variables for a bash use.
 
     > **Notice :** Only one argument is taken care of, use only one of the possible arguments listed bellow.
-    
+
     > | Argument | Required | Description |
     > |---|---|---|
     > | [envFilePath] | No | Specify a custom env file path - if not provided, the current laravel project env file is used |
