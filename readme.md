@@ -30,7 +30,7 @@ Utils dotfiles for laravel projects.
 Some unix functions like `readlink` or `realpath` may have a different implementation on Linux and MacOS.  
 To get the same behaviour on the two OS and make these dotfiles work correctly, follow those steps :
 - Install the [GNU Coreutils](https://en.wikipedia.org/wiki/GNU_Core_Utilities) : `brew install coreutils`
-- Then, add this line to your .bashrc or .zshrc : `export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"`
+- Then, add this line to your .bashrc or .zshrc : `export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"`  
 That's all !
 
 ------------------------------------------------------------------------------------------------------------------------
