@@ -45,7 +45,7 @@ To get the correct rsync version installed, also execute the following steps :
 - add this line to your .bashrc or .zshrc :
 ```bash
 export PATH="/usr/bin/local:$PATH"
-``
+```
 
 ------------------------------------------------------------------------------------------------------------------------
 
