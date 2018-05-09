@@ -28,8 +28,8 @@ Utils dotfiles for laravel projects.
 
 ## Requirements
 - rsync >= v3.*
-- readlink (GNU coreutils) >=  8.*
-- realpath (GNU coreutils) >= 8.*
+- readlink (GNU coreutils) >= v8.*
+- realpath (GNU coreutils) >= v8.*
 
 ### MacOS users
 Some unix functions like `readlink` or `realpath` may have a different implementation on Linux and MacOS.  
