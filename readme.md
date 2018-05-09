@@ -43,7 +43,7 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 To get the correct rsync version installed, also execute the following steps :
 - install the latest rsync version : `brew install rsync`
 - add this line to your .bashrc or .zshrc :
-```bash`
+```bash
 export PATH="/usr/bin/local:$PATH"
 ``
 
