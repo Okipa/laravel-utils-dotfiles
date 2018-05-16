@@ -11,12 +11,14 @@ Utils dotfiles for laravel projects.
 - install the dotfiles in your project with the following command : `git submodule add https://github.com/Okipa/laravel-utils-dotfiles.git .utils`.
 - Make sure you add the following lines in the `scripts` part of your `composer.json` file to make sure that you always have an updated version of this git submodule :
 ```
+// ...
 "post-install-cmd": [
     "git submodule sync --recursive && git submodule update --init --recursive --remote --force"
 ],
 "post-update-cmd": [
     "git submodule sync --recursive && git submodule update --init --recursive --remote --force"
 ],
+// ...
 ```
 - copy the following command from the root path of your project  : `cp -R .utils/.utils.custom .utils.custom`
 
