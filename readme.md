@@ -12,14 +12,10 @@ Utils dotfiles for laravel projects.
 - Make sure you add the following lines in the `scripts` part of your `composer.json` file to make sure that you always have an updated version of this git submodule :
 ```
 "post-install-cmd": [
-    // ...
-    "git submodule sync --recursive && git submodule update --init --recursive --remote --force",
-    // ...
+    "git submodule sync --recursive && git submodule update --init --recursive --remote --force"
 ],
 "post-update-cmd": [
-    // ...
-    "git submodule sync --recursive && git submodule update --init --recursive --remote --force",
-    // ...
+    "git submodule sync --recursive && git submodule update --init --recursive --remote --force"
 ],
 ```
 - copy the following command from the root path of your project  : `cp -R .utils/.utils.custom .utils.custom`
