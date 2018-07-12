@@ -24,8 +24,8 @@ function startContainers () {
         echo "${purple}▶${reset} Stopping and removing ${APP_NAME} laradock containers ..."
         echo "${purple}→ cd ${LARADOCK_DIRECTORY_PATH}${reset}"
         cd ${LARADOCK_DIRECTORY_PATH}
-        echo "${purple}→ docker-compose down${reset}"
-        docker-compose down
+        echo "${purple}→ docker-compose down --volumes --remove-orphans${reset}"
+        docker-compose down --volumes --remove-orphans
         echo "${purple}→ cd ${PROJECT_PATH}${reset}"
         cd ${PROJECT_PATH}
         echo -e "${green}✔${reset} ${APP_NAME} laradock containers stopped and removed.\n"
