@@ -21,14 +21,14 @@ function startContainers () {
 
     if [[ ${arguments} = *'build'* ]]; then
         echo -e "${gray}=================================================${reset}\n"
-        echo "${purple}▶${reset} Stopping and removing ${APP_NAME} laradock containers ..."
+        echo "${purple}▶${reset} Stopping and removing ${APP_NAME} laradock containers and volumes ..."
         echo "${purple}→ cd ${LARADOCK_DIRECTORY_PATH}${reset}"
         cd ${LARADOCK_DIRECTORY_PATH}
         echo "${purple}→ docker-compose down --volumes --remove-orphans${reset}"
         docker-compose down --volumes --remove-orphans
         echo "${purple}→ cd ${PROJECT_PATH}${reset}"
         cd ${PROJECT_PATH}
-        echo -e "${green}✔${reset} ${APP_NAME} laradock containers stopped and removed.\n"
+        echo -e "${green}✔${reset} ${APP_NAME} laradock containers and volumes stopped and removed.\n"
     fi
 
     echo -e "${gray}=================================================${reset}\n"
