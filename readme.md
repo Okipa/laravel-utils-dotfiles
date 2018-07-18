@@ -95,14 +95,14 @@ export PATH="/usr/bin/local:$PATH"
     > | [environmentName] | Yes | Specify the environment name the script should run under |
 - `requiresSudoRights.sh` : check that a user with sudo rights is used on the script execution.
 
-### .utils/laradock/
-- `stop.sh` : stop the project laradock docker containers.
-- `up.sh` : start the project laradock docker containers (you can add any docker option after the script call).
-- `workspace.sh` : shortcut to get a ssh access to the laradock workspace with the `laradock` user.
+### .utils/docker/
+- `stop.sh` : stop the project docker containers.
+- `up.sh` : start the project docker containers (you can add any docker option after the script call).
+- `workspace.sh` : shortcut to get a ssh access to the docker workspace with the right user.
 
     > | Option | Required | Description |
     > |---|---|---|
-    > | --root | No | Access to the docker laradock workspace with the `root` user |
+    > | --root | No | Access to the docker workspace with the `root` user |
 
 ### .utils/server/
 - `configCheck.sh` : check that the server has the required dependencies.
@@ -130,8 +130,8 @@ The following dotfiles that are eligible for custom instructions :
     - `generateProductionSqlDump.sh` : generate the production sql dump that will be imported in the preprod database.
     - `setRequiredVariables.sh` : set the required variables for the production to preprod dump script.
 
-### .utils/laradock/ => .utils.custom/laradock/
-- `up.sh` : specify which laradock container to start.
+### .utils/docker/ => .utils.custom/docker/
+- `up.sh` : specify which docker container to start.
 
 ### .utils/server/ => .utils.custom/server/
 - `configCheck.sh` : set which server packages installations we should verify.
