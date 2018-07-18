@@ -14,14 +14,14 @@ source $(realpath ${dockerWorkspaceScriptDirectory}/../helpers/checkVariableIsDe
 arguments=$@
 
 # we set the script required variables
-setRequiredVariablesScript=${dockerWorkspaceScriptDirectory}/../../../.utils.custom/docker/workspace/setRequiredVariables.sh
+setRequiredVariablesScript=${dockerWorkspaceScriptDirectory}/../../.utils.custom/docker/workspace/setRequiredVariables.sh
 if [ -f "${setRequiredVariablesScript}" ]; then
     echo -e "${green}✔${reset} ${gray}The .utils.custom/docker/workspace/setRequiredVariables.sh custom instructions script has been detected and executed.${reset}\n"
     source ${setRequiredVariablesScript}
 else
     echo -e "${red}✗${reset} ${gray}No .utils.custom/docker/workspace/setRequiredVariables.sh script detected.${reset}\n"
 fi
-source $(realpath ${dockerWorkspaceScriptDirectory}/../../helpers/checkVariableIsDefined.sh) dockerUser
+source $(realpath ${dockerWorkspaceScriptDirectory}/../helpers/checkVariableIsDefined.sh) dockerUser
 
 # arguments
 if [[ ${arguments} = *'root'* ]]; then
