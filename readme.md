@@ -123,15 +123,17 @@ The following dotfiles that are eligible for custom instructions :
 - importFromProd/
     - `additionalInstructions.sh` : set additional instructions at the end of the production dump import script.
     - `generateServerProdSqlDump.sh` : generate the sql production dump on the project server.
-    - `setRequiredVariables.sh` : set the required variables required for the production dump import script.
+    - `setRequiredVariables.sh` : set the variables required for the production dump import script.
 - prodToPreprod/
     - `additionalInstructions.sh` : set additional instructions at the end of the production to preprod dump script.
     - `dropDatabase.sh` : drop the preprod database before the import of the production sql dump in the preprod database.
     - `generateProductionSqlDump.sh` : generate the production sql dump that will be imported in the preprod database.
-    - `setRequiredVariables.sh` : set the required variables for the production to preprod dump script.
+    - `setRequiredVariables.sh` : set the variables required for the production to preprod dump script.
 
 ### .utils/docker/ => .utils.custom/docker/
 - `up.sh` : specify which docker container to start.
+- workspace/
+    - `setRequiredVariables.sh` : set the variables required for the docker use.
 
 ### .utils/server/ => .utils.custom/server/
 - `configCheck.sh` : set which server packages installations we should verify.
