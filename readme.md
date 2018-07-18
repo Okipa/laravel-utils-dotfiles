@@ -131,7 +131,7 @@ The following dotfiles that are eligible for custom instructions :
     - `setRequiredVariables.sh` : set the variables required for the production to preprod dump script.
 
 ### .utils/docker/ => .utils.custom/docker/
-- `up.sh` : specify which docker container to start.
+- `up.sh` : specify which docker containers to start.
 - workspace/
     - `setRequiredVariables.sh` : set the variables required for the docker use.
 
