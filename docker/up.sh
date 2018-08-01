@@ -19,7 +19,7 @@ arguments=$@
 # we set the script functions
 function startContainers () {
 
-    if [[ ${arguments} = *'build'* ]]; then
+    if [[ ${arguments} = *'build'* || ${arguments} = *'force-recreate'* ]]; then
         echo -e "${gray}=================================================${reset}\n"
         echo "${purple}▶${reset} Stopping and removing ${APP_NAME} docker containers and volumes ..."
         echo "${purple}→ cd ${DOCKER_DIRECTORY_PATH}${reset}"
