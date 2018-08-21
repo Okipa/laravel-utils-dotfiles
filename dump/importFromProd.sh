@@ -25,6 +25,7 @@ if [ -f "${setRequiredVariablesScript}" ]; then
 else
     echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/importFromProd/setRequiredVariables.sh script detected.${reset}\n"
 fi
+source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) sshConnexionUser
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProdUser
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverHost
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionProjectPath
@@ -44,7 +45,7 @@ echo -e "${gray}=================================================${reset}\n"
 # we execute the dump archive generation on the production server
 echo "${purple}▶${reset} Generating the server production dump ..."
 echo "${purple}→ ssh ${serverProdUser}@${serverHost} ${serverProductionProjectPath}/current/.utils.custom/dump/importFromProd/generateServerProdSqlDump.sh${reset}"
-ssh ${serverProdUser}@${serverHost} ${serverProductionProjectPath}/current/.utils.custom/dump/importFromProd/generateServerProdSqlDump.sh
+ssh ${sshConnexionUser}@${serverHost} ${serverProductionProjectPath}/current/.utils.custom/dump/importFromProd/generateServerProdSqlDump.sh
 echo -e "${green}✔${reset} Server production dump generated.\n"
 
 echo -e "${gray}=================================================${reset}\n"
