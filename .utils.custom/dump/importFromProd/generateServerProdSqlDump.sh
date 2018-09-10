@@ -24,7 +24,7 @@ echo -e "${green}✔${reset} Server ${purple}${serverProductionSqlDumpStoragePat
 source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/helpers/exportEnvFileVariables.sh)
 
 # we execute a production pgsql dump
-source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/database/generatePgsqlDump.sh) ${serverProductionSqlDumpStoragePath}/dump.sql
+source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/database/generateMysqlDump.sh) ${serverProductionSqlDumpStoragePath}/dump.sql
 
 echo -e "${gray}=================================================${reset}\n"
 
