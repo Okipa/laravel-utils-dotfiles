@@ -29,7 +29,7 @@ source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/
 echo -e "${gray}=================================================${reset}\n"
 
 # we change the sql dump owner
-echo "${purple}▶${reset} Changing the ${serverProductionSqlDumpStoragePath}/nsn_dump.sql owner ..."
-echo "${purple}→ chown ${serverProdUser}:${serverProdGroup} ${serverProductionSqlDumpStoragePath}/nsn_dump.sql${reset}"
-chown ${serverProdUser}:${serverProdGroup} ${serverProductionSqlDumpStoragePath}/nsn_dump.sql
-echo -e "${green}✔${reset} ${serverProductionSqlDumpStoragePath}/nsn_dump.sql owner changed to ${purple}${serverProdUser}:${serverProdGroup}${reset}.\n"
+echo "${purple}▶${reset} Changing the ${serverProductionSqlDumpStoragePath}/dump.sql owner ..."
+echo "${purple}→ chown ${serverProdUser}:${serverProdGroup} ${serverProductionSqlDumpStoragePath}/dump.sql${reset}"
+chown ${serverProdUser}:${serverProdGroup} ${serverProductionSqlDumpStoragePath}/dump.sql
+echo -e "${green}✔${reset} ${serverProductionSqlDumpStoragePath}/dump.sql owner changed to ${purple}${serverProdUser}:${serverProdGroup}${reset}.\n"
