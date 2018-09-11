@@ -27,7 +27,6 @@ else
 fi
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) sshConnexionUser
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverUser
-source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverUserGroup
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverHost
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProjectPath
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverSqlDumpStoragePath
@@ -53,17 +52,17 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we import the sql dump
 echo "${purple}▶${reset} Importing the production sql dump ..."
-echo "${purple}→ rsync -Prz --info=progress2 ${serverUser}@${serverHost}:${serverSqlDumpStoragePath}/ ${localDumpStoragePath}${reset}"
-rsync -Prz --info=progress2 ${serverUser}@${serverHost}:${serverSqlDumpStoragePath}/ ${localDumpStoragePath}
+echo "${purple}→ rsync -Prz --info=progress2 ${sshConnexionUser}@${serverHost}:${serverSqlDumpStoragePath}/ ${localDumpStoragePath}${reset}"
+rsync -Prz --info=progress2 ${sshConnexionUser}@${serverHost}:${serverSqlDumpStoragePath}/ ${localDumpStoragePath}
 echo -e "${green}✔${reset} Production sql dump imported.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
 # we execute the additional instructions
-dumpimportFromServerAdditionalInstructionsScript=${dumpImportScriptDirectory}/../../.utils.custom/dump/importFromServer/additionalInstructions.sh
-if [ -f "${dumpimportFromServerAdditionalInstructionsScript}" ]; then
+dumpImportFromServerAdditionalInstructionsScript=${dumpImportScriptDirectory}/../../.utils.custom/dump/importFromServer/additionalInstructions.sh
+if [ -f "${dumpImportFromServerAdditionalInstructionsScript}" ]; then
     echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/importFromServer/additionalInstructions.sh custom instructions script has been detected and executed.${reset}\n"
-    source ${dumpimportFromServerAdditionalInstructionsScript}
+    source ${dumpImportFromServerAdditionalInstructionsScript}
 else
     echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/importFromServer/additionalInstructions.sh script detected.${reset}\n"
 fi
