@@ -3,14 +3,14 @@
 # example
 
 # we get the current script directory
-dumpImportFromServergenerateServerSqlDumpScriptDirectory=$(dirname "$(readlink -f ${BASH_SOURCE[0]})")
+dumpImportFromServerGenerateServerSqlDumpScriptDirectory=$(dirname "$(readlink -f ${BASH_SOURCE[0]})")
 
 # we set the required variables
-source ${dumpImportFromServergenerateServerSqlDumpScriptDirectory}/setRequiredVariables.sh
-source $(realpath ${dumpImportFromServergenerateServerSqlDumpScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverUser
-source $(realpath ${dumpImportFromServergenerateServerSqlDumpScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverUserGroup
-source $(realpath ${dumpImportFromServergenerateServerSqlDumpScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverProjectPath
-source $(realpath ${dumpImportFromServergenerateServerSqlDumpScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverSqlDumpStoragePath
+source ${dumpImportFromServerGenerateServerSqlDumpScriptDirectory}/setRequiredVariables.sh
+source $(realpath ${dumpImportFromServerGenerateServerSqlDumpScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverUser
+source $(realpath ${dumpImportFromServerGenerateServerSqlDumpScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverUserGroup
+source $(realpath ${dumpImportFromServerGenerateServerSqlDumpScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverProjectPath
+source $(realpath ${dumpImportFromServerGenerateServerSqlDumpScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverSqlDumpStoragePath
 
 echo -e "${gray}=================================================${reset}\n"
 
@@ -21,10 +21,10 @@ sudo -u ${serverUser} mkdir -p ${serverSqlDumpStoragePath}
 echo -e "${green}✔${reset} Server ${purple}${serverSqlDumpStoragePath}${reset} directory available.\n"
 
 # we export the .env file variables
-source $(realpath ${dumpImportFromServergenerateServerSqlDumpScriptDirectory}/../../../.utils/helpers/exportEnvFileVariables.sh)
+source $(realpath ${dumpImportFromServerGenerateServerSqlDumpScriptDirectory}/../../../.utils/helpers/exportEnvFileVariables.sh)
 
 # we execute a production pgsql dump
-source $(realpath ${dumpImportFromServergenerateServerSqlDumpScriptDirectory}/../../../.utils/database/generateMysqlDump.sh) ${serverSqlDumpStoragePath}/dump.sql
+source $(realpath ${dumpImportFromServerGenerateServerSqlDumpScriptDirectory}/../../../.utils/database/generateMysqlDump.sh) ${serverSqlDumpStoragePath}/dump.sql
 
 echo -e "${gray}=================================================${reset}\n"
 
