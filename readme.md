@@ -122,7 +122,7 @@ The following dotfiles that are eligible for custom instructions :
 ### .utils/dump/ => .utils.custom/dump/
 - importFromServer/
     - `additionalInstructions.sh` : set additional instructions at the end of the production dump import script.
-    - `generateServerProdSqlDump.sh` : generate the sql production dump on the project server.
+    - `generateServerSqlDump.sh` : generate the sql production dump on the project server.
     - `setRequiredVariables.sh` : set the variables required for the production dump import script.
 - prodToPreprod/
     - `additionalInstructions.sh` : set additional instructions at the end of the production to preprod dump script.

@@ -43,15 +43,15 @@ echo -e "${green}✔${reset} Local ${purple}${localDumpStoragePath}${reset} dire
 
 echo -e "${gray}=================================================${reset}\n"
 
-# we execute the dump archive generation on the production server
+# we execute the dump archive generation on the server
 echo "${purple}▶${reset} Generating the server production dump ..."
-echo "${purple}→ ssh ${serverUser}@${serverHost} ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerProdSqlDump.sh${reset}"
-ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerProdSqlDump.sh
+echo "${purple}→ ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerSqlDump.sh${reset}"
+ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerSqlDump.sh
 echo -e "${green}✔${reset} Server production dump generated.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-# we import the production sql dump
+# we import the sql dump
 echo "${purple}▶${reset} Importing the production sql dump ..."
 echo "${purple}→ rsync -Prz --info=progress2 ${serverUser}@${serverHost}:${serverSqlDumpStoragePath}/ ${localDumpStoragePath}${reset}"
 rsync -Prz --info=progress2 ${serverUser}@${serverHost}:${serverSqlDumpStoragePath}/ ${localDumpStoragePath}
