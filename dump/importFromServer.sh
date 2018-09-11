@@ -26,7 +26,6 @@ else
     echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/importFromServer/setRequiredVariables.sh script detected.${reset}\n"
 fi
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) sshConnexionUser
-source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverUser
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverHost
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProjectPath
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverSqlDumpStoragePath
