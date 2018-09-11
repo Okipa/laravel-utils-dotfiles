@@ -26,7 +26,7 @@ else
     echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/prodToPreprod/setRequiredVariables.sh script detected.${reset}\n"
 fi
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverPreprodUser
-source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProdUser
+source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverPreprodGroup
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverPreprodProjectPath
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionProjectPath
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionSqlDumpStorageDirectory
@@ -35,8 +35,8 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we set the maintenance mode
 echo "${purple}▶${reset} Enabling maintenance mode ..."
-echo "${purple}→ /usr/bin/php ${serverPreprodProjectPath}/current/artisan down${reset}"
-/usr/bin/php ${serverPreprodProjectPath}/current/artisan down
+echo "${purple}→ sudo -u ${serverPreprodUser} /usr/bin/php ${serverPreprodProjectPath}/current/artisan down${reset}"
+sudo -u ${serverPreprodUser} /usr/bin/php ${serverPreprodProjectPath}/current/artisan down
 echo -e "${green}✔${reset} Maintenance mode enabled.\n"
 
 echo -e "${gray}=================================================${reset}\n"
@@ -53,12 +53,12 @@ source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVa
 echo -e "${gray}=================================================${reset}\n"
 
 # we drop the preprod database
-dropDatabaseScript=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/dropDatabase.sh
-if [ -f "${dropDatabaseScript}" ]; then
-    echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/prodToPreprod/dropDatabase.sh custom instructions script has been detected and executed.${reset}\n"
-    source ${dropDatabaseScript}
+dropDbTablesScript=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/dropDbTables.sh
+if [ -f "${dropDbTablesScript}" ]; then
+    echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/prodToPreprod/dropDbTables.sh custom instructions script has been detected and executed.${reset}\n"
+    source ${dropDbTablesScript}
 else
-    echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/prodToPreprod/dropDatabase.sh script detected.${reset}\n"
+    echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/prodToPreprod/dropDbTables.sh script detected.${reset}\n"
 fi
 
 # we export the production .env file variables
@@ -81,16 +81,20 @@ source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVa
 echo -e "${gray}=================================================${reset}\n"
 
 # we import the sql production dump into preprod
-echo "${purple}▶${reset} Importing the sql production dump into the ${purple}${DB_DATABASE}${reset} database ..."
-echo "${purple}→ su ${serverPreprodUser} -c \"psql ${DB_DATABASE} < ${serverProductionSqlDumpStorageDirectory}/nsn_dump.sql\"${reset}"
-su ${serverPreprodUser} -c "psql ${DB_DATABASE} < ${serverProductionSqlDumpStorageDirectory}/nsn_dump.sql"
-echo -e "${green}✔${reset} Production sql dump successfully imported into the ${purple}${DB_DATABASE}${reset} database.\n"
+importProductionSqlDumpScript=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/importProductionSqlDump.sh
+if [ -f "${importProductionSqlDumpScript}" ]; then
+    echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/prodToPreprod/importProductionSqlDump.sh custom instructions script has been detected and executed.${reset}\n"
+    source ${importProductionSqlDumpScript}
+else
+    echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/prodToPreprod/importProductionSqlDump.sh script detected.${reset}\n"
+fi
 
 echo -e "${gray}=================================================${reset}\n"
 
+# we execute the migrations
 echo "${purple}▶${reset} Executing Laravel migration to ${purple}${DB_DATABASE}${reset} database ..."
-echo "${purple}→ su ${serverPreprodUser} -c \"/usr/bin/php ${serverPreprodProjectPath}/current/artisan migrate${reset}\""
-su ${serverPreprodUser} -c "/usr/bin/php ${serverPreprodProjectPath}/current/artisan migrate"
+echo "${purple}→ sudo -u ${serverPreprodUser} /usr/bin/php ${serverPreprodProjectPath}/current/artisan migrate${reset}"
+sudo -u ${serverPreprodUser} /usr/bin/php ${serverPreprodProjectPath}/current/artisan migrate
 echo -e "${green}✔${reset} Laravel migrations executed on the ${purple}${DB_DATABASE}${reset} database.\n"
 
 echo -e "${gray}=================================================${reset}\n"
@@ -108,8 +112,8 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we remove the maintenance mode
 echo "${purple}▶${reset} Disabling maintenance mode ..."
-echo "${purple}→ /usr/bin/php ${serverPreprodProjectPath}/current/artisan up${reset}"
-/usr/bin/php ${serverPreprodProjectPath}/current/artisan up
+echo "${purple}→ sudo -u ${serverPreprodUser} /usr/bin/php ${serverPreprodProjectPath}/current/artisan up${reset}"
+sudo -u ${serverPreprodUser} /usr/bin/php ${serverPreprodProjectPath}/current/artisan up
 echo -e "${green}✔${reset} Maintenance mode disabled.\n"
 
 # script end

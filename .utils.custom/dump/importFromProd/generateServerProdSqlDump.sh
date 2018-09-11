@@ -7,8 +7,8 @@ dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory=$(dirname "$(readlink
 
 # we set the required variables
 source ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/setRequiredVariables.sh
-source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverProdUser
-source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverProdGroup
+source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverProductionUser
+source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverProductionGroup
 source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverProductionProjectPath
 source $(realpath ${dumpImportFromProdGenerateServerProdSqlDumpScriptDirectory}/../../../.utils/helpers/checkVariableIsDefined.sh) serverProductionSqlDumpStoragePath
 
@@ -16,8 +16,8 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we create the production dump storage directory
 echo "${purple}▶${reset} Creating server ${serverProductionSqlDumpStoragePath} directory ..."
-echo "${purple}→ su ${serverProdUser} -c \"mkdir -p ${serverProductionSqlDumpStoragePath}\"${reset}"
-su ${serverProdUser} -c "mkdir -p ${serverProductionSqlDumpStoragePath}"
+echo "${purple}→ sudo -u ${serverProductionUser} mkdir -p ${serverProductionSqlDumpStoragePath}${reset}"
+sudu -u ${serverProductionUser} mkdir -p ${serverProductionSqlDumpStoragePath}
 echo -e "${green}✔${reset} Server ${purple}${serverProductionSqlDumpStoragePath}${reset} directory available.\n"
 
 # we export the .env file variables
@@ -30,6 +30,6 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we change the sql dump owner
 echo "${purple}▶${reset} Changing the ${serverProductionSqlDumpStoragePath}/dump.sql owner ..."
-echo "${purple}→ chown ${serverProdUser}:${serverProdGroup} ${serverProductionSqlDumpStoragePath}/dump.sql${reset}"
-chown ${serverProdUser}:${serverProdGroup} ${serverProductionSqlDumpStoragePath}/dump.sql
-echo -e "${green}✔${reset} ${serverProductionSqlDumpStoragePath}/dump.sql owner changed to ${purple}${serverProdUser}:${serverProdGroup}${reset}.\n"
+echo "${purple}→ sudo chown ${serverProductionUser}:${serverProductionGroup} ${serverProductionSqlDumpStoragePath}/dump.sql${reset}"
+sudo chown ${serverProductionUser}:${serverProductionGroup} ${serverProductionSqlDumpStoragePath}/dump.sql
+echo -e "${green}✔${reset} ${serverProductionSqlDumpStoragePath}/dump.sql owner changed to ${purple}${serverProductionUser}:${serverProductionGroup}${reset}.\n"

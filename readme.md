@@ -126,7 +126,7 @@ The following dotfiles that are eligible for custom instructions :
     - `setRequiredVariables.sh` : set the variables required for the production dump import script.
 - prodToPreprod/
     - `additionalInstructions.sh` : set additional instructions at the end of the production to preprod dump script.
-    - `dropDatabase.sh` : drop the preprod database before the import of the production sql dump in the preprod database.
+    - `dropDbTables.sh` : drop the preprod database before the import of the production sql dump in the preprod database.
     - `generateProductionSqlDump.sh` : generate the production sql dump that will be imported in the preprod database.
     - `setRequiredVariables.sh` : set the variables required for the production to preprod dump script.
 

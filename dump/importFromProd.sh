@@ -26,7 +26,7 @@ else
     echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/importFromProd/setRequiredVariables.sh script detected.${reset}\n"
 fi
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) sshConnexionUser
-source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProdUser
+source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionUser
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverHost
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionProjectPath
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionSqlDumpStoragePath
@@ -44,7 +44,7 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we execute the dump archive generation on the production server
 echo "${purple}▶${reset} Generating the server production dump ..."
-echo "${purple}→ ssh ${serverProdUser}@${serverHost} ${serverProductionProjectPath}/current/.utils.custom/dump/importFromProd/generateServerProdSqlDump.sh${reset}"
+echo "${purple}→ ssh ${serverProductionUser}@${serverHost} ${serverProductionProjectPath}/current/.utils.custom/dump/importFromProd/generateServerProdSqlDump.sh${reset}"
 ssh ${sshConnexionUser}@${serverHost} ${serverProductionProjectPath}/current/.utils.custom/dump/importFromProd/generateServerProdSqlDump.sh
 echo -e "${green}✔${reset} Server production dump generated.\n"
 
@@ -52,8 +52,8 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we import the production sql dump
 echo "${purple}▶${reset} Importing the production sql dump ..."
-echo "${purple}→ rsync -Prz --info=progress2 ${serverProdUser}@${serverHost}:${serverProductionSqlDumpStoragePath}/ ${localProductionDumpStoragePath}${reset}"
-rsync -Prz --info=progress2 ${serverProdUser}@${serverHost}:${serverProductionSqlDumpStoragePath}/ ${localProductionDumpStoragePath}
+echo "${purple}→ rsync -Prz --info=progress2 ${serverProductionUser}@${serverHost}:${serverProductionSqlDumpStoragePath}/ ${localProductionDumpStoragePath}${reset}"
+rsync -Prz --info=progress2 ${serverProductionUser}@${serverHost}:${serverProductionSqlDumpStoragePath}/ ${localProductionDumpStoragePath}
 echo -e "${green}✔${reset} Production sql dump imported.\n"
 
 echo -e "${gray}=================================================${reset}\n"
