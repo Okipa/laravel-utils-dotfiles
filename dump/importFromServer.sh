@@ -18,12 +18,12 @@ echo -e "${purple}▽ DUMP IMPORT : STARTING ▽${reset}\n"
 echo -e "${gray}=================================================${reset}\n"
 
 # we set the script required variables
-setRequiredVariablesScript=${dumpImportScriptDirectory}/../../.utils.custom/dump/importFromProd/setRequiredVariables.sh
+setRequiredVariablesScript=${dumpImportScriptDirectory}/../../.utils.custom/dump/importFromServer/setRequiredVariables.sh
 if [ -f "${setRequiredVariablesScript}" ]; then
-    echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/importFromProd/setRequiredVariables.sh custom instructions script has been detected and executed.${reset}\n"
+    echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/importFromServer/setRequiredVariables.sh custom instructions script has been detected and executed.${reset}\n"
     source ${setRequiredVariablesScript}
 else
-    echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/importFromProd/setRequiredVariables.sh script detected.${reset}\n"
+    echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/importFromServer/setRequiredVariables.sh script detected.${reset}\n"
 fi
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) sshConnexionUser
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionUser
@@ -45,8 +45,8 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we execute the dump archive generation on the production server
 echo "${purple}▶${reset} Generating the server production dump ..."
-echo "${purple}→ ssh ${serverProductionUser}@${serverHost} ${serverProductionProjectPath}/current/.utils.custom/dump/importFromProd/generateServerProdSqlDump.sh${reset}"
-ssh ${sshConnexionUser}@${serverHost} ${serverProductionProjectPath}/current/.utils.custom/dump/importFromProd/generateServerProdSqlDump.sh
+echo "${purple}→ ssh ${serverProductionUser}@${serverHost} ${serverProductionProjectPath}/current/.utils.custom/dump/importFromServer/generateServerProdSqlDump.sh${reset}"
+ssh ${sshConnexionUser}@${serverHost} ${serverProductionProjectPath}/current/.utils.custom/dump/importFromServer/generateServerProdSqlDump.sh
 echo -e "${green}✔${reset} Server production dump generated.\n"
 
 echo -e "${gray}=================================================${reset}\n"
@@ -60,12 +60,12 @@ echo -e "${green}✔${reset} Production sql dump imported.\n"
 echo -e "${gray}=================================================${reset}\n"
 
 # we execute the additional instructions
-dumpImportFromProdAdditionalInstructionsScript=${dumpImportScriptDirectory}/../../.utils.custom/dump/importFromProd/additionalInstructions.sh
-if [ -f "${dumpImportFromProdAdditionalInstructionsScript}" ]; then
-    echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/importFromProd/additionalInstructions.sh custom instructions script has been detected and executed.${reset}\n"
-    source ${dumpImportFromProdAdditionalInstructionsScript}
+dumpimportFromServerAdditionalInstructionsScript=${dumpImportScriptDirectory}/../../.utils.custom/dump/importFromServer/additionalInstructions.sh
+if [ -f "${dumpimportFromServerAdditionalInstructionsScript}" ]; then
+    echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/importFromServer/additionalInstructions.sh custom instructions script has been detected and executed.${reset}\n"
+    source ${dumpimportFromServerAdditionalInstructionsScript}
 else
-    echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/importFromProd/additionalInstructions.sh script detected.${reset}\n"
+    echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/importFromServer/additionalInstructions.sh script detected.${reset}\n"
 fi
 
 echo -e "${gray}=================================================${reset}\n"

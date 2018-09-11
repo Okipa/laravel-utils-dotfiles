@@ -62,7 +62,7 @@ export PATH="/usr/bin/local:$PATH"
     > | [destinationPath] | Yes | Specify a destination path for the pgsql dump |
 
 ### .utils/dump/
-- `importFromProd.sh` : import a production dump locally.
+- `importFromServer.sh` : import a production dump locally.
 - `prodToPreprod.sh` : execute a dump from the production and import it in the preprod.
 
 ### .utils/git/submodules/
@@ -120,7 +120,7 @@ This way, your custom instructions will be synchronized with your project git re
 The following dotfiles that are eligible for custom instructions :
 
 ### .utils/dump/ => .utils.custom/dump/
-- importFromProd/
+- importFromServer/
     - `additionalInstructions.sh` : set additional instructions at the end of the production dump import script.
     - `generateServerProdSqlDump.sh` : generate the sql production dump on the project server.
     - `setRequiredVariables.sh` : set the variables required for the production dump import script.
