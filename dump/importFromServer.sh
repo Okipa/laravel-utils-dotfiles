@@ -30,16 +30,16 @@ source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverUserGroup
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverHost
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProjectPath
-source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionSqlDumpStoragePath
-source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) localProductionDumpStoragePath
+source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverSqlDumpStoragePath
+source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) localDumpStoragePath
 
 echo -e "${gray}=================================================${reset}\n"
 
 # we create the production dump storage directory
-echo "${purple}▶${reset} Creating the ${localProductionDumpStoragePath} directory locally ..."
-echo "${purple}→ mkdir -p ${localProductionDumpStoragePath}${reset}"
-mkdir -p ${localProductionDumpStoragePath}
-echo -e "${green}✔${reset} Local ${purple}${localProductionDumpStoragePath}${reset} directory available.\n"
+echo "${purple}▶${reset} Creating the ${localDumpStoragePath} directory locally ..."
+echo "${purple}→ mkdir -p ${localDumpStoragePath}${reset}"
+mkdir -p ${localDumpStoragePath}
+echo -e "${green}✔${reset} Local ${purple}${localDumpStoragePath}${reset} directory available.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
@@ -53,8 +53,8 @@ echo -e "${gray}=================================================${reset}\n"
 
 # we import the production sql dump
 echo "${purple}▶${reset} Importing the production sql dump ..."
-echo "${purple}→ rsync -Prz --info=progress2 ${serverUser}@${serverHost}:${serverProductionSqlDumpStoragePath}/ ${localProductionDumpStoragePath}${reset}"
-rsync -Prz --info=progress2 ${serverUser}@${serverHost}:${serverProductionSqlDumpStoragePath}/ ${localProductionDumpStoragePath}
+echo "${purple}→ rsync -Prz --info=progress2 ${serverUser}@${serverHost}:${serverSqlDumpStoragePath}/ ${localDumpStoragePath}${reset}"
+rsync -Prz --info=progress2 ${serverUser}@${serverHost}:${serverSqlDumpStoragePath}/ ${localDumpStoragePath}
 echo -e "${green}✔${reset} Production sql dump imported.\n"
 
 echo -e "${gray}=================================================${reset}\n"
