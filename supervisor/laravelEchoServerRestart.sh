@@ -14,11 +14,11 @@ source $(realpath ${supervisorLaravelEchoServerRestartScriptDirectory}/../helper
 source $(realpath ${supervisorLaravelEchoServerRestartScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_DATABASE
 
 # project supervisor configuration file detection
-source $(realpath ${supervisorLaravelEchoServerRestartScriptDirectory}/../helpers/checkFileExists.sh) /etc/supervisor/conf.d/laravel-${APP_ENV}-${DB_DATABASE}-worker.conf
+source $(realpath ${supervisorLaravelEchoServerRestartScriptDirectory}/../helpers/checkFileExists.sh) /etc/supervisor/conf.d/laravel-echo-server-${APP_ENV}-${DB_DATABASE}-worker.conf
 
 echo -e "${gray}=================================================${reset}\n"
 
 # restarting supervisor laravel echo server task
 echo "${purple}→ sudo supervisorctl restart \"laravel-echo-server-${APP_ENV}-${DB_DATABASE}-worker:*\"${reset}"
 sudo supervisorctl restart "laravel-echo-server-${APP_ENV}-${DB_DATABASE}-worker:*"
-echo -e "${green}✔${reset} Laravel echo server supervisor task configured and started\n"
+echo -e "${green}✔${reset} Laravel-echo-server supervisor task configured and started\n"

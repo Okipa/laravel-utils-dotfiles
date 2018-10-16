@@ -14,7 +14,7 @@ source $(realpath ${supervisorLaravelQueueRestartScriptDirectory}/../helpers/che
 source $(realpath ${supervisorLaravelQueueRestartScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_DATABASE
 
 # project supervisor configuration file detection
-source $(realpath ${supervisorLaravelQueueRestartScriptDirectory}/../helpers/checkFileExists.sh) /etc/supervisor/conf.d/laravel-${APP_ENV}-${DB_DATABASE}-worker.conf
+source $(realpath ${supervisorLaravelQueueRestartScriptDirectory}/../helpers/checkFileExists.sh) /etc/supervisor/conf.d/laravel-queue-${APP_ENV}-${DB_DATABASE}-worker.conf
 
 echo -e "${gray}=================================================${reset}\n"
 
