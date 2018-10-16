@@ -109,8 +109,10 @@ export PATH="/usr/bin/local:$PATH"
 - `localesInstall.sh` : install the project needed locales.
 
 ### .utils/supervisor/
-- `install.sh` : configure and launch the project supervisor runners.
-- `restart.sh` : restart the project supervisor runners.
+- `laravelEchoServerInstall.sh` : configure and launch the project laravel-echo-server supervisor task.
+- `laravelEchoServerRestart.sh` : restart the project laravel-echo-server supervisor task.
+- `laravelQueueInstall.sh` : configure and launch the project laravel queue supervisor task.
+- `laravelQueueRestart.sh` : restart the project laravel queue supervisor task.
 
 ## Adding instructions to dotfiles
 Several dotfiles have to execute custom instructions that will be different regarding your project needs.
