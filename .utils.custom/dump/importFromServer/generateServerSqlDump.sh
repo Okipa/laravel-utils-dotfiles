@@ -21,5 +21,11 @@ echo -e "${green}✔${reset} Server ${purple}${serverSqlDumpStoragePath}${reset}
 # we export the .env file variables
 source $(realpath ${dumpImportFromServerGenerateServerSqlDumpScriptDirectory}/../../../.utils/helpers/exportEnvFileVariables.sh)
 
+# we remove the previous dump file to avoid errors
+echo "${purple}▶${reset} Removing previous ${serverSqlDumpStoragePath}/dump.sql file ..."
+echo "${purple}→ rm -f ${serverSqlDumpStoragePath}/dump.sql${reset}"
+rm -f ${serverSqlDumpStoragePath}/dump.sql
+echo -e "${green}✔${reset} Previous ${serverSqlDumpStoragePath}/dump.sql file removed.\n"
+
 # we execute a production pgsql dump
 source $(realpath ${dumpImportFromServerGenerateServerSqlDumpScriptDirectory}/../../../.utils/database/generateMysqlDump.sh) ${serverSqlDumpStoragePath}/dump.sql

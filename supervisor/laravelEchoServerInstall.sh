@@ -16,6 +16,18 @@ source $(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}/../helper
 source $(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}/../helpers/checkVariableIsDefined.sh) APP_ENV
 source $(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_DATABASE
 
+echo -e "${gray}=================================================${reset}\n"
+
+# we set the script required variables
+setRequiredVariablesScript=${supervisorLaravelEchoServerInstallScriptDirectory}/../../.utils.custom/supervisor/setRequiredVariables.sh
+if [ -f "${setRequiredVariablesScript}" ]; then
+    echo -e "${green}✔${reset} ${gray}The .utils.custom/supervisor/laravelQueueInstall/setRequiredVariables.sh custom instructions script has been detected and executed.${reset}\n"
+    source ${setRequiredVariablesScript}
+else
+    echo -e "${red}✗${reset} ${gray}No .utils.custom/supervisor/laravelQueueInstall/setRequiredVariables.sh script detected.${reset}\n"
+fi
+source $(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}/../helpers/checkVariableIsDefined.sh) artisanRelativePathFromScript
+
 # we set the script variables
 [[ $1 = "--force" ]] && FORCE=true || FORCE=false
 

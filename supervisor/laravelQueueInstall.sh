@@ -16,6 +16,18 @@ source $(realpath ${supervisorLaravelQueueInstallScriptDirectory}/../helpers/req
 source $(realpath ${supervisorLaravelQueueInstallScriptDirectory}/../helpers/checkVariableIsDefined.sh) APP_ENV
 source $(realpath ${supervisorLaravelQueueInstallScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_DATABASE
 
+echo -e "${gray}=================================================${reset}\n"
+
+# we set the script required variables
+setRequiredVariablesScript=${supervisorLaravelQueueInstallScriptDirectory}/../../.utils.custom/supervisor/setRequiredVariables.sh
+if [ -f "${setRequiredVariablesScript}" ]; then
+    echo -e "${green}✔${reset} ${gray}The .utils.custom/supervisor/laravelQueueInstall/setRequiredVariables.sh custom instructions script has been detected and executed.${reset}\n"
+    source ${setRequiredVariablesScript}
+else
+    echo -e "${red}✗${reset} ${gray}No .utils.custom/supervisor/laravelQueueInstall/setRequiredVariables.sh script detected.${reset}\n"
+fi
+source $(realpath ${supervisorLaravelQueueInstallScriptDirectory}/../helpers/checkVariableIsDefined.sh) artisanRelativePathFromScript
+
 # we set the script variables
 [[ $1 = "--force" ]] && FORCE=true || FORCE=false
 
@@ -26,9 +38,9 @@ if [ "$FORCE" == false ]; then
     echo
 fi
 if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
-    # we set the artisan project path
+    # we get the artisan project path
     echo "${purple}▶${reset} Setting artisan path ..."
-    ARTISAN_PATH=$(realpath ${supervisorLaravelQueueInstallScriptDirectory}/../../../current/artisan)
+    ARTISAN_PATH=$(realpath ${supervisorLaravelQueueInstallScriptDirectory}${artisanRelativePathFromScript})
     echo -e "${green}✔${reset} Artisan path determined : ${purple}${ARTISAN_PATH}${reset}\n"
     # we get the file owner
     echo "${purple}▶${reset} Getting the file owner ..."

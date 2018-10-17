@@ -121,6 +121,11 @@ This way, your custom instructions will be synchronized with your project git re
 
 The following dotfiles that are eligible for custom instructions :
 
+### .utils/docker/ => .utils.custom/docker/
+- `up.sh` : specify which docker containers to start.
+- workspace/
+    - `setRequiredVariables.sh` : set the variables required for the docker use.
+    
 ### .utils/dump/ => .utils.custom/dump/
 - importFromServer/
     - `additionalInstructions.sh` : set additional instructions at the end of the production dump import script.
@@ -132,11 +137,9 @@ The following dotfiles that are eligible for custom instructions :
     - `generateProductionSqlDump.sh` : generate the production sql dump that will be imported in the preprod database.
     - `setRequiredVariables.sh` : set the variables required for the production to preprod dump script.
 
-### .utils/docker/ => .utils.custom/docker/
-- `up.sh` : specify which docker containers to start.
-- workspace/
-    - `setRequiredVariables.sh` : set the variables required for the docker use.
-
 ### .utils/server/ => .utils.custom/server/
 - `configCheck.sh` : set which server packages installations we should verify.
 - `localesInstall.sh` : install the project needed locales.
+
+### .utils/server/ => .utils.custom/supervisor/
+- `setRequiredVariables` : set the variables required for the supervisor scripts execution.
