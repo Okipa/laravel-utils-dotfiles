@@ -40,7 +40,7 @@ fi
 if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
     # we set the project path
     echo "${purple}▶${reset} Setting project path ..."
-    PROJECT_PATH=$(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}/../../../current)
+    PROJECT_PATH=$(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}${artisanRelativePathFromScript})
     echo -e "${green}✔${reset} Project path determined : ${purple}${PROJECT_PATH}${reset}\n"
     # we get the file owner
     echo "${purple}▶${reset} Getting the file owner ..."
@@ -67,7 +67,7 @@ EOF'
     echo "${purple}→ supervisorctl update${reset}"
     supervisorctl update
     # starting supervisor queues (add as much lines as you have queues here)
-    echo "${purple}→ supervisorctl restart laravel-${APP_ENV}-${DB_DATABASE}-worker${reset}"
+    echo "${purple}→ supervisorctl restart laravel-echo-server-${APP_ENV}-${DB_DATABASE}-worker${reset}"
     supervisorctl restart laravel-"${APP_ENV}"-"${DB_DATABASE}"-worker:*
     echo -e "${green}✔${reset} Supervisor updated and restarted.\n"
 else
