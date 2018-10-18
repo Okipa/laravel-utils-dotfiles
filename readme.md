@@ -142,4 +142,7 @@ The following dotfiles that are eligible for custom instructions :
 - `localesInstall.sh` : install the project needed locales.
 
 ### .utils/server/ => .utils.custom/supervisor/
-- `setRequiredVariables` : set the variables required for the supervisor scripts execution.
+- laravelEchoServerInstall/
+    - `setRequiredVariables` : set the variables required for the supervisor laravel-echo-server task install script .
+- laravelQueueInstall/
+    - `setRequiredVariables` : set the variables required for the supervisor laravel queue task install script . 
