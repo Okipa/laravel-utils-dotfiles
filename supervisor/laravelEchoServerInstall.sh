@@ -53,7 +53,7 @@ if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
 [program:laravel-echo-server-'"${APP_ENV}"'-'"${DB_DATABASE}"'-worker]
 process_name=%(program_name)s_%(process_num)02d
 directory='"${projectPath}
-command=node '"${projectPath}${laravelEchoServerBinaryPath}"' start
+command='"$(which node)"' '"${projectPath}${laravelEchoServerBinaryPath}"' start
 autostart=true
 autorestart=true
 user='"${projectUser}"'
