@@ -26,50 +26,51 @@ if [ -f "${setRequiredVariablesScript}" ]; then
 else
     echo -e "${red}✗${reset} ${gray}No .utils.custom/supervisor/laravelQueueInstall/setRequiredVariables.sh script detected.${reset}\n"
 fi
-source $(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}/../helpers/checkVariableIsDefined.sh) artisanRelativePathFromScript
+source $(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}/../helpers/checkVariableIsDefined.sh) relativeProjectBasePathFromScript
+source $(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}/../helpers/checkVariableIsDefined.sh) laravelEchoServerBinaryPath
 
 # we set the script variables
 [[ $1 = "--force" ]] && FORCE=true || FORCE=false
 
-# supervisor laravel queues configuration
+# supervisor laravel-echo-server task installation
 if [ "$FORCE" == false ]; then
     echo -e "${gray}=================================================${reset}\n"
-    read -p "Would you like to configure the project laravel echo server task ? [${green}y${reset}/${red}N${reset}]" -n 1 -r
+    read -p "Would you like to configure the project supervisor laravel-echo-server task ? [${green}y${reset}/${red}N${reset}]" -n 1 -r
     echo
 fi
 if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
-    # we set the project path
+    # we get the absolute project path
     echo "${purple}▶${reset} Setting project path ..."
-    PROJECT_PATH=$(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}${artisanRelativePathFromScript})
-    echo -e "${green}✔${reset} Project path determined : ${purple}${PROJECT_PATH}${reset}\n"
+    projectPath=$(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}${relativeProjectBasePathFromScript})
+    echo -e "${green}✔${reset} Project path determined : ${purple}${projectPath}${reset}\n"
     # we get the file owner
     echo "${purple}▶${reset} Getting the file owner ..."
-    PROJECT_USER=$(stat -c '%U' .)
-    echo -e "${green}✔${reset} File owner determined : ${purple}${PROJECT_USER}${reset}\n"
-    # we create or override the supervisor config with the dynamic values
+    projectUser=$(stat -c '%U' .)
+    echo -e "${green}✔${reset} File owner determined : ${purple}${projectUser}${reset}\n"
+    # we create or override the supervisor config with the dynamic project values
     echo "${purple}▶ creating or overriding /etc/supervisor/conf.d/laravel-echo-server-${APP_ENV}-${DB_DATABASE}-worker.conf${reset}"
     bash -c 'cat << EOF > /etc/supervisor/conf.d/laravel-echo-server-'"${APP_ENV}"'-'"${DB_DATABASE}"'-worker.conf
 [program:laravel-echo-server-'"${APP_ENV}"'-'"${DB_DATABASE}"'-worker]
 process_name=%(program_name)s_%(process_num)02d
-command='"${PROJECT_PATH}"'/vendor/bin/laravel-echo-server start
+    command='"${projectPath}${laravelEchoServerBinaryPath}"' start
 autostart=true
 autorestart=true
-user='"${PROJECT_USER}"'
+user='"${projectUser}"'
 numprocs=1
 redirect_stderr=true
 stdout_logfile=/var/log/supervisor/laravel-echo-server-'"${APP_ENV}"'-'"${DB_DATABASE}"'-worker.log
 EOF'
     echo -e "${green}✔${reset} Supervisor configured.\n"
     echo "${purple}▶${reset} Updating and restarting supervisor ..."
-    # making supervisor taking care of the configured queues
+    # making supervisor taking care about the configured task
     echo "${purple}→ supervisorctl reread${reset}"
     supervisorctl reread
     echo "${purple}→ supervisorctl update${reset}"
     supervisorctl update
-    # starting supervisor queues (add as much lines as you have queues here)
+    # starting the laravel-echo-server supervisor task
     echo "${purple}→ supervisorctl restart laravel-echo-server-${APP_ENV}-${DB_DATABASE}-worker${reset}"
-    supervisorctl restart laravel-"${APP_ENV}"-"${DB_DATABASE}"-worker:*
-    echo -e "${green}✔${reset} Supervisor updated and restarted.\n"
+    supervisorctl restart laravel-echo-server-"${APP_ENV}"-"${DB_DATABASE}"-worker:*
+    echo -e "${green}✔${reset} Laravel-echo-server supervisor task updated and restarted.\n"
 else
     echo "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}"
     echo "${purple}▶${reset} Supervisor configuration aborted."
