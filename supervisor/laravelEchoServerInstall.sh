@@ -52,7 +52,7 @@ if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
     bash -c 'cat << EOF > /etc/supervisor/conf.d/laravel-echo-server-'"${APP_ENV}"'-'"${DB_DATABASE}"'-worker.conf
 [program:laravel-echo-server-'"${APP_ENV}"'-'"${DB_DATABASE}"'-worker]
 process_name=%(program_name)s_%(process_num)02d
-    command='"${projectPath}${laravelEchoServerBinaryPath}"' start
+command='"${projectPath}${laravelEchoServerBinaryPath}"' start
 autostart=true
 autorestart=true
 user='"${projectUser}"'
