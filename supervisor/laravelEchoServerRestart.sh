@@ -18,7 +18,7 @@ source $(realpath ${supervisorLaravelEchoServerRestartScriptDirectory}/../helper
 
 echo -e "${gray}=================================================${reset}\n"
 
-# restarting supervisor laravel echo server task
+# restarting supervisor task
 echo "${purple}→ sudo supervisorctl restart \"laravel-echo-server-${APP_ENV}-${DB_DATABASE}-worker:*\"${reset}"
 sudo supervisorctl restart "laravel-echo-server-${APP_ENV}-${DB_DATABASE}-worker:*"
 echo -e "${green}✔${reset} Laravel-echo-server supervisor task restarted\n"

@@ -57,7 +57,7 @@ command='"$(which node)"' '"${projectPath}${laravelEchoServerBinaryPath}"' start
 autostart=true
 autorestart=true
 user='"${projectUser}"'
-numprocs=2
+numprocs=1
 redirect_stderr=true
 stdout_logfile=/var/log/supervisor/laravel-echo-server-'"${APP_ENV}"'-'"${DB_DATABASE}"'-worker.log
 EOF'

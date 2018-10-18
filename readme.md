@@ -143,6 +143,8 @@ The following dotfiles that are eligible for custom instructions :
 
 ### .utils/server/ => .utils.custom/supervisor/
 - laravelEchoServerInstall/
-    - `setRequiredVariables` : set the variables required for the supervisor laravel-echo-server task install script .
+    - `setRequiredVariables` : set the variables required for the supervisor task install script.
+- laravelHorizonInstall/
+    - `setRequiredVariables` : set the variables required for the supervisor task install script. 
 - laravelQueueInstall/
-    - `setRequiredVariables` : set the variables required for the supervisor laravel queue task install script . 
+    - `setRequiredVariables` : set the variables required for the supervisor task install script.
