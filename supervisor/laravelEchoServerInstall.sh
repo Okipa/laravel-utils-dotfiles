@@ -39,10 +39,10 @@ if [ "$FORCE" == false ]; then
     echo
 fi
 if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
-    # we get the absolute project path
-    echo "${purple}▶${reset} Setting project path ..."
+    # we set the absolute project path
+    echo "${purple}▶${reset} Setting absolute project path ..."
     projectPath=$(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}${relativeProjectBasePathFromScript})
-    echo -e "${green}✔${reset} Project path determined : ${purple}${projectPath}${reset}\n"
+    echo -e "${green}✔${reset} Absolute project path determined : ${purple}${projectPath}${reset}\n"
     # we get the file owner
     echo "${purple}▶${reset} Getting the file owner ..."
     projectUser=$(stat -c '%U' .)
