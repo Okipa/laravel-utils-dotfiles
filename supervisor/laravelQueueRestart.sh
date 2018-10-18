@@ -21,4 +21,4 @@ echo -e "${gray}=================================================${reset}\n"
 # restarting supervisor task
 echo "${purple}→ sudo supervisorctl restart \"laravel-queue-${APP_ENV}-${DB_DATABASE}-worker:*\"${reset}"
 sudo supervisorctl restart "laravel-queue-${APP_ENV}-${DB_DATABASE}-worker:*"
-echo -e "${green}✔${reset} Laravel queue supervisor task configured and started\n"
+echo -e "${green}✔${reset} Laravel-queue supervisor task configured and started\n"

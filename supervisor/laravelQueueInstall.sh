@@ -34,7 +34,7 @@ source $(realpath ${supervisorLaravelQueueInstallScriptDirectory}/../helpers/che
 # supervisor task installation
 if [ "$FORCE" == false ]; then
     echo -e "${gray}=================================================${reset}\n"
-    read -p "Would you like to configure the project supervisor laravel queue task ? [${green}y${reset}/${red}N${reset}]" -n 1 -r
+    read -p "Would you like to configure the project supervisor laravel-queue task ? [${green}y${reset}/${red}N${reset}]" -n 1 -r
     echo
 fi
 if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
