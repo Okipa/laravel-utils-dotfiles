@@ -40,7 +40,7 @@ fi
 if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
     # we set the absolute project path
     echo "${purple}▶${reset} Setting absolute project path ..."
-    projectPath=$(realpath ${supervisorLaravelQueueInstallScriptDirectory}${relativeProjectBasePathFromScript})
+    projectPath=$(realpath ${supervisorLaravelQueueInstallScriptDirectory}${relativeProjectBasePathFromScript})/current
     echo -e "${green}✔${reset} Absolute project path determined : ${purple}${projectPath}${reset}\n"
     # we get the file owner
     echo "${purple}▶${reset} Getting the file owner ..."
@@ -51,7 +51,7 @@ if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
     bash -c 'cat << EOF > /etc/supervisor/conf.d/laravel-queue-'"${APP_ENV}"'-'"${DB_DATABASE}"'-worker.conf
 [program:laravel-queue-'"${APP_ENV}"'-'"${DB_DATABASE}"'-worker]
 process_name=%(program_name)s_%(process_num)02d
-command='"$(which php)"' '"${projectPath}"'/current/artisan queue:work database --tries=3 --queue=high,default --env='"${APP_ENV}"'
+command='"$(which php)"' '"${projectPath}"'/artisan queue:work database --tries=3 --queue=high,default --env='"${APP_ENV}"'
 autostart=true
 autorestart=true
 user='"${projectUser}"'
