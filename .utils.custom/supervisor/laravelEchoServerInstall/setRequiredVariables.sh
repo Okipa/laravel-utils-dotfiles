@@ -3,4 +3,4 @@
 # example
 
 relativeProjectBasePathFromScript="/../../../.."
-laravelEchoServerBinaryPath="/node_modules/laravel-echo-server/bin/server.js"
+laravelEchoServerBinaryPath="/current/node_modules/laravel-echo-server/bin/server.js"
