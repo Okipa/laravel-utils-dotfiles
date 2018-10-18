@@ -19,7 +19,7 @@ source $(realpath ${supervisorLaravelQueueInstallScriptDirectory}/../helpers/che
 echo -e "${gray}=================================================${reset}\n"
 
 # we set the script required variables
-setRequiredVariablesScript=${supervisorLaravelQueueInstallScriptDirectory}/../../.utils.custom/supervisor/setRequiredVariables.sh
+setRequiredVariablesScript=${supervisorLaravelQueueInstallScriptDirectory}/../../.utils.custom/supervisor/laravelQueueInstall/setRequiredVariables.sh
 if [ -f "${setRequiredVariablesScript}" ]; then
     echo -e "${green}✔${reset} ${gray}The .utils.custom/supervisor/laravelQueueInstall/setRequiredVariables.sh custom instructions script has been detected and executed.${reset}\n"
     source ${setRequiredVariablesScript}

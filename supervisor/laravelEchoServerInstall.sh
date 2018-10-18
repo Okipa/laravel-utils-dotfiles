@@ -19,12 +19,12 @@ source $(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}/../helper
 echo -e "${gray}=================================================${reset}\n"
 
 # we set the script required variables
-setRequiredVariablesScript=${supervisorLaravelEchoServerInstallScriptDirectory}/../../.utils.custom/supervisor/setRequiredVariables.sh
+setRequiredVariablesScript=${supervisorLaravelEchoServerInstallScriptDirectory}/../../.utils.custom/supervisor/laravelEchoServerInstall/setRequiredVariables.sh
 if [ -f "${setRequiredVariablesScript}" ]; then
-    echo -e "${green}✔${reset} ${gray}The .utils.custom/supervisor/laravelQueueInstall/setRequiredVariables.sh custom instructions script has been detected and executed.${reset}\n"
+    echo -e "${green}✔${reset} ${gray}The .utils.custom/supervisor/laravelQueueInstall/laravelEchoServerInstall/setRequiredVariables.sh custom instructions script has been detected and executed.${reset}\n"
     source ${setRequiredVariablesScript}
 else
-    echo -e "${red}✗${reset} ${gray}No .utils.custom/supervisor/laravelQueueInstall/setRequiredVariables.sh script detected.${reset}\n"
+    echo -e "${red}✗${reset} ${gray}No .utils.custom/supervisor/laravelQueueInstall/laravelEchoServerInstall/setRequiredVariables.sh script detected.${reset}\n"
 fi
 source $(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}/../helpers/checkVariableIsDefined.sh) relativeProjectBasePathFromScript
 source $(realpath ${supervisorLaravelEchoServerInstallScriptDirectory}/../helpers/checkVariableIsDefined.sh) laravelEchoServerBinaryPath
