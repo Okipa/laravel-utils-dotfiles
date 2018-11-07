@@ -51,11 +51,11 @@ if [ "$FORCE" == true ] || [[ "$REPLY" =~ ^[Yy]$ ]]; then
     bash -c 'cat << EOF > /etc/supervisor/conf.d/laravel-queue-'"${APP_ENV}"'-'"${DB_DATABASE}"'-worker.conf
 [program:laravel-queue-'"${APP_ENV}"'-'"${DB_DATABASE}"'-worker]
 process_name=%(program_name)s_%(process_num)02d
-command='"$(which php)"' '"${projectPath}"'/artisan queue:work database --tries=3 --queue=high,default --env='"${APP_ENV}"'
+command='"$(which php)"' '"${projectPath}"'/artisan queue:work --sleep=3 --tries=3 --queue=high,default --env='"${APP_ENV}"'
 autostart=true
 autorestart=true
 user='"${projectUser}"'
-numprocs=2
+numprocs=4
 redirect_stderr=true
 stdout_logfile=/var/log/supervisor/laravel-queue-'"${APP_ENV}"'-'"${DB_DATABASE}"'-worker.log
 EOF'
