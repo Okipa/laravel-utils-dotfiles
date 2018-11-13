@@ -33,7 +33,7 @@ function startContainers () {
     cd ${DOCKER_DIRECTORY_PATH}
     echo -e "${green}✔${reset} Moved to ${APP_NAME} ${DOCKER_DIRECTORY_PATH} directory.\n"
     
-    dockerUpScriptPath=${dockerUpScriptDirectory}/../../.utils.custom/docker/up.sh
+    dockerUpScriptPath=${dockerUpScriptDirectory}/../.utils.custom/docker/up.sh
     source $(realpath ${dockerUpScriptPath}/../helpers/checkFileExists.sh) ${dockerUpScriptPath}
     source ${dockerUpScriptPath}
     
