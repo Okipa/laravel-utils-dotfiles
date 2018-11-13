@@ -1,17 +1,13 @@
 #!/bin/bash
 
-# we get the current script directory
 helpersRequiresEnvironmentScriptDirectory=$(dirname "$(readlink -f ${BASH_SOURCE[0]})")
 
-# we load the scripting colors
 source ${helpersRequiresEnvironmentScriptDirectory}/loadScriptingColors.sh
 
-# we export the .env file variables
 source ${helpersRequiresEnvironmentScriptDirectory}/exportEnvFileVariables.sh --
 
 echo -e "${gray}=================================================${reset}\n"
 
-# we get the script arguments
 if [ -z $1 ];
 then
     echo "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}"
@@ -21,12 +17,10 @@ then
     exit 1
 fi
 
-# we set the script variables
 environmentName=$1
 
 echo "${purple}▶${reset} Detecting if the current environment is ${purple}${environmentName}${reset} ..."
 
-# environment detection
 if [ "${APP_ENV}" != "${environmentName}" ]; then
     echo "${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}"
     echo "${purple}▶${reset} This command must be executed on the ${purple}${environmentName}${reset} environment."

@@ -42,7 +42,7 @@ echo -e "${green}✔${reset} Maintenance mode enabled.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-# we create the production dump storage directory
+# we create the server dump storage directory
 echo "${purple}▶${reset} Creating the server ${serverProductionSqlDumpStorageDirectory} directory ..."
 echo "${purple}→ mkdir -p ${serverProductionSqlDumpStorageDirectory}${reset}"
 mkdir -p ${serverProductionSqlDumpStorageDirectory}

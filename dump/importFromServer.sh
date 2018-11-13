@@ -1,30 +1,21 @@
 #!/bin/bash
 
-# we get the current script directory
 dumpImportScriptDirectory=$(dirname "$(readlink -f ${BASH_SOURCE[0]})")
 
-# we load the scripting colors
 source $(realpath ${dumpImportScriptDirectory}/../helpers/loadScriptingColors.sh)
 
-# we export the .env file variables
 source $(realpath ${dumpImportScriptDirectory}/../helpers/exportEnvFileVariables.sh) --
 
-# we check if the current environment is local
 source $(realpath ${dumpImportScriptDirectory}/../helpers/requiresEnvironment.sh) local
 
-# script begin
 echo -e "${purple}▽ DUMP IMPORT : STARTING ▽${reset}\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-# we set the script required variables
-setRequiredVariablesScript=${dumpImportScriptDirectory}/../../.utils.custom/dump/importFromServer/setRequiredVariables.sh
-if [ -f "${setRequiredVariablesScript}" ]; then
-    echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/importFromServer/setRequiredVariables.sh custom instructions script has been detected and executed.${reset}\n"
-    source ${setRequiredVariablesScript}
-else
-    echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/importFromServer/setRequiredVariables.sh script detected.${reset}\n"
-fi
+echo "${purple}▶${reset} Setting up the script variables ..."
+setRequiredVariablesScriptPath=${dumpImportScriptDirectory}/../../.utils.custom/dump/importFromServer/setRequiredVariables.sh
+source $(realpath ${dumpImportScriptDirectory}/../helpers/checkFileExists.sh) ${setRequiredVariablesScriptPath}
+source ${setRequiredVariablesScriptPath}
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) sshConnexionUser
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverHost
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProjectPath
@@ -33,7 +24,6 @@ source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined
 
 echo -e "${gray}=================================================${reset}\n"
 
-# we create the production dump storage directory
 echo "${purple}▶${reset} Creating the ${localDumpStoragePath} directory locally ..."
 echo "${purple}→ mkdir -p ${localDumpStoragePath}${reset}"
 mkdir -p ${localDumpStoragePath}
@@ -41,7 +31,13 @@ echo -e "${green}✔${reset} Local ${purple}${localDumpStoragePath}${reset} dire
 
 echo -e "${gray}=================================================${reset}\n"
 
-# we execute the dump archive generation on the server
+echo "${purple}▶${reset} Creating the server ${serverSqlDumpStoragePath} directory ..."
+echo "${purple}→ mkdir -p ${serverSqlDumpStoragePath}${reset}"
+mkdir -p ${serverSqlDumpStoragePath}
+echo -e "${green}✔${reset} Server ${purple}${serverSqlDumpStoragePath}${reset} directory available.\n"
+
+echo -e "${gray}=================================================${reset}\n"
+
 echo "${purple}▶${reset} Generating the server production dump ..."
 echo "${purple}→ ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerSqlDump.sh${reset}"
 ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerSqlDump.sh
@@ -49,7 +45,6 @@ echo -e "${green}✔${reset} Server production dump generated.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-# we import the sql dump
 echo "${purple}▶${reset} Importing the production sql dump ..."
 echo "${purple}→ rsync -Prz --info=progress2 ${sshConnexionUser}@${serverHost}:${serverSqlDumpStoragePath}/ ${localDumpStoragePath}${reset}"
 rsync -Prz --info=progress2 ${sshConnexionUser}@${serverHost}:${serverSqlDumpStoragePath}/ ${localDumpStoragePath}
@@ -57,16 +52,11 @@ echo -e "${green}✔${reset} Production sql dump imported.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-# we execute the additional instructions
-dumpImportFromServerAdditionalInstructionsScript=${dumpImportScriptDirectory}/../../.utils.custom/dump/importFromServer/additionalInstructions.sh
-if [ -f "${dumpImportFromServerAdditionalInstructionsScript}" ]; then
-    echo -e "${green}✔${reset} ${gray}The .utils.custom/dump/importFromServer/additionalInstructions.sh custom instructions script has been detected and executed.${reset}\n"
-    source ${dumpImportFromServerAdditionalInstructionsScript}
-else
-    echo -e "${red}✗${reset} ${gray}No .utils.custom/dump/importFromServer/additionalInstructions.sh script detected.${reset}\n"
-fi
+echo "${purple}▶${reset} Executing additional instructions ..."
+dumpImportFromServerAdditionalInstructionsScriptPath=${dumpImportScriptDirectory}/../../.utils.custom/dump/importFromServer/additionalInstructions.sh
+source $(realpath ${dumpImportScriptDirectory}/../helpers/checkFileExists.sh) ${dumpImportFromServerAdditionalInstructionsScriptPath}
+source ${dumpImportFromServerAdditionalInstructionsScriptPath}
 
 echo -e "${gray}=================================================${reset}\n"
 
-# script end
 echo -e "${green}△ DUMP IMPORT : DONE △${reset}\n"
