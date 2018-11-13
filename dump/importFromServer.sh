@@ -31,6 +31,10 @@ echo -e "${green}✔${reset} Local ${purple}${localDumpStoragePath}${reset} dire
 echo -e "${gray}=================================================${reset}\n"
 
 echo "${purple}▶${reset} Generating the server production dump ..."
+
+echo "${purple}→ ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerSqlDump.sh${reset}"
+ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerSqlDump.sh
+
 echo "${purple}→ ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerSqlDump.sh${reset}"
 ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerSqlDump.sh
 echo -e "${green}✔${reset} Server production dump generated.\n"

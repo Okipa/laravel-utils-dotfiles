@@ -10,8 +10,6 @@ source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/requiresEnviron
 
 echo -e "${purple}▽ DUMPING PROD ON PREPROD : STARTING ▽${reset}\n"
 
-echo -e "${gray}=================================================${reset}\n"
-
 setRequiredVariablesScriptPath=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/setRequiredVariables.sh
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkFileExists.sh) ${setRequiredVariablesScriptPath}
 source ${setRequiredVariablesScriptPath}
