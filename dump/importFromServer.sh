@@ -47,9 +47,6 @@ echo "${purple}→ rsync -Prz --info=progress2 ${sshConnexionUser}@${serverHost}
 rsync -Prz --info=progress2 ${sshConnexionUser}@${serverHost}:${serverSqlDumpStoragePath}/ ${localDumpStoragePath}
 echo -e "${green}✔${reset} Production sql dump imported.\n"
 
-echo -e "${gray}=================================================${reset}\n"
-
-echo "${purple}▶${reset} Executing additional instructions ..."
 dumpImportFromServerAdditionalInstructionsScriptPath=${dumpImportScriptDirectory}/../../.utils.custom/dump/importFromServer/additionalInstructions.sh
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkFileExists.sh) ${dumpImportFromServerAdditionalInstructionsScriptPath}
 source ${dumpImportFromServerAdditionalInstructionsScriptPath}

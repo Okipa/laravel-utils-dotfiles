@@ -2,6 +2,8 @@
 
 # example custom script
 
+echo -e "${gray}=================================================${reset}\n"
+
 echo "${purple}▶${reset} Setting up script variables ..."
 sshConnexionUser="[ssh_connexion_user]"
 serverHost="[server_host_or_ip]"
