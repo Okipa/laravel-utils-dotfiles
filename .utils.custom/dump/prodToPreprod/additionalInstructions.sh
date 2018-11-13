@@ -2,6 +2,8 @@
 
 # example custom script
 
+echo -e "${gray}=================================================${reset}\n"
+
 echo "${purple}▶${reset} Syncing the production storage/app directory with the preprod ..."
 echo "${purple}→ sudo rsync -Prz --info=progress2 ${serverProductionProjectPath}/shared/storage/app/ ${serverPreprodProjectPath}/shared/storage/app${reset}"
 sudo rsync -Prz --info=progress2 ${serverProductionProjectPath}/shared/storage/app/ ${serverPreprodProjectPath}/shared/storage/app
