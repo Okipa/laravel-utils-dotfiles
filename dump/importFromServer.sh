@@ -8,6 +8,8 @@ source $(realpath ${dumpImportScriptDirectory}/../helpers/exportEnvFileVariables
 
 source $(realpath ${dumpImportScriptDirectory}/../helpers/requiresEnvironment.sh) local
 
+echo -e "${gray}=================================================${reset}\n"
+
 echo -e "${purple}▽ DUMP IMPORT : STARTING ▽${reset}\n"
 
 setRequiredVariablesScriptPath=${dumpImportScriptDirectory}/../../.utils.custom/dump/importFromServer/setRequiredVariables.sh
