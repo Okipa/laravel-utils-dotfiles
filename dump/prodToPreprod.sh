@@ -48,15 +48,11 @@ source ${dropDbTablesScriptPath}
 
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${serverProductionProjectPath}/shared/.env
 
-echo -e "${gray}=================================================${reset}\n"
-
 generateSqlDumpScriptPath=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/generateProductionSqlDump.sh
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkFileExists.sh) ${generateSqlDumpScriptPath}
 source ${generateSqlDumpScriptPath}
 
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${serverPreprodProjectPath}/shared/.env
-
-echo -e "${gray}=================================================${reset}\n"
 
 importProductionSqlDumpScriptPath=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/importProductionSqlDump.sh
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkFileExists.sh) ${importProductionSqlDumpScriptPath}
