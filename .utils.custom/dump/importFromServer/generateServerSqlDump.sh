@@ -17,6 +17,8 @@ echo -e "${green}✔${reset} Server ${purple}${serverSqlDumpStoragePath}${reset}
 
 source $(realpath ${dumpImportFromServerGenerateServerSqlDumpScriptDirectory}/../../../.utils/helpers/exportEnvFileVariables.sh)
 
+echo -e "${gray}=================================================${reset}\n"
+
 echo "${purple}▶${reset} Removing previous ${serverSqlDumpStoragePath}/dump.sql file ..."
 echo "${purple}→ rm -f ${serverSqlDumpStoragePath}/dump.sql${reset}"
 rm -f ${serverSqlDumpStoragePath}/dump.sql
