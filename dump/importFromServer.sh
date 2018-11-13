@@ -23,7 +23,7 @@ source $(realpath ${dumpImportScriptDirectory}/../helpers/checkVariableIsDefined
 
 echo -e "${gray}=================================================${reset}\n"
 
-echo "${purple}▶${reset} Creating the ${localDumpStoragePath} directory locally ..."
+echo "${purple}▶${reset} Creating the local ${localDumpStoragePath} directory ..."
 echo "${purple}→ mkdir -p ${localDumpStoragePath}${reset}"
 mkdir -p ${localDumpStoragePath}
 echo -e "${green}✔${reset} Local ${purple}${localDumpStoragePath}${reset} directory available.\n"
