@@ -20,7 +20,6 @@ source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIs
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverPreprodProjectPath
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionProjectPath
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionSqlDumpStoragePath
-source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) serverProductionSqlDumpStorageDirectory
 
 echo -e "${gray}=================================================${reset}\n"
 
@@ -31,10 +30,10 @@ echo -e "${green}✔${reset} Maintenance mode enabled.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-echo "${purple}▶${reset} Creating the server ${serverProductionSqlDumpStorageDirectory} directory ..."
-echo "${purple}→ mkdir -p ${serverProductionSqlDumpStorageDirectory}${reset}"
-mkdir -p ${serverProductionSqlDumpStorageDirectory}
-echo -e "${green}✔${reset} Server ${purple}${serverProductionSqlDumpStorageDirectory}${reset} directory available.\n"
+echo "${purple}▶${reset} Creating the server ${serverProductionSqlDumpStoragePath} directory ..."
+echo "${purple}→ mkdir -p ${serverProductionSqlDumpStoragePath}${reset}"
+mkdir -p ${serverProductionSqlDumpStoragePath}
+echo -e "${green}✔${reset} Server ${purple}${serverProductionSqlDumpStoragePath}${reset} directory available.\n"
 
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${serverPreprodProjectPath}/shared/.env
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_CONNECTION
