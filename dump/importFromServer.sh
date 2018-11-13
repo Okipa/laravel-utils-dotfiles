@@ -12,7 +12,6 @@ echo -e "${purple}▽ DUMP IMPORT : STARTING ▽${reset}\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
-echo "${purple}▶${reset} Setting up the script variables ..."
 setRequiredVariablesScriptPath=${dumpImportScriptDirectory}/../../.utils.custom/dump/importFromServer/setRequiredVariables.sh
 source $(realpath ${dumpImportScriptDirectory}/../helpers/checkFileExists.sh) ${setRequiredVariablesScriptPath}
 source ${setRequiredVariablesScriptPath}

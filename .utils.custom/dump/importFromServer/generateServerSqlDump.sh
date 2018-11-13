@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# example
+# example custom script
 
 dumpImportFromServerGenerateServerSqlDumpScriptDirectory=$(dirname "$(readlink -f ${BASH_SOURCE[0]})")
 
