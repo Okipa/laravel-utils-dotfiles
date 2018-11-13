@@ -65,8 +65,6 @@ echo "${purple}→ sudo -u ${serverPreprodUser} /usr/bin/php ${serverPreprodProj
 sudo -u ${serverPreprodUser} /usr/bin/php ${serverPreprodProjectPath}/current/artisan migrate
 echo -e "${green}✔${reset} Laravel migrations executed on ${purple}${DB_DATABASE}${reset} database.\n"
 
-echo -e "${gray}=================================================${reset}\n"
-
 additionalInstructionsScriptPath=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/additionalInstructions.sh
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkFileExists.sh) ${additionalInstructionsScriptPath}
 source ${additionalInstructionsScriptPath}
