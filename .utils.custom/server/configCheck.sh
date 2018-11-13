@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# example
+# example custom script
 
-# set as much installation checks as you need here
 PackagesToCheck+=('php7.2-common')
 PackagesToCheck+=('php7.2-fpm')
 PackagesToCheck+=('php7.2-cli')

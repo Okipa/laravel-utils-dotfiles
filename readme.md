@@ -109,10 +109,10 @@ export PATH="/usr/bin/local:$PATH"
 - `localesInstall.sh` : install the project needed locales.
 
 ### .utils/supervisor/
-- `laravelEchoServerInstall.sh` : configure and launch the project laravel-echo-server supervisor task.
-- `laravelEchoServerRestart.sh` : restart the project laravel-echo-server supervisor task.
-- `laravelQueueInstall.sh` : configure and launch the project laravel queue supervisor task.
-- `laravelQueueRestart.sh` : restart the project laravel queue supervisor task.
+- `laravelEchoServerInstall.sh` : configure and launch the project laravel-echo-server supervisor worker.
+- `laravelEchoServerRestart.sh` : restart the project laravel-echo-server supervisor worker.
+- `laravelQueueInstall.sh` : configure and launch the project laravel queue supervisor worker.
+- `laravelQueueRestart.sh` : restart the project laravel queue supervisor worker.
 
 ## Adding instructions to dotfiles
 Several dotfiles have to execute custom instructions that will be different regarding your project needs.
@@ -143,8 +143,8 @@ The following dotfiles that are eligible for custom instructions :
 
 ### .utils/server/ => .utils.custom/supervisor/
 - laravelEchoServerInstall/
-    - `setRequiredVariables` : set the variables required for the supervisor task install script.
+    - `setRequiredVariables` : set the variables required for the supervisor worker install script.
 - laravelHorizonInstall/
-    - `setRequiredVariables` : set the variables required for the supervisor task install script. 
+    - `setRequiredVariables` : set the variables required for the supervisor worker install script. 
 - laravelQueueInstall/
-    - `setRequiredVariables` : set the variables required for the supervisor task install script.
+    - `setRequiredVariables` : set the variables required for the supervisor worker install script.

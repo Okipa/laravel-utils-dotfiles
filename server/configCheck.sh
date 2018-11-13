@@ -1,26 +1,17 @@
 #!/bin/bash
 
-# we get the current script directory
 serverConfigCheckScriptDirectory=$(dirname "$(readlink -f ${BASH_SOURCE[0]})")
 
-# we load the scripting colors
 source $(realpath ${serverConfigCheckScriptDirectory}/../helpers/loadScriptingColors.sh)
+
+configCheckScriptPath=${serverConfigCheckScriptDirectory}/../../.utils.custom/server/configCheck.sh
+source $(realpath ${serverConfigCheckScriptDirectory}/../helpers/checkFileExists.sh) ${configCheckScriptPath}
 
 echo -e "${gray}=================================================${reset}\n"
 
-# packages installation detection
 echo "${purple}▶${reset} Detecting packages installation on server ..."
 PackagesToCheck=()
-# custom instructions execution
-configCheckScript=${serverConfigCheckScriptDirectory}/../../.utils.custom/server/configCheck.sh
-if [ -f "${configCheckScript}" ]; then
-    echo "${green}✔${reset} ${gray}The .utils.custom/server/configCheck.sh custom instructions script has been detected and executed.${reset}"
-    source ${configCheckScript}
-else
-    echo "${red}✗${reset} ${gray}No .utils.custom/server/configCheck.sh script detected.${reset}"
-fi
-
-# we execute the script treatments
+source ${configCheckScriptPath}
 missingPackage=false
 function checkPackageInstallation() {
     if [ $(dpkg-query -W -f='${Status}' $1 2>/dev/null | grep -c "ok installed") -eq 0 ];
@@ -36,7 +27,6 @@ do
     checkPackageInstallation $package
 done
 
-# aborting server configuration if packages are missing
 if [ "$missingPackage" = true ]
 then
     echo -e "\n${red}✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗${reset}"

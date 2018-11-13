@@ -2,6 +2,8 @@
 
 # example custom script
 
+echo -e "${gray}=================================================${reset}\n"
+
 echo "${purple}▶${reset} Setting up script variables ..."
 relativeProjectBasePathFromScript="/../../../.."
 laravelEchoServerBinaryPath="/node_modules/laravel-echo-server/bin/server.js"
