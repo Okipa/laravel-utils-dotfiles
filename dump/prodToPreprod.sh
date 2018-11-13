@@ -8,6 +8,8 @@ source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/requiresSudoRig
 
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/requiresEnvironment.sh) preprod
 
+echo -e "${gray}=================================================${reset}\n"
+
 echo -e "${purple}▽ DUMPING PROD ON PREPROD : STARTING ▽${reset}\n"
 
 setRequiredVariablesScriptPath=${dumpProdToPreprodScriptDirectory}/../../.utils.custom/dump/prodToPreprod/setRequiredVariables.sh
