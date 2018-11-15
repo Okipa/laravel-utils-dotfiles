@@ -30,12 +30,10 @@ echo -e "${green}✔${reset} Local ${purple}${localDumpStoragePath}${reset} dire
 
 echo -e "${gray}=================================================${reset}\n"
 
-echo "${purple}▶${reset} Generating the server dump ..."
+echo "${purple}→ ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils/helpers/checkFileExists.sh ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerSqlDump.sh${reset}"
+ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils/helpers/checkFileExists.sh ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerSqlDump.sh
 echo "${purple}→ ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerSqlDump.sh${reset}"
 ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerSqlDump.sh
-echo "${purple}→ ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerSqlDump.sh${reset}"
-ssh ${sshConnexionUser}@${serverHost} ${serverProjectPath}/current/.utils.custom/dump/importFromServer/generateServerSqlDump.sh
-echo -e "${green}✔${reset} Server dump generated.\n"
 
 echo -e "${gray}=================================================${reset}\n"
 
