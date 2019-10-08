@@ -36,7 +36,6 @@ mkdir -p ${serverProductionSqlDumpStoragePath}
 echo -e "${green}✔${reset} Server ${purple}${serverProductionSqlDumpStoragePath}${reset} directory available.\n"
 
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/exportEnvFileVariables.sh) ${serverPreprodProjectPath}/shared/.env
-source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_CONNECTION
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_HOST
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_DATABASE
 source $(realpath ${dumpProdToPreprodScriptDirectory}/../helpers/checkVariableIsDefined.sh) DB_USERNAME
